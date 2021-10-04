@@ -1,6 +1,6 @@
 package com.firecraftmc.ct.object.ability;
 
-import com.firecraftmc.ct.object.AbstractRole;
+import com.firecraftmc.ct.object.role.AbstractRole;
 
 public abstract class ConditionalAbility extends Ability {
     public ConditionalAbility(String text) {

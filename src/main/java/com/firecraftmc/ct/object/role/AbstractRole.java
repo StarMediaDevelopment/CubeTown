@@ -1,4 +1,4 @@
-package com.firecraftmc.ct.object;
+package com.firecraftmc.ct.object.role;
 
 import com.firecraftmc.ct.enums.Attack;
 import com.firecraftmc.ct.enums.Defense;
