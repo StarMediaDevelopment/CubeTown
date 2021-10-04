@@ -118,6 +118,9 @@ public enum Role {
     }
 
     public String getColor() {
+        if (color == null) {
+            color = faction.getColor();
+        }
         return color;
     }
 
