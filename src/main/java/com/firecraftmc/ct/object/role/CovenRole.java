@@ -6,8 +6,11 @@ import com.firecraftmc.ct.enums.Faction;
 import com.firecraftmc.ct.enums.Role;
 
 public abstract class CovenRole extends FactionRole {
+    
+    protected boolean hasNecronomicon;
+    
     public CovenRole(Role type) {
-        super(type, Faction.COVEN, true);
+        this(type, Attack.NONE, Defense.NONE);
     }
 
     public CovenRole(Role type, Attack attack, Defense defense) {

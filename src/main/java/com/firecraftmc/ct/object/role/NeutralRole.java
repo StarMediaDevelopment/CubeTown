@@ -7,7 +7,7 @@ import com.firecraftmc.ct.enums.Role;
 
 public abstract class NeutralRole extends FactionRole {
     public NeutralRole(Role type) {
-        super(type, Faction.NEUTRAL, false);
+        this(type, Attack.NONE, Defense.NONE);
     }
 
     public NeutralRole(Role type, Attack attack, Defense defense) {

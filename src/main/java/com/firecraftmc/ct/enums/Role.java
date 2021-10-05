@@ -1,28 +1,29 @@
 package com.firecraftmc.ct.enums;
 
 import com.firecraftmc.ct.object.ability.Ability;
+import com.firecraftmc.ct.object.role.impl.*;
 
 import static com.firecraftmc.ct.CubeTown.TD;
 import static com.firecraftmc.ct.enums.Alignment.*;
 import static com.firecraftmc.ct.enums.Faction.*;
 
 public enum Role {
-    AMBUSHER(null, -1, true, MAFIA, KILLING, TD, null, null),
-    AMNESIAC(null, "44A6C6", -1, false, NEUTRAL, BENIGN, Goal.AMNESIAC, TD, null, null),
-    ARSONIST(null, "EE7600", -1, false, ANARCHY, KILLING, Goal.ARSONIST, TD, null, null),
-    BLACKMAILER(null, -1, false, MAFIA, SUPPORT, TD, null, null),
-    BODYGUARD(null, -1, false, TOWN, PROTECTIVE, TD, null, null),
-    CONSIGLIERE(null, -1, false, MAFIA, INVESTIGATIVE, TD, null, null),
-    CONSORT(null, -1, false, MAFIA, SUPPORT, TD, null, null),
-    COVEN_LEADER(null, -1, true, COVEN, EVIL, TD, null, null),
-    CRUSADER(null, -1, false, TOWN, PROTECTIVE, TD, null, null),
-    DISGUISER(null, -1, false, MAFIA, DECEPTION, TD, null, null),
-    DOCTOR(null, -1, false, TOWN, PROTECTIVE, TD, null, null),
-    ESCORT(null, -1, false, TOWN, SUPPORT, TD, null, null),
-    EXECUTIONER(null, "ACACAC", -1, false, NEUTRAL, EVIL, Goal.EXECUTIONER, TD, null, null),
-    FORGER(null, -1, false, MAFIA, DECEPTION, TD, null, null),
-    FRAMER(null, -1, false, MAFIA, DECEPTION, TD, null, null),
-    GODFATHER(null, -1, true, MAFIA, KILLING, TD, null, null),
+    AMBUSHER(Ambusher.class, -1, true, MAFIA, KILLING, TD, null, null),
+    AMNESIAC(Amnesiac.class, "44A6C6", -1, false, NEUTRAL, BENIGN, Goal.AMNESIAC, TD, null, null),
+    ARSONIST(Arsonist.class, "EE7600", -1, false, ANARCHY, KILLING, Goal.ARSONIST, TD, null, null),
+    BLACKMAILER(Blackmailer.class, -1, false, MAFIA, SUPPORT, TD, null, null),
+    BODYGUARD(Bodyguard.class, -1, false, TOWN, PROTECTIVE, TD, null, null),
+    CONSIGLIERE(Consigliere.class, -1, false, MAFIA, INVESTIGATIVE, TD, null, null),
+    CONSORT(Consort.class, -1, false, MAFIA, SUPPORT, TD, null, null),
+    COVEN_LEADER(CovenLeader.class, -1, true, COVEN, EVIL, TD, null, null),
+    CRUSADER(Crusader.class, -1, false, TOWN, PROTECTIVE, TD, null, null),
+    DISGUISER(Disguiser.class, -1, false, MAFIA, DECEPTION, TD, null, null),
+    DOCTOR(Doctor.class, -1, false, TOWN, PROTECTIVE, TD, null, null),
+    ESCORT(Escort.class, -1, false, TOWN, SUPPORT, TD, null, null),
+    EXECUTIONER(Executioner.class, "ACACAC", -1, false, NEUTRAL, EVIL, Goal.EXECUTIONER, TD, null, null),
+    FORGER(Forger.class, -1, false, MAFIA, DECEPTION, TD, null, null),
+    FRAMER(Framer.class, -1, false, MAFIA, DECEPTION, TD, null, null),
+    GODFATHER(Godfather.class, -1, true, MAFIA, KILLING, TD, null, null),
     GUARDIAN_ANGEL(null, "FFFFFF", -1, false, NEUTRAL, BENIGN, Goal.GUARDIAN_ANGEL, TD, null, null),
     HEX_MASTER(null, -1, true, COVEN, EVIL, TD, null, null),
     HYPNOTIST(null, -1, false, MAFIA, DECEPTION, TD, null, null),

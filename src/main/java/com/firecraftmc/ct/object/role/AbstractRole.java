@@ -11,11 +11,11 @@ public abstract class AbstractRole {
     protected Defense defense;
     
     public AbstractRole(Role type) {
-        this.type = type;
+        this(type, Attack.NONE, Defense.NONE);
     }
 
     public AbstractRole(Role type, Attack attack, Defense defense) {
-        this(type);
+        this.type = type;
         this.attack = attack;
         this.defense = defense;
     }

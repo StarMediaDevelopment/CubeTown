@@ -7,7 +7,7 @@ import com.firecraftmc.ct.enums.Role;
 
 public abstract class TownRole extends FactionRole {
     public TownRole(Role type) {
-        super(type, Faction.TOWN, true);
+        this(type, Attack.NONE, Defense.NONE);
     }
 
     public TownRole(Role type, Attack attack, Defense defense) {
