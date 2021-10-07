@@ -25,4 +25,12 @@ public class Arsonist extends AnarchyRole implements TargetingRole {
     public void setTarget(Target target) {
         this.target = target;
     }
+
+    public int getPriority() {
+        if (target.isSelf()) {
+            return 5;
+        } else {
+            return 3;
+        }
+    }
 }
