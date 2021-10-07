@@ -50,14 +50,14 @@ public enum Role {
     SOVEREIGN(Sovereign.class, -1, true, TOWN, KILLING, TD, null, null),
     SPY(Spy.class, -1, false, TOWN, INVESTIGATIVE, TD, null, null),
     SURVIVOR(Survivor.class, "C8C800", -1, false, NEUTRAL, BENIGN, TD, null, null),
-    TRACKER(null, -1, false, TOWN, INVESTIGATIVE, TD, null, null),
-    TRANSPORTER(null, -1, false, TOWN, SUPPORT, TD, null, null),
-    TRAPPER(null, -1, false, TOWN, PROTECTIVE, TD, null, null),
-    VAMPIRE(null, "7B8867", -1, false, MYTHICAL, CHAOS, Goal.CONVERT, TD, null, null),
-    VAMPIRE_HUNTER(null, -1, false, TOWN, KILLING, TD, null, null),
-    VETERAN(null, -1, true, TOWN, KILLING, TD, null, null),
-    VIGILANTE(null, -1, false, TOWN, KILLING, TD, null, null),
-    WEREWOLF(null, "744A26", -1, true, MYTHICAL, KILLING, Goal.KILL_OPPOSE, TD, null, null);
+    TRACKER(Tracker.class, -1, false, TOWN, INVESTIGATIVE, TD, null, null),
+    TRANSPORTER(Transporter.class, -1, false, TOWN, SUPPORT, TD, null, null),
+    TRAPPER(Trapper.class, -1, false, TOWN, PROTECTIVE, TD, null, null),
+    VAMPIRE(Vampire.class, "7B8867", -1, false, MYTHICAL, CHAOS, Goal.CONVERT, TD, null, null),
+    VAMPIRE_HUNTER(VampireHunter.class, -1, false, TOWN, KILLING, TD, null, null),
+    VETERAN(Veteran.class, -1, true, TOWN, KILLING, TD, null, null),
+    VIGILANTE(Vigilante.class, -1, false, TOWN, KILLING, TD, null, null),
+    WEREWOLF(Werewolf.class, "744A26", -1, true, MYTHICAL, KILLING, Goal.KILL_OPPOSE, TD, null, null);
 
 
     private Class<?> clazz;

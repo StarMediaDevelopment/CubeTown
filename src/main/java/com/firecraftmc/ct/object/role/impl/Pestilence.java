@@ -8,6 +8,6 @@ import com.firecraftmc.ct.object.role.RampagingRole;
 
 public class Pestilence extends ApocalypseRole implements RampagingRole {
     public Pestilence() {
-        super(Role.PESTILENCE, Attack.POWERFUL, Defense.INVINCIBLE);
+        super(Role.PESTILENCE, Attack.UNSTOPPABLE, Defense.INVINCIBLE);
     }
 }
