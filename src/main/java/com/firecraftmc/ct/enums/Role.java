@@ -11,29 +11,29 @@ public enum Role {
     AMBUSHER(Ambusher.class, true, MAFIA, KILLING, TD, null, null),
     AMNESIAC(Amnesiac.class, "44A6C6", false, NEUTRAL, BENIGN, Goal.AMNESIAC, TD, null, null),
     ARSONIST(Arsonist.class, "EE7600", false, ANARCHY, KILLING, Goal.ARSONIST, TD, null, null),
-    BLACKMAILER(Blackmailer.class, 3, false, MAFIA, SUPPORT, TD, null, null),
-    BODYGUARD(Bodyguard.class, 3, false, TOWN, PROTECTIVE, TD, null, null),
-    CONSIGLIERE(Consigliere.class, -1, false, MAFIA, INVESTIGATIVE, TD, null, null),
-    CONSORT(Consort.class, 2, false, MAFIA, SUPPORT, TD, null, null),
-    COVEN_LEADER(CovenLeader.class, 2, true, COVEN, EVIL, TD, null, null),
-    CRUSADER(Crusader.class, 3, false, TOWN, PROTECTIVE, TD, null, null),
-    DISGUISER(Disguiser.class, -1, false, MAFIA, DECEPTION, TD, null, null),
-    DOCTOR(Doctor.class, 3, false, TOWN, PROTECTIVE, TD, null, null),
-    ESCORT(Escort.class, 2, false, TOWN, SUPPORT, TD, null, null),
-    EXECUTIONER(Executioner.class, "ACACAC", -1, false, NEUTRAL, EVIL, Goal.EXECUTIONER, TD, null, null),
-    FORGER(Forger.class, 3, false, MAFIA, DECEPTION, TD, null, null),
-    FRAMER(Framer.class, 3, false, MAFIA, DECEPTION, TD, null, null),
-    GODFATHER(Godfather.class, -1, true, MAFIA, KILLING, TD, null, null),
-    GUARDIAN_ANGEL(GuardianAngel.class, "FFFFFF",2, false, NEUTRAL, BENIGN, Goal.GUARDIAN_ANGEL, TD, null, null),
-    HEX_MASTER(HexMaster.class, 3, true, COVEN, EVIL, TD, null, null),
-    HYPNOTIST(Hypnotist.class, 3, false, MAFIA, DECEPTION, TD, null, null),
-    INVESTIGATOR(Investigator.class, -1, false, TOWN, INVESTIGATIVE, TD, null, null),
-    JAILOR(Jailor.class, -1, true, TOWN, KILLING, TD, null, null),
-    JANITOR(Janitor.class, 3, false, MAFIA, DECEPTION, TD, null, null),
-    JESTER(Jester.class, "F49FD0", 1, false, NEUTRAL, CHAOS, Goal.JESTER, TD, null, null),
-    JUGGERNAUT(Juggernaut.class, "631A35", -1, true, ANARCHY, KILLING, Goal.KILL_OPPOSE, TD, null, null),
-    LOOKOUT(Lookout.class, -1, false, TOWN, INVESTIGATIVE, TD, null, null),
-    MAFIOSO(Mafioso.class, -1, true, MAFIA, KILLING, TD, null, null),
+    BLACKMAILER(Blackmailer.class, false, MAFIA, SUPPORT, TD, null, null),
+    BODYGUARD(Bodyguard.class, false, TOWN, PROTECTIVE, TD, null, null),
+    CONSIGLIERE(Consigliere.class, false, MAFIA, INVESTIGATIVE, TD, null, null),
+    CONSORT(Consort.class, false, MAFIA, SUPPORT, TD, null, null),
+    COVEN_LEADER(CovenLeader.class, true, COVEN, EVIL, TD, null, null),
+    CRUSADER(Crusader.class, false, TOWN, PROTECTIVE, TD, null, null),
+    DISGUISER(Disguiser.class, false, MAFIA, DECEPTION, TD, null, null),
+    DOCTOR(Doctor.class, false, TOWN, PROTECTIVE, TD, null, null),
+    ESCORT(Escort.class, false, TOWN, SUPPORT, TD, null, null),
+    EXECUTIONER(Executioner.class, "ACACAC", false, NEUTRAL, EVIL, Goal.EXECUTIONER, TD, null, null),
+    FORGER(Forger.class, false, MAFIA, DECEPTION, TD, null, null),
+    FRAMER(Framer.class, false, MAFIA, DECEPTION, TD, null, null),
+    GODFATHER(Godfather.class, true, MAFIA, KILLING, TD, null, null),
+    GUARDIAN_ANGEL(GuardianAngel.class, "FFFFFF", false, NEUTRAL, BENIGN, Goal.GUARDIAN_ANGEL, TD, null, null),
+    HEX_MASTER(HexMaster.class, true, COVEN, EVIL, TD, null, null),
+    HYPNOTIST(Hypnotist.class, false, MAFIA, DECEPTION, TD, null, null),
+    INVESTIGATOR(Investigator.class, false, TOWN, INVESTIGATIVE, TD, null, null),
+    JAILOR(Jailor.class, true, TOWN, KILLING, TD, null, null),
+    JANITOR(Janitor.class, false, MAFIA, DECEPTION, TD, null, null),
+    JESTER(Jester.class, "F49FD0", false, NEUTRAL, CHAOS, Goal.JESTER, TD, null, null),
+    JUGGERNAUT(Juggernaut.class, "631A35", true, ANARCHY, KILLING, Goal.KILL_OPPOSE, TD, null, null),
+    LOOKOUT(Lookout.class, false, TOWN, INVESTIGATIVE, TD, null, null),
+    MAFIOSO(Mafioso.class, true, MAFIA, KILLING, TD, null, null),
     MAYOR(Mayor.class, -1, true, TOWN, SUPPORT, TD, null, null),
     MEDIUM(Medium.class, 1, false, TOWN, SUPPORT, TD, null, null),
     MEDUSA(Medusa.class, 3, true, COVEN, EVIL, TD, null, null),
@@ -113,8 +113,8 @@ public enum Role {
     Role(Class<?> clazz, int priority, boolean unique, Faction faction, Alignment alignment, String directResult, String[] attributes, Ability[] abilities) {
         this(clazz, null, priority, unique, faction, alignment, directResult, attributes, abilities);
     }
-    
-    
+
+
     //
 
     Role(Class<?> clazz, String color, boolean unique, Faction faction, Alignment alignment, Goal goal, String directResult, String[] attributes, Ability[] abilities) {

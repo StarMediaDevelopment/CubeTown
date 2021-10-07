@@ -6,5 +6,6 @@ import com.firecraftmc.ct.object.role.NeutralRole;
 public class Jester extends NeutralRole {
     public Jester() {
         super(Role.JESTER);
+        setPriority(1);
     }
 }

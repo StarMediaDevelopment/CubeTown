@@ -13,5 +13,6 @@ public class HexMaster extends CovenRole {
     
     public HexMaster() {
         super(Role.HEX_MASTER);
+        setPriority(3);
     }
 }

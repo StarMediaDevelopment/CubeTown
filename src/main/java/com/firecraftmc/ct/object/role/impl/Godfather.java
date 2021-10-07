@@ -8,5 +8,6 @@ import com.firecraftmc.ct.object.role.MafiaRole;
 public class Godfather extends MafiaRole {
     public Godfather() {
         super(Role.GODFATHER, Attack.BASIC, Defense.BASIC);
+        setPriority(5);
     }
 }

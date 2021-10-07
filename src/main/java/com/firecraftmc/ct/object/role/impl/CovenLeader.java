@@ -6,5 +6,6 @@ import com.firecraftmc.ct.object.role.CovenRole;
 public class CovenLeader extends CovenRole {
     public CovenLeader() {
         super(Role.COVEN_LEADER);
+        setPriority(2);
     }
 }

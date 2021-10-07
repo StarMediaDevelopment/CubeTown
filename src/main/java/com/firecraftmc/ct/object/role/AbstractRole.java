@@ -9,7 +9,7 @@ public abstract class AbstractRole {
     protected final Role type;
     protected Attack attack;
     protected Defense defense;
-    protected int priority = 6;
+    protected int priority;
     
     public AbstractRole(Role type) {
         this(type, Attack.NONE, Defense.NONE);
@@ -20,7 +20,7 @@ public abstract class AbstractRole {
     }
 
     public AbstractRole(Role type, Attack attack, Defense defense) {
-        this(type, attack, defense, 6);
+        this(type, attack, defense, -1);
     }
 
     public AbstractRole(Role type, Attack attack, Defense defense, int priority) {

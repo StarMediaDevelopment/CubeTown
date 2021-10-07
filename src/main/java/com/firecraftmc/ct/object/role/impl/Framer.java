@@ -6,5 +6,6 @@ import com.firecraftmc.ct.object.role.MafiaRole;
 public class Framer extends MafiaRole {
     public Framer() {
         super(Role.FRAMER);
+        setPriority(3);
     }
 }

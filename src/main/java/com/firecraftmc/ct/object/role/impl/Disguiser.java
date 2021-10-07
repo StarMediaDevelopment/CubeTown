@@ -6,5 +6,6 @@ import com.firecraftmc.ct.object.role.MafiaRole;
 public class Disguiser extends MafiaRole {
     public Disguiser() {
         super(Role.DISGUISER);
+        setPriority(5);
     }
 }

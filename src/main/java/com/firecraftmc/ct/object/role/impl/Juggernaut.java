@@ -16,6 +16,7 @@ public class Juggernaut extends AnarchyRole implements RampagingRole {
     
     public Juggernaut() {
         super(Role.JUGGERNAUT, Attack.POWERFUL, Defense.BASIC);
+        setPriority(5);
     }
 
     public Attack getAttack() {

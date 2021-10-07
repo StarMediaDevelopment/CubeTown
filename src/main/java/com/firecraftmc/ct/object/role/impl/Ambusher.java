@@ -8,6 +8,6 @@ import com.firecraftmc.ct.object.role.MafiaRole;
 public class Ambusher extends MafiaRole {
     public Ambusher() {
         super(Role.AMBUSHER, Attack.BASIC, Defense.NONE);
-        this.priority = 1;
+        setPriority(1);
     }
 }

@@ -6,5 +6,6 @@ import com.firecraftmc.ct.object.role.MafiaRole;
 public class Forger extends MafiaRole {
     public Forger() {
         super(Role.FORGER);
+        setPriority(3);
     }
 }

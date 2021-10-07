@@ -11,6 +11,7 @@ public class GuardianAngel extends NeutralRole implements TargetingRole {
     
     public GuardianAngel() {
         super(Role.GUARDIAN_ANGEL);
+        setPriority(2);
     }
     
     public Target getTarget() {

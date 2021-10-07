@@ -10,6 +10,6 @@ public class Amnesiac extends NeutralRole {
     
     public Amnesiac() {
         super(Role.AMNESIAC);
-        this.priority = 6;
+        setPriority(6);
     }
 }

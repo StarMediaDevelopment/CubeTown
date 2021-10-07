@@ -6,5 +6,6 @@ import com.firecraftmc.ct.object.role.MafiaRole;
 public class Hypnotist extends MafiaRole {
     public Hypnotist() {
         super(Role.HYPNOTIST);
+        setPriority(3);
     }
 }

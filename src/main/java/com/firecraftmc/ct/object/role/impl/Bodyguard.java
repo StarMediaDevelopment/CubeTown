@@ -14,6 +14,7 @@ public class Bodyguard extends TownRole implements TargetingRole {
     
     public Bodyguard() {
         super(Role.BODYGUARD, Attack.POWERFUL, Defense.NONE);
+        setPriority(3);
     }
     
     public Target getTarget() {

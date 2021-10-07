@@ -11,6 +11,7 @@ public class Doctor extends TownRole implements TargetingRole {
     
     public Doctor() {
         super(Role.DOCTOR);
+        setPriority(3);
     }
     
     public Target getTarget() {

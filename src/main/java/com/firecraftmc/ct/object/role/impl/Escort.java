@@ -11,6 +11,7 @@ public class Escort extends TownRole implements TargetingRole {
     
     public Escort() {
         super(Role.ESCORT);
+        setPriority(2);
     }
     
     public Target getTarget() {

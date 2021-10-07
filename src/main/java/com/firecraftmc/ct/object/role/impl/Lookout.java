@@ -11,6 +11,7 @@ public class Lookout extends TownRole implements TargetingRole {
     
     public Lookout() {
         super(Role.LOOKOUT);
+        setPriority(4);
     }
     
     public Target getTarget() {

@@ -11,6 +11,7 @@ public class Investigator extends TownRole implements TargetingRole {
     
     public Investigator() {
         super(Role.INVESTIGATOR);
+        setPriority(4);
     }
     
     public Target getTarget() {

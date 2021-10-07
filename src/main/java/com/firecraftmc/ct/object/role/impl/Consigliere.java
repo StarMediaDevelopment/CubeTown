@@ -6,5 +6,6 @@ import com.firecraftmc.ct.object.role.MafiaRole;
 public class Consigliere extends MafiaRole {
     public Consigliere() {
         super(Role.CONSIGLIERE);
+        setPriority(4);
     }
 }

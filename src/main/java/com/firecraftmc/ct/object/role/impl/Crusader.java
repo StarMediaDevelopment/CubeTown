@@ -13,6 +13,7 @@ public class Crusader extends TownRole implements TargetingRole {
     
     public Crusader() {
         super(Role.CRUSADER, Attack.BASIC, Defense.NONE);
+        setPriority(3);
     }
     
     public Target getTarget() {
