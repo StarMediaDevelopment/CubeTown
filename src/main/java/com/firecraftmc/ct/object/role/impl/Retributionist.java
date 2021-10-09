@@ -15,6 +15,7 @@ public class Retributionist extends TownRole implements TargetingRole {
     
     public Retributionist() {
         super(Role.RETRIBUTIONIST);
+        setPriority(1);
     }
 
     public Target getTarget() {

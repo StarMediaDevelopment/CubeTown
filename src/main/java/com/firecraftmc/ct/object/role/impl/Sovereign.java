@@ -16,6 +16,7 @@ public class Sovereign extends TownRole implements TargetingRole {
     
     public Sovereign() {
         super(Role.SOVEREIGN);
+        setPriority(2);
     }
 
     public Attack getAttack() {

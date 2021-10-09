@@ -11,6 +11,7 @@ public class Survivor extends NeutralRole implements TargetingRole {
     
     public Survivor() {
         super(Role.SURVIVOR);
+        setPriority(3);
     }
 
     public Target getTarget() {

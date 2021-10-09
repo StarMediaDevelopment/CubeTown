@@ -11,6 +11,7 @@ public class Transporter extends TownRole implements TargetingRole {
     
     public Transporter() {
         super(Role.TRANSPORTER);
+        setPriority(1);
     }
     
     public Target getTarget() {

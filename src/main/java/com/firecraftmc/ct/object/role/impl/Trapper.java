@@ -11,6 +11,7 @@ public class Trapper extends TownRole implements TargetingRole {
     
     public Trapper() {
         super(Role.TRAPPER);
+        setPriority(1);
     }
     
     public Target getTarget() {

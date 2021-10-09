@@ -6,9 +6,9 @@ import com.firecraftmc.ct.enums.Role;
 import com.firecraftmc.ct.object.role.ApocalypseRole;
 import com.firecraftmc.ct.object.role.RampagingRole;
 
-public class Pestilence extends ApocalypseRole implements RampagingRole {
-    public Pestilence() {
-        super(Role.PESTILENCE, Attack.POWERFUL, Defense.INVINCIBLE);
+public class War extends ApocalypseRole implements RampagingRole {
+    public War() {
+        super(Role.WAR, Attack.POWERFUL, Defense.INVINCIBLE);
         setPriority(5);
     }
 }

@@ -7,5 +7,6 @@ public class Necromancer extends CovenRole {
     
     public Necromancer() {
         super(Role.NECROMANCER);
+        setPriority(1);
     }
 }

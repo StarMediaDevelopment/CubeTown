@@ -11,6 +11,7 @@ public class Spy extends TownRole implements TargetingRole {
     
     public Spy() {
         super(Role.SPY);
+        setPriority(6);
     }
     
     public Target getTarget() {

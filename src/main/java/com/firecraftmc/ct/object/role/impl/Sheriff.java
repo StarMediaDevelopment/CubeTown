@@ -11,6 +11,7 @@ public class Sheriff extends TownRole implements TargetingRole {
     
     public Sheriff() {
         super(Role.SHERIFF);
+        setPriority(4);
     }
     
     public Target getTarget() {

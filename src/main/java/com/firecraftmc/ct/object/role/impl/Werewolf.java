@@ -15,6 +15,7 @@ public class Werewolf extends MythicalRole implements TargetingRole {
     
     public Werewolf() {
         super(Role.WEREWOLF, Attack.POWERFUL, Defense.BASIC);
+        setPriority(5);
     }
     
     public Target getTarget() {

@@ -11,6 +11,7 @@ public class Tracker extends TownRole implements TargetingRole {
     
     public Tracker() {
         super(Role.TRACKER);
+        setPriority(3);
     }
     
     public Target getTarget() {

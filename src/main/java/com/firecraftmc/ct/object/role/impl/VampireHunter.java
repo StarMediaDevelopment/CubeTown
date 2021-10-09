@@ -11,6 +11,7 @@ public class VampireHunter extends TownRole implements TargetingRole {
     
     public VampireHunter() {
         super(Role.VAMPIRE_HUNTER);
+        setPriority(5);
     }
     
     public Target getTarget() {

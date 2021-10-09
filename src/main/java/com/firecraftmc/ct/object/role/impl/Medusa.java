@@ -12,4 +12,11 @@ public class Medusa extends CovenRole {
     public Medusa() {
         super(Role.MEDUSA, Attack.POWERFUL, Defense.NONE);
     }
+
+    public int getPriority() {
+        if (target.isSelf()) {
+            return 3;
+        }
+        return 5;
+    }
 }

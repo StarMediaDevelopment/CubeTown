@@ -8,5 +8,6 @@ import com.firecraftmc.ct.object.role.CovenRole;
 public class Poisoner extends CovenRole {
     public Poisoner() {
         super(Role.POISONER, Attack.BASIC, Defense.NONE);
+        setPriority(5);
     }
 }

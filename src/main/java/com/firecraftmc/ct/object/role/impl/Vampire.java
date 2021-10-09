@@ -12,6 +12,7 @@ public class Vampire extends MythicalRole implements TargetingRole {
     
     public Vampire() {
         super(Role.VAMPIRE);
+        setPriority(5);
     }
     
     public Target getTarget() {

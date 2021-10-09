@@ -7,12 +7,10 @@ import com.firecraftmc.ct.object.role.AnarchyRole;
 import com.firecraftmc.ct.object.role.TargetingRole;
 import com.firecraftmc.ct.object.target.Target;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Arsonist extends AnarchyRole implements TargetingRole {
     private Target target;
-    private List<Target> dousedTargets = new ArrayList<>();
+    
+    //Douses are tracked in the player class
 
     public Arsonist() {
         super(Role.ARSONIST, Attack.UNSTOPPABLE, Defense.BASIC);

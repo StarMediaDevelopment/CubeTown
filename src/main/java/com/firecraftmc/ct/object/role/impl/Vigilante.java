@@ -13,6 +13,7 @@ public class Vigilante extends TownRole implements TargetingRole {
     
     public Vigilante() {
         super(Role.VIGILANTE, Attack.BASIC, Defense.NONE);
+        setPriority(5);
     }
     
     public Target getTarget() {

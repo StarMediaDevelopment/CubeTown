@@ -12,6 +12,7 @@ public class Veteran extends TownRole implements TargetingRole {
     
     public Veteran() {
         super(Role.VETERAN);
+        setPriority(1);
     }
     
     public Target getTarget() {

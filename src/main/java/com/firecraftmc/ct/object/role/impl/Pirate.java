@@ -13,6 +13,7 @@ public class Pirate extends NeutralRole implements TargetingRole {
     
     public Pirate() {
         super(Role.PIRATE, Attack.POWERFUL, Defense.NONE);
+        setPriority(1);
     }
 
     public Target getTarget() {

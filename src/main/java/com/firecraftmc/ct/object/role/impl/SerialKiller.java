@@ -8,5 +8,6 @@ import com.firecraftmc.ct.object.role.AnarchyRole;
 public class SerialKiller extends AnarchyRole {
     public SerialKiller() {
         super(Role.SERIAL_KILLER, Attack.BASIC, Defense.BASIC);
+        setPriority(5);
     }
 }
