@@ -15,6 +15,9 @@ public class Bodyguard extends TownRole implements TargetingRole {
     public Bodyguard() {
         super(Role.BODYGUARD, Attack.POWERFUL, Defense.NONE);
         setPriority(3);
+        addAbilities("Protect a player from direct attacks at night.");
+        addAttributes("If your target is directly attacked or is the victim of a harmful visit, you and the visitor will fight.", 
+                "If you successfully protect someone you can still be Healed.");
     }
     
     public Target getTarget() {

@@ -2,7 +2,10 @@ package com.firecraftmc.ct.object.role;
 
 import com.firecraftmc.ct.enums.Attack;
 import com.firecraftmc.ct.enums.Defense;
+import com.firecraftmc.ct.enums.Immunity;
 import com.firecraftmc.ct.enums.Role;
+
+import java.util.*;
 
 public abstract class AbstractRole {
     
@@ -10,6 +13,9 @@ public abstract class AbstractRole {
     protected Attack attack;
     protected Defense defense;
     protected int priority;
+    protected Set<Immunity> immunities = new HashSet<>();
+    protected List<String> abilities = new LinkedList<>();
+    protected List<String> attributes = new LinkedList<>();
     
     public AbstractRole(Role type) {
         this(type, Attack.NONE, Defense.NONE);
@@ -56,5 +62,29 @@ public abstract class AbstractRole {
 
     public int getPriority() {
         return priority;
+    }
+
+    public Set<Immunity> getImmunities() {
+        return immunities;
+    }
+
+    public List<String> getAbilities() {
+        return abilities;
+    }
+
+    public List<String> getAttributes() {
+        return attributes;
+    }
+    
+    protected void addAbilities(String... abilities) {
+        this.abilities.addAll(Arrays.asList(abilities));
+    }
+    
+    protected void addAttributes(String... attributes) {
+        this.attributes.addAll(Arrays.asList(attributes));
+    }
+    
+    protected void addImmunities(Immunity... immunities) {
+        this.immunities.addAll(Arrays.asList(immunities));
     }
 }

@@ -2,6 +2,7 @@ package com.firecraftmc.ct.object.role.impl;
 
 import com.firecraftmc.ct.enums.Attack;
 import com.firecraftmc.ct.enums.Defense;
+import com.firecraftmc.ct.enums.Immunity;
 import com.firecraftmc.ct.enums.Role;
 import com.firecraftmc.ct.object.role.AnarchyRole;
 import com.firecraftmc.ct.object.role.TargetingRole;
@@ -14,6 +15,11 @@ public class Arsonist extends AnarchyRole implements TargetingRole {
 
     public Arsonist() {
         super(Role.ARSONIST, Attack.UNSTOPPABLE, Defense.BASIC);
+        addImmunities(Immunity.DETECTION);
+        addAbilities("You may Douse someone in gasoline or ignite Doused targets.");
+        addAttributes("Select yourself to ignite doused people dealing an Unstoppable attack.", 
+                "You will douse anybody that visits you.", 
+                "If you take no action, you will attempt to clean gasoline off yourself.");
     }
 
     public Target getTarget() {

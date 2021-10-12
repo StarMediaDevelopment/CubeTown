@@ -14,6 +14,11 @@ public class Crusader extends TownRole implements TargetingRole {
     public Crusader() {
         super(Role.CRUSADER, Attack.BASIC, Defense.NONE);
         setPriority(3);
+        addAbilities("Protect one person other than yourself during the night.");
+        addAttributes("Grant your target Powerful defense", 
+                "You will know if your target is attacked.", 
+                "You attack one person who visits your target on the same night.", 
+                "You do not attack vampires, but you do block their attacks.");
     }
     
     public Target getTarget() {

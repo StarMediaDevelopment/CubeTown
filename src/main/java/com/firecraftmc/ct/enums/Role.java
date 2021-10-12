@@ -8,15 +8,15 @@ import static com.firecraftmc.ct.enums.Alignment.*;
 import static com.firecraftmc.ct.enums.Faction.*;
 
 public enum Role {
-    AMBUSHER(Ambusher.class, true, MAFIA, KILLING, TD, null, null),
-    AMNESIAC(Amnesiac.class, "44A6C6", false, NEUTRAL, BENIGN, Goal.AMNESIAC, TD, null, null),
-    ARSONIST(Arsonist.class, "EE7600", false, ANARCHY, KILLING, Goal.ARSONIST, TD, null, null),
-    BLACKMAILER(Blackmailer.class, false, MAFIA, SUPPORT, TD, null, null),
-    BODYGUARD(Bodyguard.class, false, TOWN, PROTECTIVE, TD, null, null),
-    CONSIGLIERE(Consigliere.class, false, MAFIA, INVESTIGATIVE, TD, null, null),
-    CONSORT(Consort.class, false, MAFIA, SUPPORT, TD, null, null),
-    COVEN_LEADER(CovenLeader.class, true, COVEN, EVIL, TD, null, null),
-    CRUSADER(Crusader.class, false, TOWN, PROTECTIVE, TD, null, null),
+    AMBUSHER(Ambusher.class, true, MAFIA, KILLING, "Your target lies in wait, they must be an Ambusher."),
+    AMNESIAC(Amnesiac.class, "44A6C6", false, NEUTRAL, BENIGN, Goal.AMNESIAC, "Your target does not remember their role. They must be an Amnesiac."),
+    ARSONIST(Arsonist.class, "EE7600", false, ANARCHY, KILLING, Goal.ARSONIST, "Your target likes to watch things burn. They must be an Arsonist."),
+    BLACKMAILER(Blackmailer.class, false, MAFIA, SUPPORT, "Your target uses information to silence people. They must be a Blackmailer."),
+    BODYGUARD(Bodyguard.class, false, TOWN, PROTECTIVE, "Your target is a trained protector. They must be a Bodyguard."),
+    CONSIGLIERE(Consigliere.class, false, MAFIA, INVESTIGATIVE, "Your target gathers information for the Mafia. They must be a Consigliere."),
+    CONSORT(Consort.class, false, MAFIA, SUPPORT, "Your target is a beautiful person working for the Mafia. They must be a Consort."),
+    COVEN_LEADER(CovenLeader.class, true, COVEN, EVIL, "Your target leads the mystical. They must be the Coven Leader."),
+    CRUSADER(Crusader.class, false, TOWN, PROTECTIVE, "Your target is a divine protector. They must be a Crusader."),
     DEATH(Death.class, "010302", true, APOCALYPSE, KILLING, TD, null, null),
     DISGUISER(Disguiser.class, false, MAFIA, DECEPTION, TD, null, null),
     DOCTOR(Doctor.class, false, TOWN, PROTECTIVE, TD, null, null),
@@ -81,15 +81,7 @@ public enum Role {
     }
 
     Role(Class<?> clazz, String color, boolean unique, Faction faction, Alignment alignment, Goal goal, String directResult, String[] attributes, Ability[] abilities) {
-        this.clazz = clazz;
-        this.color = color;
-        this.unique = unique;
-        this.faction = faction;
-        this.alignment = alignment;
-        this.goal = goal;
-        this.directResult = directResult;
-        this.attributes = attributes;
-        this.abilities = abilities;
+        this(clazz, color, unique, faction, alignment, goal, directResult);
     }
 
     Role(Class<?> clazz, boolean unique, Faction faction, Alignment alignment, Goal goal, String directResult, String[] attributes, Ability[] abilities) {
@@ -97,6 +89,28 @@ public enum Role {
     }
 
     Role(Class<?> clazz, String color, boolean unique, Faction faction, Alignment alignment, String directResult, String[] attributes, Ability[] abilities) {
+        this(clazz, color, unique, faction, alignment, directResult);
+    }
+
+    Role(Class<?> clazz, boolean unique, Faction faction, Alignment alignment, String directResult, String[] attributes, Ability[] abilities) {
+        this(clazz, null, unique, faction, alignment, directResult, attributes, abilities);
+    }
+
+    Role(Class<?> clazz, String color, boolean unique, Faction faction, Alignment alignment, Goal goal, String directResult) {
+        this.clazz = clazz;
+        this.color = color;
+        this.unique = unique;
+        this.faction = faction;
+        this.alignment = alignment;
+        this.goal = goal;
+        this.directResult = directResult;
+    }
+
+    Role(Class<?> clazz, boolean unique, Faction faction, Alignment alignment, Goal goal, String directResult) {
+        this(clazz, null, unique, faction, alignment, goal, directResult);
+    }
+
+    Role(Class<?> clazz, String color, boolean unique, Faction faction, Alignment alignment, String directResult) {
         this.clazz = clazz;
         this.color = color;
         this.unique = unique;
@@ -114,8 +128,8 @@ public enum Role {
         };
     }
 
-    Role(Class<?> clazz, boolean unique, Faction faction, Alignment alignment, String directResult, String[] attributes, Ability[] abilities) {
-        this(clazz, null, unique, faction, alignment, directResult, attributes, abilities);
+    Role(Class<?> clazz, boolean unique, Faction faction, Alignment alignment, String directResult) {
+        this(clazz, null, unique, faction, alignment, directResult);
     }
 
     public Class<?> getClazz() {
