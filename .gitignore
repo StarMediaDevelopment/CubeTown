@@ -2,3 +2,6 @@
 *.lock
 *.properties
 *.bin
+*.lock
+.gradle/buildOutputCleanup/cache.properties
+.gradle/vcs-1/gc.properties
