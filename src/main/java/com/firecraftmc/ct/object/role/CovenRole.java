@@ -1,9 +1,6 @@
 package com.firecraftmc.ct.object.role;
 
-import com.firecraftmc.ct.enums.Attack;
-import com.firecraftmc.ct.enums.Defense;
-import com.firecraftmc.ct.enums.Faction;
-import com.firecraftmc.ct.enums.Role;
+import com.firecraftmc.ct.enums.*;
 import com.firecraftmc.ct.object.target.Target;
 
 public abstract class CovenRole extends FactionRole implements TargetingRole {
@@ -25,5 +22,13 @@ public abstract class CovenRole extends FactionRole implements TargetingRole {
 
     public void setTarget(Target target) {
         this.target = target;
+    }
+    
+    public void setHasNecronomicon(boolean value) {
+        this.hasNecronomicon = value;
+        
+        if (hasNecronomicon) {
+            this.immunities.add(Immunity.DETECTION);
+        }
     }
 }

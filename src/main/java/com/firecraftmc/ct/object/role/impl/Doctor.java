@@ -5,6 +5,8 @@ import com.firecraftmc.ct.object.role.TargetingRole;
 import com.firecraftmc.ct.object.role.TownRole;
 import com.firecraftmc.ct.object.target.Target;
 
+import java.util.Arrays;
+
 public class Doctor extends TownRole implements TargetingRole {
     
     private Target target;
@@ -12,6 +14,9 @@ public class Doctor extends TownRole implements TargetingRole {
     public Doctor() {
         super(Role.DOCTOR);
         setPriority(3);
+        
+        this.abilities.add("Heal one person each night, granting them Powerful defense");
+        this.attributes.addAll(Arrays.asList("You may only Heal yourself once.", "You will know if your target is attacked."));
     }
     
     public Target getTarget() {

@@ -19,6 +19,8 @@ public class Crusader extends TownRole implements TargetingRole {
                 "You will know if your target is attacked.", 
                 "You attack one person who visits your target on the same night.", 
                 "You do not attack vampires, but you do block their attacks.");
+        
+        //Make not attack town
     }
     
     public Target getTarget() {
