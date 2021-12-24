@@ -12,6 +12,9 @@ public class Investigator extends TownRole implements TargetingRole {
     public Investigator() {
         super(Role.INVESTIGATOR);
         setPriority(4);
+        
+        this.abilities.add("Investigate one person each night for a clue to their role.");
+        this.attributes.add("None.");
     }
     
     public Target getTarget() {

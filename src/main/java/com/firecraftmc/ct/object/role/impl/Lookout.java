@@ -12,6 +12,7 @@ public class Lookout extends TownRole implements TargetingRole {
     public Lookout() {
         super(Role.LOOKOUT);
         setPriority(4);
+        this.abilities.add("Watch one person at night to see who visits them.");
     }
     
     public Target getTarget() {

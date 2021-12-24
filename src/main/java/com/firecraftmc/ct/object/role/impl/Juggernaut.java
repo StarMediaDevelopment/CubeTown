@@ -17,6 +17,16 @@ public class Juggernaut extends AnarchyRole implements RampagingRole {
     public Juggernaut() {
         super(Role.JUGGERNAUT, Attack.POWERFUL, Defense.BASIC);
         setPriority(5);
+        
+        this.abilities.add("You may choose to attack a player on full moon nights."); //0 kills
+        //1 or more kills
+        //this.abilities.add("You may choose to attack a player each night.");
+        
+        this.attributes.add("With each kill your powers grow"); //0-2 kills
+        this.attributes.add("You have reached ultimate power"); //3 kills
+        this.attributes.add("You may attack every night"); //1 or more kills
+        this.attributes.add("You may rampage when you attack."); //2 or more kills
+        this.attributes.add("You ignore all effects that would protect a player"); //3 or more kills
     }
 
     public Attack getAttack() {
@@ -37,5 +47,9 @@ public class Juggernaut extends AnarchyRole implements RampagingRole {
             return nightPhase == NightPhase.FULL_MOON;
         } 
         return true;
+    }
+    
+    public String getKillMessage() {
+        return "{pronown} was assaulted by the Juggernaut";
     }
 }

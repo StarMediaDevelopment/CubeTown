@@ -6,7 +6,7 @@ import com.firecraftmc.ct.enums.Faction;
 import com.firecraftmc.ct.enums.Role;
 import com.firecraftmc.ct.object.target.Target;
 
-public abstract class AnarchyRole extends FactionRole implements TargetingRole {
+public abstract class AnarchyRole extends FactionRole implements KillingRole {
     
     protected Target target;
     

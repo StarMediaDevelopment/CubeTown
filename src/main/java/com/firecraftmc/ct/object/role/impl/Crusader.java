@@ -3,11 +3,12 @@ package com.firecraftmc.ct.object.role.impl;
 import com.firecraftmc.ct.enums.Attack;
 import com.firecraftmc.ct.enums.Defense;
 import com.firecraftmc.ct.enums.Role;
+import com.firecraftmc.ct.object.role.ProtectiveRole;
 import com.firecraftmc.ct.object.role.TargetingRole;
 import com.firecraftmc.ct.object.role.TownRole;
 import com.firecraftmc.ct.object.target.Target;
 
-public class Crusader extends TownRole implements TargetingRole {
+public class Crusader extends TownRole implements ProtectiveRole {
     
     private Target target;
     
@@ -29,5 +30,13 @@ public class Crusader extends TownRole implements TargetingRole {
 
     public void setTarget(Target target) {
         this.target = target;
+    }
+    
+    public String getKillMessage() {
+        return "{pronown} was killed by a Crusader";
+    }
+    
+    public Defense getTemporaryDefense() {
+        return Defense.POWERFUL;
     }
 }

@@ -14,4 +14,8 @@ public class CovenLeader extends CovenRole {
         addAttributes("Your victim will know they are being controlled.", 
                 "You will know the role of the player you control.");
     }
+    
+    public String getKillMessage() {
+        return "{pronown} was drained by the Coven Leaders";
+    }
 }

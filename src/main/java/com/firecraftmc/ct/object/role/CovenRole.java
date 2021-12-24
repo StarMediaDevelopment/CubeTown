@@ -3,7 +3,7 @@ package com.firecraftmc.ct.object.role;
 import com.firecraftmc.ct.enums.*;
 import com.firecraftmc.ct.object.target.Target;
 
-public abstract class CovenRole extends FactionRole implements TargetingRole {
+public abstract class CovenRole extends FactionRole implements KillingRole {
     
     protected boolean hasNecronomicon;
     protected Target target;

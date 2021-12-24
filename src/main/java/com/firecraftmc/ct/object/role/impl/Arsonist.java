@@ -5,10 +5,11 @@ import com.firecraftmc.ct.enums.Defense;
 import com.firecraftmc.ct.enums.Immunity;
 import com.firecraftmc.ct.enums.Role;
 import com.firecraftmc.ct.object.role.AnarchyRole;
+import com.firecraftmc.ct.object.role.KillingRole;
 import com.firecraftmc.ct.object.role.TargetingRole;
 import com.firecraftmc.ct.object.target.Target;
 
-public class Arsonist extends AnarchyRole implements TargetingRole {
+public class Arsonist extends AnarchyRole implements KillingRole {
     private Target target;
     
     //Douses are tracked in the player class
@@ -36,5 +37,9 @@ public class Arsonist extends AnarchyRole implements TargetingRole {
         } else {
             return 3;
         }
+    }
+    
+    public String getKillMessage() {
+        return "{pronown} was incinerated by an Arsonist.";
     }
 }

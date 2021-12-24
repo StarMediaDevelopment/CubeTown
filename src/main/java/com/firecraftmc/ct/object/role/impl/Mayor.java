@@ -7,12 +7,19 @@ import com.firecraftmc.ct.object.role.TargetingRole;
 import com.firecraftmc.ct.object.role.TownRole;
 import com.firecraftmc.ct.object.target.Target;
 
+import java.util.List;
+
 public class Mayor extends TownRole implements TargetingRole {
     
     private Target target;
     
     public Mayor() {
         super(Role.MAYOR);
+        
+        this.abilities.add("You may reveal yourself as the Mayor of the Town.");
+        this.attributes.addAll(List.of("Once you have revealed yourself as Mayor your vote counts as 3 votes.", 
+                "You may not be healed once you have revealed yourself", 
+                "Once revealed, you can't whisper or be whispered to."));
     }
 
     public Target getTarget() {

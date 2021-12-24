@@ -4,11 +4,13 @@ import com.firecraftmc.ct.enums.Attack;
 import com.firecraftmc.ct.enums.Defense;
 import com.firecraftmc.ct.enums.Immunity;
 import com.firecraftmc.ct.enums.Role;
+import com.firecraftmc.ct.object.game.Game;
 
 import java.util.*;
 
 public abstract class AbstractRole {
     
+    protected final Game game;
     protected final Role type;
     protected Attack attack;
     protected Defense defense;
@@ -17,23 +19,44 @@ public abstract class AbstractRole {
     protected List<String> abilities = new LinkedList<>();
     protected List<String> attributes = new LinkedList<>();
     
-    public AbstractRole(Role type) {
-        this(type, Attack.NONE, Defense.NONE);
+    public AbstractRole(Game game, Role type) {
+        this(game, type, Attack.NONE, Defense.NONE);
     }
     
-    public AbstractRole(Role type, int priority) {
-        this(type, Attack.NONE, Defense.NONE, priority);
+    public AbstractRole(Game game, Role type, int priority) {
+        this(game, type, Attack.NONE, Defense.NONE, priority);
     }
-
-    public AbstractRole(Role type, Attack attack, Defense defense) {
-        this(type, attack, defense, -1);
+    
+    public AbstractRole(Game game, Role type, Attack attack, Defense defense) {
+        this(game, type, attack, defense, -1);
     }
-
-    public AbstractRole(Role type, Attack attack, Defense defense, int priority) {
+    
+    public AbstractRole(Game game, Role type, Attack attack, Defense defense, int priority) {
+        this.game = game;
         this.type = type;
         this.attack = attack;
         this.defense = defense;
         this.priority = priority;
+    }
+    
+    @Deprecated
+    public AbstractRole(Role type) {
+        this(null, type, Attack.NONE, Defense.NONE);
+    }
+    
+    @Deprecated
+    public AbstractRole(Role type, int priority) {
+        this(null, type, Attack.NONE, Defense.NONE, priority);
+    }
+
+    @Deprecated
+    public AbstractRole(Role type, Attack attack, Defense defense) {
+        this(null, type, attack, defense, -1);
+    }
+
+    @Deprecated
+    public AbstractRole(Role type, Attack attack, Defense defense, int priority) {
+        this(null, type, attack, defense, priority);
     }
 
     public Role getType() {

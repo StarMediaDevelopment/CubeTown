@@ -3,11 +3,12 @@ package com.firecraftmc.ct.object.role.impl;
 import com.firecraftmc.ct.enums.Attack;
 import com.firecraftmc.ct.enums.Defense;
 import com.firecraftmc.ct.enums.Role;
+import com.firecraftmc.ct.object.role.ProtectiveRole;
 import com.firecraftmc.ct.object.role.TargetingRole;
 import com.firecraftmc.ct.object.role.TownRole;
 import com.firecraftmc.ct.object.target.Target;
 
-public class Bodyguard extends TownRole implements TargetingRole {
+public class Bodyguard extends TownRole implements ProtectiveRole {
     
     private Target target;
     private boolean vestUsed;
@@ -33,5 +34,13 @@ public class Bodyguard extends TownRole implements TargetingRole {
             return Defense.BASIC;
         }
         return super.getDefense();
+    }
+    
+    public String getKillMessage() {
+        return "{pronown} was killed by a Bodyguard.";
+    }
+    
+    public Defense getTemporaryDefense() {
+        return Defense.INVINCIBLE; //TODO Bodyguard only blocks a single attack, which is like invincible defense for that single attack
     }
 }

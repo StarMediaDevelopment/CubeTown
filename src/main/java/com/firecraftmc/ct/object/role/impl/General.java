@@ -15,7 +15,7 @@ public class General extends ApocalypseRole {
         setPriority(1);
         
         this.immunities.add(Immunity.DETECTION);
-        this.abilities.add("During the day, choose 2 people to mark as a foe");
+        this.abilities.add("Choose 2 people each n ight to mark as a foe.");
         this.attributes.addAll(List.of("The 2 people will not be notified that they have been marked as a foe.", 
                 "Being marked as a foe will last for 2 nights.", 
                 "When 3 marked foes die, you will become War."));
