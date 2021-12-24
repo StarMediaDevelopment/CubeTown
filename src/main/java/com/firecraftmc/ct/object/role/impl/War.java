@@ -1,14 +1,11 @@
 package com.firecraftmc.ct.object.role.impl;
 
-import com.firecraftmc.ct.enums.Attack;
-import com.firecraftmc.ct.enums.Defense;
 import com.firecraftmc.ct.enums.Role;
-import com.firecraftmc.ct.object.role.ApocalypseRole;
-import com.firecraftmc.ct.object.role.RampagingRole;
+import com.firecraftmc.ct.object.game.Game;
+import com.firecraftmc.ct.object.role.Horseman;
 
-public class War extends ApocalypseRole {
-    public War() {
-        super(Role.WAR, Attack.POWERFUL, Defense.INVINCIBLE);
-        setPriority(5);
+public class War extends Horseman {
+    public War(Game game) {
+        super(game, Role.WAR);
     }
 }
