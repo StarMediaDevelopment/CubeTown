@@ -3,6 +3,7 @@ package com.firecraftmc.ct.object.role.impl;
 import com.firecraftmc.ct.enums.Attack;
 import com.firecraftmc.ct.enums.Defense;
 import com.firecraftmc.ct.enums.Role;
+import com.firecraftmc.ct.object.game.Game;
 import com.firecraftmc.ct.object.role.KillingRole;
 import com.firecraftmc.ct.object.role.NeutralRole;
 import com.firecraftmc.ct.object.target.Target;
@@ -10,8 +11,8 @@ import com.firecraftmc.ct.object.target.Target;
 public class Jester extends NeutralRole implements KillingRole {
     private Target target;
     
-    public Jester() {
-        super(Role.JESTER, Attack.UNSTOPPABLE, Defense.NONE); //attack is only after lynched
+    public Jester(Game game) {
+        super(game, Role.JESTER, Attack.UNSTOPPABLE, Defense.NONE); //attack is only after lynched
         setPriority(1);
         
         this.abilities.add("Trick the Town into voting against you.");

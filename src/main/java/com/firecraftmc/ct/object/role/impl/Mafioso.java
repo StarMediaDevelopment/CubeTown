@@ -3,14 +3,15 @@ package com.firecraftmc.ct.object.role.impl;
 import com.firecraftmc.ct.enums.Attack;
 import com.firecraftmc.ct.enums.Defense;
 import com.firecraftmc.ct.enums.Role;
+import com.firecraftmc.ct.object.game.Game;
 import com.firecraftmc.ct.object.role.KillingRole;
 import com.firecraftmc.ct.object.role.MafiaRole;
 
 import java.util.List;
 
 public class Mafioso extends MafiaRole implements KillingRole {
-    public Mafioso() {
-        super(Role.MAFIOSO, Attack.BASIC, Defense.NONE);
+    public Mafioso(Game game) {
+        super(game, Role.MAFIOSO, Attack.BASIC, Defense.NONE);
         //This gains control immunity when a godfather orders the mafioso 
         setPriority(5);
         

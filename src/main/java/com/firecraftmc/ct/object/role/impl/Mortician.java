@@ -3,14 +3,15 @@ package com.firecraftmc.ct.object.role.impl;
 import com.firecraftmc.ct.enums.Attack;
 import com.firecraftmc.ct.enums.Defense;
 import com.firecraftmc.ct.enums.Role;
+import com.firecraftmc.ct.object.game.Game;
 import com.firecraftmc.ct.object.role.ApocalypseRole;
 
 import java.util.List;
 
 public class Mortician extends ApocalypseRole {
     
-    public Mortician() {
-        super(Role.MORTICIAN, Attack.NONE, Defense.BASIC); 
+    public Mortician(Game game) {
+        super(game, Role.MORTICIAN, Attack.NONE, Defense.BASIC); 
         setPriority(1);
         
         this.abilities.add("Mark two players at night for burial.");

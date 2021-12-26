@@ -3,6 +3,7 @@ package com.firecraftmc.ct.object.role.impl;
 import com.firecraftmc.ct.enums.Attack;
 import com.firecraftmc.ct.enums.Defense;
 import com.firecraftmc.ct.enums.Role;
+import com.firecraftmc.ct.object.game.Game;
 import com.firecraftmc.ct.object.role.ProtectiveRole;
 import com.firecraftmc.ct.object.role.TargetingRole;
 import com.firecraftmc.ct.object.role.TownRole;
@@ -12,8 +13,8 @@ public class Crusader extends TownRole implements ProtectiveRole {
     
     private Target target;
     
-    public Crusader() {
-        super(Role.CRUSADER, Attack.BASIC, Defense.NONE);
+    public Crusader(Game game) {
+        super(game, Role.CRUSADER, Attack.BASIC, Defense.NONE);
         setPriority(3);
         addAbilities("Protect one person other than yourself during the night.");
         addAttributes("Grant your target Powerful defense", 

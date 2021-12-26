@@ -2,6 +2,7 @@ package com.firecraftmc.ct.object.role.impl;
 
 import com.firecraftmc.ct.enums.Defense;
 import com.firecraftmc.ct.enums.Role;
+import com.firecraftmc.ct.object.game.Game;
 import com.firecraftmc.ct.object.role.ProtectiveRole;
 import com.firecraftmc.ct.object.role.TargetingRole;
 import com.firecraftmc.ct.object.role.TownRole;
@@ -13,8 +14,8 @@ public class Doctor extends TownRole implements ProtectiveRole {
     
     private Target target;
     
-    public Doctor() {
-        super(Role.DOCTOR);
+    public Doctor(Game game) {
+        super(game, Role.DOCTOR);
         setPriority(3);
         
         this.abilities.add("Heal one person each night, granting them Powerful defense");

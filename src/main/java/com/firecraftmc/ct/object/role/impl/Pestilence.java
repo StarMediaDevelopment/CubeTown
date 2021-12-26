@@ -1,14 +1,16 @@
 package com.firecraftmc.ct.object.role.impl;
 
-import com.firecraftmc.ct.enums.Attack;
-import com.firecraftmc.ct.enums.Defense;
 import com.firecraftmc.ct.enums.Role;
-import com.firecraftmc.ct.object.role.ApocalypseRole;
-import com.firecraftmc.ct.object.role.RampagingRole;
+import com.firecraftmc.ct.object.game.Game;
+import com.firecraftmc.ct.object.role.Horseman;
 
-public class Pestilence extends ApocalypseRole {
-    public Pestilence() {
-        super(Role.PESTILENCE, Attack.POWERFUL, Defense.INVINCIBLE);
+public class Pestilence extends Horseman {
+    public Pestilence(Game game) {
+        super(game, Role.PESTILENCE);
         setPriority(5);
+    }
+    
+    public String getSummoningMessage() {
+        return "A plague has consumed the town, summoning Pestilence, Horseman of the Apocalypse.";
     }
 }

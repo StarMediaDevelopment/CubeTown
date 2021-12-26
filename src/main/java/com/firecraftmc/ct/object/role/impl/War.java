@@ -8,4 +8,8 @@ public class War extends Horseman {
     public War(Game game) {
         super(game, Role.WAR);
     }
+    
+    public String getSummoningMessage() {
+        return "Feud has broken out among the town, summoning War, Horseman of the Apocalypse.";
+    }
 }

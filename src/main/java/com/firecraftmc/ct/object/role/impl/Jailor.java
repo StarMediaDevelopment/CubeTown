@@ -3,6 +3,7 @@ package com.firecraftmc.ct.object.role.impl;
 import com.firecraftmc.ct.enums.Attack;
 import com.firecraftmc.ct.enums.Defense;
 import com.firecraftmc.ct.enums.Role;
+import com.firecraftmc.ct.object.game.Game;
 import com.firecraftmc.ct.object.role.KillingRole;
 import com.firecraftmc.ct.object.role.TargetingRole;
 import com.firecraftmc.ct.object.role.TownRole;
@@ -15,8 +16,8 @@ public class Jailor extends TownRole implements KillingRole {
     private Target target;
     private int executions = 3;
     
-    public Jailor() {
-        super(Role.JAILOR, Attack.UNSTOPPABLE, Defense.NONE);
+    public Jailor(Game game) {
+        super(game, Role.JAILOR, Attack.UNSTOPPABLE, Defense.NONE);
         setPriority(5); //Jailing is a day ability that happens before anything else, not covered by this priority system
         
         this.abilities.add("You may choose one person during the day to Jail for the night.");

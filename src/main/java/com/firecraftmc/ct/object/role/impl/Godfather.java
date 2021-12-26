@@ -4,14 +4,15 @@ import com.firecraftmc.ct.enums.Attack;
 import com.firecraftmc.ct.enums.Defense;
 import com.firecraftmc.ct.enums.Immunity;
 import com.firecraftmc.ct.enums.Role;
+import com.firecraftmc.ct.object.game.Game;
 import com.firecraftmc.ct.object.role.KillingRole;
 import com.firecraftmc.ct.object.role.MafiaRole;
 
 import java.util.List;
 
 public class Godfather extends MafiaRole implements KillingRole {
-    public Godfather() {
-        super(Role.GODFATHER, Attack.BASIC, Defense.BASIC);
+    public Godfather(Game game) {
+        super(game, Role.GODFATHER, Attack.BASIC, Defense.BASIC);
         setPriority(5);
         
         this.immunities.add(Immunity.DETECTION);

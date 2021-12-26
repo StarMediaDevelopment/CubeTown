@@ -1,6 +1,7 @@
 package com.firecraftmc.ct.object.role.impl;
 
 import com.firecraftmc.ct.enums.Role;
+import com.firecraftmc.ct.object.game.Game;
 import com.firecraftmc.ct.object.role.CovenRole;
 import com.firecraftmc.ct.object.role.KillingRole;
 import com.firecraftmc.ct.object.target.Target;
@@ -12,8 +13,8 @@ public class HexMaster extends CovenRole implements KillingRole {
     
     private List<Target> hexedTargets = new ArrayList<>();
     
-    public HexMaster() {
-        super(Role.HEX_MASTER);
+    public HexMaster(Game game) {
+        super(game, Role.HEX_MASTER);
         setPriority(3);
         
         this.abilities.add("You may choose to Hex a player each night.");

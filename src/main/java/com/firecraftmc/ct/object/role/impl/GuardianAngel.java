@@ -2,6 +2,7 @@ package com.firecraftmc.ct.object.role.impl;
 
 import com.firecraftmc.ct.enums.Immunity;
 import com.firecraftmc.ct.enums.Role;
+import com.firecraftmc.ct.object.game.Game;
 import com.firecraftmc.ct.object.role.NeutralRole;
 import com.firecraftmc.ct.object.role.TargetingRole;
 import com.firecraftmc.ct.object.target.Target;
@@ -12,12 +13,12 @@ public class GuardianAngel extends NeutralRole implements TargetingRole {
     
     private Target target;
     
-    public GuardianAngel(Target target) {
-        super(Role.GUARDIAN_ANGEL);
+    public GuardianAngel(Game game, Target target) {
+        super(game, Role.GUARDIAN_ANGEL);
         setPriority(2);
         this.target = target;
         
-        this.immunities.add(Immunity.DETECTION);
+        this.immunities.addAll(List.of(Immunity.DETECTION, Immunity.ROLEBLOCK));
         this.abilities.add("Keep your target alive.");
         this.attributes.addAll(List.of("Your target is " + target.getName(), 
                 "If your target is killed you will become a Survivor without any bulletproof vests.", 

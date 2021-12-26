@@ -4,14 +4,15 @@ import com.firecraftmc.ct.enums.Attack;
 import com.firecraftmc.ct.enums.Defense;
 import com.firecraftmc.ct.enums.Immunity;
 import com.firecraftmc.ct.enums.Role;
+import com.firecraftmc.ct.object.game.Game;
 import com.firecraftmc.ct.object.role.ApocalypseRole;
 
 import java.util.List;
 
 public class General extends ApocalypseRole {
     
-    public General() {
-        super(Role.GENERAL, Attack.NONE, Defense.BASIC); 
+    public General(Game game) {
+        super(game, Role.GENERAL, Attack.NONE, Defense.BASIC); 
         setPriority(1);
         
         this.immunities.add(Immunity.DETECTION);
