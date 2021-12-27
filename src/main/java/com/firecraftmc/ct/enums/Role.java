@@ -1,9 +1,7 @@
 package com.firecraftmc.ct.enums;
 
-import com.firecraftmc.ct.object.ability.Ability;
 import com.firecraftmc.ct.object.role.impl.*;
 
-import static com.firecraftmc.ct.CubeTown.TD;
 import static com.firecraftmc.ct.enums.Alignment.*;
 import static com.firecraftmc.ct.enums.Faction.*;
 
@@ -66,19 +64,20 @@ public enum Role {
 
 
     private Class<?> clazz;
-    private String color; //This is mostly for an override in case the faction doesnt provide a color
-    private int priority;
+    @Deprecated private String color; //This is mostly for an override in case the faction doesnt provide a color
     private boolean unique;
-    private Faction faction;
-    private Alignment alignment;
-    private Goal goal;
+    @Deprecated private Faction faction;
+    @Deprecated private Alignment alignment;
+    @Deprecated private Goal goal;
     private String directResult;
-    private String[] attributes;
-    private Ability[] abilities;
-
-    Role() {
+    
+    Role(Class<?> clazz, boolean unique, String directResult) {
+        this.clazz = clazz;
+        this.unique = unique;
+        this.directResult = directResult;
     }
 
+    @Deprecated
     Role(Class<?> clazz, String color, boolean unique, Faction faction, Alignment alignment, Goal goal, String directResult) {
         this.clazz = clazz;
         this.color = color;
@@ -89,10 +88,12 @@ public enum Role {
         this.directResult = directResult;
     }
 
+    @Deprecated
     Role(Class<?> clazz, boolean unique, Faction faction, Alignment alignment, Goal goal, String directResult) {
         this(clazz, null, unique, faction, alignment, goal, directResult);
     }
 
+    @Deprecated
     Role(Class<?> clazz, String color, boolean unique, Faction faction, Alignment alignment, String directResult) {
         this.clazz = clazz;
         this.color = color;
@@ -109,6 +110,7 @@ public enum Role {
         };
     }
 
+    @Deprecated
     Role(Class<?> clazz, boolean unique, Faction faction, Alignment alignment, String directResult) {
         this(clazz, null, unique, faction, alignment, directResult);
     }
@@ -122,10 +124,6 @@ public enum Role {
             color = faction.getColor();
         }
         return color;
-    }
-
-    public int getPriority() {
-        return priority;
     }
 
     public boolean isUnique() {
@@ -146,13 +144,5 @@ public enum Role {
 
     public String getDirectResult() {
         return directResult;
-    }
-
-    public String[] getAttributes() {
-        return attributes;
-    }
-
-    public Ability[] getAbilities() {
-        return abilities;
     }
 }

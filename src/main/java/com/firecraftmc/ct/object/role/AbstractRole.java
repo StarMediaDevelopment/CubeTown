@@ -1,9 +1,6 @@
 package com.firecraftmc.ct.object.role;
 
-import com.firecraftmc.ct.enums.Attack;
-import com.firecraftmc.ct.enums.Defense;
-import com.firecraftmc.ct.enums.Immunity;
-import com.firecraftmc.ct.enums.Role;
+import com.firecraftmc.ct.enums.*;
 import com.firecraftmc.ct.object.game.Game;
 
 import java.util.*;
@@ -15,6 +12,10 @@ public abstract class AbstractRole {
     protected Attack attack;
     protected Defense defense;
     protected int priority;
+    protected Faction faction;
+    protected Alignment alignment;
+    protected Goal goal;
+    protected String color;
     protected Set<Immunity> immunities = new HashSet<>();
     protected List<String> abilities = new LinkedList<>();
     protected List<String> attributes = new LinkedList<>();
