@@ -1,5 +1,6 @@
 package com.firecraftmc.ct.object.role.impl;
 
+import com.firecraftmc.ct.enums.Alignment;
 import com.firecraftmc.ct.enums.Role;
 import com.firecraftmc.ct.object.game.Game;
 import com.firecraftmc.ct.object.role.TargetingRole;
@@ -13,11 +14,10 @@ public class Spy extends TownRole implements TargetingRole {
     private Target target;
     
     public Spy(Game game) {
-        super(game, Role.SPY);
-        setPriority(6);
+        super(game, Role.SPY, 6, Alignment.INVESTIGATIVE);
         
-        this.abilities.add("You may bug a player's house to see what happens to them that night.");
-        this.attributes.add("You will know who the Mafia and Coven visit each night.");
+        addAbilities("You may bug a player's house to see what happens to them that night.");
+        addAttributes("You will know who the Mafia and Coven visit each night.");
     }
     
     public Target getTarget() {

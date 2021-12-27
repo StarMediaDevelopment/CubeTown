@@ -6,7 +6,7 @@ import com.firecraftmc.ct.object.role.Horseman;
 
 public class Death extends Horseman {
     public Death(Game game) {
-        super(game, Role.DEATH);
+        super(game, Role.DEATH, "010302");
     }
     
     public String getSummoningMessage() {

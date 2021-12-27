@@ -1,5 +1,6 @@
 package com.firecraftmc.ct.object.role.impl;
 
+import com.firecraftmc.ct.enums.Alignment;
 import com.firecraftmc.ct.enums.Role;
 import com.firecraftmc.ct.object.game.Game;
 import com.firecraftmc.ct.object.role.TargetingRole;
@@ -11,10 +12,9 @@ public class Tracker extends TownRole implements TargetingRole {
     private Target target;
     
     public Tracker(Game game) {
-        super(game, Role.TRACKER);
-        setPriority(3);
+        super(game, Role.TRACKER, 3, Alignment.INVESTIGATIVE);
         
-        this.abilities.add("Track one person at night to see who they visit.");
+        addAbilities("Track one person at night to see who they visit.");
     }
     
     public Target getTarget() {

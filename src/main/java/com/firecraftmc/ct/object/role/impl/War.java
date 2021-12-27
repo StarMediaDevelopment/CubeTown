@@ -6,7 +6,7 @@ import com.firecraftmc.ct.object.role.Horseman;
 
 public class War extends Horseman {
     public War(Game game) {
-        super(game, Role.WAR);
+        super(game, Role.WAR, "010302");
     }
     
     public String getSummoningMessage() {

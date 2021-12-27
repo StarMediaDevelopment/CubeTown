@@ -13,17 +13,17 @@ public class Medusa extends CovenRole {
     private int stoneGazes = 3;
     
     public Medusa(Game game) {
-        super(game, Role.MEDUSA, Attack.POWERFUL, Defense.NONE);
-        this.abilities.add("You may choose to Stone Gaze all visitors at night.");
-        this.attributes.addAll(List.of("You may choose to stone gaze thrice.", 
-                "With the Necronomicon, you may visit players and turn them to stone."));
+        super(game, Role.MEDUSA, Attack.POWERFUL, Defense.NONE, 5);
+        addAbilities("You may choose to Stone Gaze all visitors at night.");
+        addAttributes("You may choose to stone gaze thrice.", 
+                "With the Necronomicon, you may visit players and turn them to stone.");
     }
 
     public int getPriority() {
         if (target.isSelf()) {
             return 3;
         }
-        return 5;
+        return priority;
     }
     
     public String getKillMessage() {

@@ -1,8 +1,6 @@
 package com.firecraftmc.ct.object.role.impl;
 
-import com.firecraftmc.ct.enums.Attack;
-import com.firecraftmc.ct.enums.Defense;
-import com.firecraftmc.ct.enums.Role;
+import com.firecraftmc.ct.enums.*;
 import com.firecraftmc.ct.object.GameState;
 import com.firecraftmc.ct.object.NightPhase;
 import com.firecraftmc.ct.object.game.Game;
@@ -18,12 +16,11 @@ public class Werewolf extends MythicalRole implements TargetingRole, RampagingRo
     private Target target;
     
     public Werewolf(Game game) {
-        super(game, Role.WEREWOLF, Attack.POWERFUL, Defense.BASIC);
-        setPriority(5);
+        super(game, Role.WEREWOLF, Attack.POWERFUL, Defense.BASIC, 5, Alignment.KILLING, Goal.KILL_OPPOSE, "744A26");
         
-        this.abilities.add("Transform into a Werewolf during the full moon.");
-        this.attributes.addAll(List.of("You will Rampage at a player's house when you attack.", 
-                "If you do not select a target you will stay home and Rampage at your home."));
+        addAbilities("Transform into a Werewolf during the full moon.");
+        addAttributes("You will Rampage at a player's house when you attack.", 
+                "If you do not select a target you will stay home and Rampage at your home.");
     }
     
     public Target getTarget() {

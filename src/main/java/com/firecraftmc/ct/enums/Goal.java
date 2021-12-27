@@ -11,11 +11,16 @@ public enum Goal {
     EXECUTIONER("Get your target lynched at any cost."),
     JESTER("Get yourself lynched at any cost."), 
     GUARDIAN_ANGEL("Keep your target alive until the end of the game."), 
-    CONVERT("Convert everyone who would oppose you.");
-
+    CONVERT("Convert everyone who would oppose you."), 
+    SURVIVOR("Live until the end of the game"), 
+    PIRATE("Successfully Plunder two players.");
     private final String text;
 
     Goal(String text) {
         this.text = text;
+    }
+    
+    public String getText() {
+        return text;
     }
 }

@@ -10,12 +10,11 @@ import java.util.List;
 
 public class Poisoner extends CovenRole {
     public Poisoner(Game game) {
-        super(game, Role.POISONER, Attack.BASIC, Defense.NONE);
-        setPriority(5);
+        super(game, Role.POISONER, Attack.BASIC, Defense.NONE, 5);
         
-        this.abilities.add("You may choose to poison a player each night.");
-        this.attributes.addAll(List.of("Your poisons take one day to take effect.", 
-                "Poison can be removed by Heals."));
+        addAbilities("You may choose to poison a player each night.");
+        addAttributes("Your poisons take one day to take effect.", 
+                "Poison can be removed by Heals.");
     }
     
     public String getKillMessage() {

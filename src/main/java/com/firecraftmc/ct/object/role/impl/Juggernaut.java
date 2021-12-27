@@ -1,8 +1,6 @@
 package com.firecraftmc.ct.object.role.impl;
 
-import com.firecraftmc.ct.enums.Attack;
-import com.firecraftmc.ct.enums.Defense;
-import com.firecraftmc.ct.enums.Role;
+import com.firecraftmc.ct.enums.*;
 import com.firecraftmc.ct.object.GameState;
 import com.firecraftmc.ct.object.NightPhase;
 import com.firecraftmc.ct.object.game.Game;
@@ -16,10 +14,10 @@ public class Juggernaut extends AnarchyRole implements RampagingRole {
     private int kills;
     
     public Juggernaut(Game game) {
-        super(game, Role.JUGGERNAUT, Attack.POWERFUL, Defense.BASIC);
+        super(game, Role.JUGGERNAUT, Attack.POWERFUL, Defense.BASIC, 5, Alignment.KILLING, Goal.KILL_OPPOSE, "631A35");
         setPriority(5);
         
-        this.abilities.add("You may choose to attack a player on full moon nights."); //0 kills
+        addAbilities("You may choose to attack a player on full moon nights."); //0 kills
         //1 or more kills
         //this.abilities.add("You may choose to attack a player each night.");
         

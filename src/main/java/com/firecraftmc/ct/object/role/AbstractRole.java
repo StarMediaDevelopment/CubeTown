@@ -20,46 +20,22 @@ public abstract class AbstractRole {
     protected List<String> abilities = new LinkedList<>();
     protected List<String> attributes = new LinkedList<>();
     
-    public AbstractRole(Game game, Role type) {
-        this(game, type, Attack.NONE, Defense.NONE);
-    }
-    
-    public AbstractRole(Game game, Role type, int priority) {
-        this(game, type, Attack.NONE, Defense.NONE, priority);
-    }
-    
-    public AbstractRole(Game game, Role type, Attack attack, Defense defense) {
-        this(game, type, attack, defense, -1);
-    }
-    
-    public AbstractRole(Game game, Role type, Attack attack, Defense defense, int priority) {
+    public AbstractRole(Game game, Role type, Attack attack, Defense defense, int priority, Faction faction, Alignment alignment, Goal goal, String color) {
         this.game = game;
         this.type = type;
         this.attack = attack;
         this.defense = defense;
         this.priority = priority;
+        this.faction = faction;
+        this.alignment = alignment;
+        this.goal = goal;
+        this.color = color;
     }
     
-    @Deprecated
-    public AbstractRole(Role type) {
-        this(null, type, Attack.NONE, Defense.NONE);
+    public AbstractRole(Game game, Role type, int priority, Faction faction, Alignment alignment, Goal goal, String color) {
+        this(game, type, Attack.NONE, Defense.NONE, priority, faction, alignment, goal, color);
     }
     
-    @Deprecated
-    public AbstractRole(Role type, int priority) {
-        this(null, type, Attack.NONE, Defense.NONE, priority);
-    }
-
-    @Deprecated
-    public AbstractRole(Role type, Attack attack, Defense defense) {
-        this(null, type, attack, defense, -1);
-    }
-
-    @Deprecated
-    public AbstractRole(Role type, Attack attack, Defense defense, int priority) {
-        this(null, type, attack, defense, priority);
-    }
-
     public Role getType() {
         return type;
     }
@@ -110,5 +86,25 @@ public abstract class AbstractRole {
     
     protected void addImmunities(Immunity... immunities) {
         this.immunities.addAll(Arrays.asList(immunities));
+    }
+    
+    public Game getGame() {
+        return game;
+    }
+    
+    public Faction getFaction() {
+        return faction;
+    }
+    
+    public Alignment getAlignment() {
+        return alignment;
+    }
+    
+    public Goal getGoal() {
+        return goal;
+    }
+    
+    public String getColor() {
+        return color;
     }
 }

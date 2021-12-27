@@ -1,20 +1,17 @@
 package com.firecraftmc.ct.object.role.impl;
 
-import com.firecraftmc.ct.enums.Attack;
-import com.firecraftmc.ct.enums.Defense;
 import com.firecraftmc.ct.enums.Role;
 import com.firecraftmc.ct.object.game.Game;
-import com.firecraftmc.ct.object.role.ApocalypseRole;
+import com.firecraftmc.ct.object.role.AcolyteRole;
 
 import java.util.List;
 
-public class Merchant extends ApocalypseRole {
+public class Merchant extends AcolyteRole {
     
     public Merchant(Game game) {
-        super(game, Role.MERCHANT, Attack.NONE, Defense.BASIC); 
-        setPriority(1);
+        super(game, Role.MERCHANT, Role.FAMINE, "BFBF80"); 
         
-        this.abilities.add("Choose someone at night to starve.");
-        this.attributes.addAll(List.of("Starving will stop the target from using their night abiltiy.", "Starve 4 players to become Famine."));
+        addAbilities("Choose someone at night to starve.");
+        addAttributes("Starving will stop the target from using their night abiltiy.", "Starve 4 players to become Famine.");
     }
 }

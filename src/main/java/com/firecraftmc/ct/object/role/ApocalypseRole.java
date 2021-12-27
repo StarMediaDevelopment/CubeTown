@@ -1,9 +1,6 @@
 package com.firecraftmc.ct.object.role;
 
-import com.firecraftmc.ct.enums.Attack;
-import com.firecraftmc.ct.enums.Defense;
-import com.firecraftmc.ct.enums.Faction;
-import com.firecraftmc.ct.enums.Role;
+import com.firecraftmc.ct.enums.*;
 import com.firecraftmc.ct.object.game.Game;
 import com.firecraftmc.ct.object.target.Target;
 
@@ -11,12 +8,12 @@ public abstract class ApocalypseRole extends FactionRole implements TargetingRol
     
     protected Target target;
     
-    public ApocalypseRole(Game game, Role type) {
-        this(game, type, Attack.NONE, Defense.NONE);
+    public ApocalypseRole(Game game, Role type, Attack attack, Defense defense, int priority, Alignment alignment, String color) {
+        super(game, type, attack, defense, priority, Faction.APOCALYPSE, alignment, Goal.APOCALYPSE, color, true);
     }
-
-    public ApocalypseRole(Game game, Role type, Attack attack, Defense defense) {
-        super(game, type, Faction.APOCALYPSE, attack, defense, true);
+    
+    public ApocalypseRole(Game game, Role type, int priority, Alignment alignment, String color) {
+        this(game, type, Attack.NONE, Defense.NONE, priority, alignment, color);
     }
 
     public Target getTarget() {

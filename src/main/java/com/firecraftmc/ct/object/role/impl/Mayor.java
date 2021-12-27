@@ -1,5 +1,6 @@
 package com.firecraftmc.ct.object.role.impl;
 
+import com.firecraftmc.ct.enums.Alignment;
 import com.firecraftmc.ct.enums.Role;
 import com.firecraftmc.ct.object.GameState;
 import com.firecraftmc.ct.object.NightPhase;
@@ -15,12 +16,12 @@ public class Mayor extends TownRole implements TargetingRole {
     private Target target;
     
     public Mayor(Game game) {
-        super(game, Role.MAYOR);
+        super(game, Role.MAYOR, 0, Alignment.SUPPORT);
         
-        this.abilities.add("You may reveal yourself as the Mayor of the Town.");
-        this.attributes.addAll(List.of("Once you have revealed yourself as Mayor your vote counts as 3 votes.", 
+        addAbilities("You may reveal yourself as the Mayor of the Town.");
+        addAttributes("Once you have revealed yourself as Mayor your vote counts as 3 votes.", 
                 "You may not be healed once you have revealed yourself", 
-                "Once revealed, you can't whisper or be whispered to."));
+                "Once revealed, you can't whisper or be whispered to.");
     }
 
     public Target getTarget() {

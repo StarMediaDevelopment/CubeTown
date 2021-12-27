@@ -1,5 +1,6 @@
 package com.firecraftmc.ct.object.role.impl;
 
+import com.firecraftmc.ct.enums.Alignment;
 import com.firecraftmc.ct.enums.Immunity;
 import com.firecraftmc.ct.enums.Role;
 import com.firecraftmc.ct.object.game.Game;
@@ -14,14 +15,13 @@ public class Transporter extends TownRole implements TargetingRole {
     private Target target;
     
     public Transporter(Game game) {
-        super(game, Role.TRANSPORTER);
-        setPriority(1);
+        super(game, Role.TRANSPORTER, 1, Alignment.SUPPORT);
         
-        this.immunities.addAll(List.of(Immunity.CONTROL, Immunity.ROLEBLOCK));
+        addImmunities(Immunity.CONTROL, Immunity.ROLEBLOCK);
         
-        this.abilities.add("Choose two people to transport at night.");
-        this.attributes.addAll(List.of("Transporting two people swaps all targets against them.", 
-                "You may transport yourself.", "Your targets will know they were transported."));
+        addAbilities("Choose two people to transport at night.");
+        addAttributes("Transporting two people swaps all targets against them.", 
+                "You may transport yourself.", "Your targets will know they were transported.");
     }
     
     public Target getTarget() {

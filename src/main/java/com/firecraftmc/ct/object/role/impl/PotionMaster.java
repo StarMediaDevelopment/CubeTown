@@ -1,31 +1,53 @@
 package com.firecraftmc.ct.object.role.impl;
 
-import com.firecraftmc.ct.enums.Attack;
-import com.firecraftmc.ct.enums.Defense;
-import com.firecraftmc.ct.enums.Immunity;
-import com.firecraftmc.ct.enums.Role;
+import com.firecraftmc.ct.enums.*;
 import com.firecraftmc.ct.object.game.Game;
 import com.firecraftmc.ct.object.role.CovenRole;
+import com.firecraftmc.ct.object.role.ProtectiveRole;
 
 import java.util.List;
 
-public class PotionMaster extends CovenRole {
+public class PotionMaster extends CovenRole implements ProtectiveRole {
+    
+    private PotionType potionType;
+    
     public PotionMaster(Game game) {
-        super(game, Role.POTION_MASTER, Attack.NONE, Defense.NONE);
-        this.immunities.add(Immunity.CONTROL);
+        super(game, Role.POTION_MASTER, Attack.NONE, Defense.NONE, 5);
+        addImmunities(Immunity.CONTROL);
         
-        this.abilities.add("You may choose to use a potion on a player each night.");
-        
-        this.attributes.addAll(List.of("You may choose to use a Heal, reveal, or attack potion on a player.", 
-                "Each potion has a three day cooldown."));
+        addAbilities("You may choose to use a potion on a player each night.");
+        addAttributes("You may choose to use a Heal, reveal, or attack potion on a player.", 
+                "Each potion has a three day cooldown.");
     }
-
+    
+    public PotionType getPotionType() {
+        return potionType;
+    }
+    
+    public void setPotionType(PotionType potionType) {
+        this.potionType = potionType;
+    }
+    
     public int getPriority() {
         //3 healing, 4 revealing, 5 attacking
         return super.getPriority();
     }
     
     public String getKillMessage() {
-        return "{pronown}";
+        return "{pronown} was killed by the Potion Master";
+    }
+    
+    public Attack getAttack() {
+        if (potionType == PotionType.KILL) {
+            return Attack.BASIC;
+        }
+        return Attack.NONE;
+    }
+    
+    public Defense getTemporaryDefense() {
+        if (potionType == PotionType.HEAL) {
+            return Defense.POWERFUL;
+        }
+        return Defense.NONE;
     }
 }

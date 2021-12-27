@@ -1,5 +1,7 @@
 package com.firecraftmc.ct.object.role.impl;
 
+import com.firecraftmc.ct.enums.Alignment;
+import com.firecraftmc.ct.enums.Goal;
 import com.firecraftmc.ct.enums.Immunity;
 import com.firecraftmc.ct.enums.Role;
 import com.firecraftmc.ct.object.game.Game;
@@ -15,12 +17,11 @@ public class Vampire extends MythicalRole implements TargetingRole {
     private boolean youngest;
     
     public Vampire(Game game) {
-        super(game, Role.VAMPIRE);
-        setPriority(5);
+        super(game, Role.VAMPIRE, 5, Alignment.CHAOS, Goal.CONVERT, "7B8867");
         
-        this.immunities.add(Immunity.DETECTION);
-        this.abilities.add("Convert others to Vampires at night.");
-        this.attributes.addAll(List.of("Vampires vote at night to bite a target.", "The youngest Vampire will visit the target at night."));
+        addImmunities(Immunity.DETECTION);
+        addAbilities("Convert others to Vampires at night.");
+        addAttributes("Vampires vote at night to bite a target.", "The youngest Vampire will visit the target at night.");
     }
     
     public Target getTarget() {

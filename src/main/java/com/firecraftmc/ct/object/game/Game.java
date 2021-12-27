@@ -4,4 +4,8 @@ public class Game {
     public int getApocalypseFactionCount() {
         return 0;
     }
+    
+    public boolean hasGodfather() {
+        return false;
+    }
 }

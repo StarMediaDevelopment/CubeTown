@@ -1,5 +1,6 @@
 package com.firecraftmc.ct.object.role.impl;
 
+import com.firecraftmc.ct.enums.Alignment;
 import com.firecraftmc.ct.enums.Defense;
 import com.firecraftmc.ct.enums.Role;
 import com.firecraftmc.ct.object.game.Game;
@@ -15,11 +16,10 @@ public class Doctor extends TownRole implements ProtectiveRole {
     private Target target;
     
     public Doctor(Game game) {
-        super(game, Role.DOCTOR);
-        setPriority(3);
+        super(game, Role.DOCTOR, 3, Alignment.PROTECTIVE);
         
-        this.abilities.add("Heal one person each night, granting them Powerful defense");
-        this.attributes.addAll(Arrays.asList("You may only Heal yourself once.", "You will know if your target is attacked."));
+        addAbilities("Heal one person each night, granting them Powerful defense");
+        addAttributes("You may only Heal yourself once.", "You will know if your target is attacked.");
     }
     
     public Target getTarget() {

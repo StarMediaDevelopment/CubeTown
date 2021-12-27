@@ -1,5 +1,9 @@
-package com.firecraftmc.ct.enums;
+package com.firecraftmc.ct.object.role.impl;
 
+import com.firecraftmc.ct.enums.Alignment;
+import com.firecraftmc.ct.enums.Defense;
+import com.firecraftmc.ct.enums.Goal;
+import com.firecraftmc.ct.enums.Role;
 import com.firecraftmc.ct.object.game.Game;
 import com.firecraftmc.ct.object.role.NeutralRole;
 import com.firecraftmc.ct.object.role.TargetingRole;
@@ -13,12 +17,11 @@ public class Survivor extends NeutralRole implements TargetingRole {
     private int vests = 4;
     
     public Survivor(Game game) {
-        super(game, Role.SURVIVOR);
-        setPriority(3);
+        super(game, Role.SURVIVOR, 3, Alignment.BENIGN, Goal.SURVIVOR,"C8C800");
         
-        this.abilities.add("Put on a bulletproof vest at night.");
-        this.attributes.addAll(List.of("Putting on a bulletproof vest gives you Basic defense.", 
-                "You can only use the bulletproof vest 4 times."));
+        addAbilities("Put on a bulletproof vest at night.");
+        addAttributes("Putting on a bulletproof vest gives you Basic defense.", 
+                "You can only use the bulletproof vest 4 times.");
     }
 
     public Target getTarget() {
@@ -38,5 +41,9 @@ public class Survivor extends NeutralRole implements TargetingRole {
             return Defense.BASIC;
         }
         return Defense.NONE;
+    }
+    
+    public int getVests() {
+        return vests;
     }
 }

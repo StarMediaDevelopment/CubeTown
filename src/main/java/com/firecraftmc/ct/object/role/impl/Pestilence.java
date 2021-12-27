@@ -6,8 +6,7 @@ import com.firecraftmc.ct.object.role.Horseman;
 
 public class Pestilence extends Horseman {
     public Pestilence(Game game) {
-        super(game, Role.PESTILENCE);
-        setPriority(5);
+        super(game, Role.PESTILENCE, "010302");
     }
     
     public String getSummoningMessage() {

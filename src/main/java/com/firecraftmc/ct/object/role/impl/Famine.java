@@ -8,7 +8,7 @@ import java.util.Arrays;
 
 public class Famine extends Horseman {
     public Famine(Game game) {
-        super(game, Role.FAMINE);
+        super(game, Role.FAMINE, "010302");
     }
     
     public String getSummoningMessage() {

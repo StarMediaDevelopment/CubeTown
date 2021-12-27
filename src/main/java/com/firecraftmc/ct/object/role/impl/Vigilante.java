@@ -1,5 +1,6 @@
 package com.firecraftmc.ct.object.role.impl;
 
+import com.firecraftmc.ct.enums.Alignment;
 import com.firecraftmc.ct.enums.Attack;
 import com.firecraftmc.ct.enums.Defense;
 import com.firecraftmc.ct.enums.Role;
@@ -15,11 +16,10 @@ public class Vigilante extends TownRole implements TargetingRole {
     private Target target;
     
     public Vigilante(Game game) {
-        super(game, Role.VIGILANTE, Attack.BASIC, Defense.NONE);
-        setPriority(5);
+        super(game, Role.VIGILANTE, Attack.BASIC, Defense.NONE, 5, Alignment.KILLING);
         
-        this.abilities.add("Choose to take justice into your own hands and shoot someone");
-        this.attributes.addAll(List.of("If you shoot another Town member you will commit suicide over the guilt.", "You can only shoot your gun 3 times."));
+        addAbilities("Choose to take justice into your own hands and shoot someone");
+        addAttributes("If you shoot another Town member you will commit suicide over the guilt.", "You can only shoot your gun 3 times.");
     }
     
     public Target getTarget() {
