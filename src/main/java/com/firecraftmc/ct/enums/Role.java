@@ -52,17 +52,17 @@ public enum Role {
     RETRIBUTIONIST(Retributionist.class, true, TOWN, SUPPORT, "Your target wields mystical powers. They must be a Retributionist."),
     SERIAL_KILLER(SerialKiller.class, "000080", false, ANARCHY, KILLING, "Your target wants to kill everyone. They must be a Serial Killer."),
     SHERIFF(Sheriff.class, false, TOWN, INVESTIGATIVE, "Your target is a protector of the town. They must be a Sheriff."),
-    SPY(Spy.class, false, TOWN, INVESTIGATIVE, TD, null, null),
-    SURVIVOR(Survivor.class, "C8C800", false, NEUTRAL, BENIGN, TD, null, null),
-    TRACKER(Tracker.class, false, TOWN, INVESTIGATIVE, TD, null, null),
-    TRANSPORTER(Transporter.class, false, TOWN, SUPPORT, TD, null, null),
-    TRAPPER(Trapper.class, false, TOWN, PROTECTIVE, TD, null, null),
-    VAMPIRE(Vampire.class, "7B8867", false, MYTHICAL, CHAOS, Goal.CONVERT, TD, null, null),
-    VAMPIRE_HUNTER(VampireHunter.class, false, TOWN, KILLING, TD, null, null),
-    VETERAN(Veteran.class, true, TOWN, KILLING, TD, null, null),
-    VIGILANTE(Vigilante.class, false, TOWN, KILLING, TD, null, null),
+    SPY(Spy.class, false, TOWN, INVESTIGATIVE, "Your target secretly watches who someone visits. They must be a Spy."),
+    SURVIVOR(Survivor.class, "C8C800", false, NEUTRAL, BENIGN, "Your target simply wants to live. They must be a Survivor."),
+    TRACKER(Tracker.class, false, TOWN, INVESTIGATIVE, "Your target is a skilled in the art of tracking. They must be a Tracker."),
+    TRANSPORTER(Transporter.class, false, TOWN, SUPPORT, "Your target specializes in transportation. They must be a Transporter."),
+    TRAPPER(Trapper.class, false, TOWN, PROTECTIVE, "Your target is waiting for a big catch. They must be a Trapper."),
+    VAMPIRE(Vampire.class, "7B8867", false, MYTHICAL, CHAOS, Goal.CONVERT, "Your target drinks blood. They must be a Vampire."),
+    VAMPIRE_HUNTER(VampireHunter.class, false, TOWN, KILLING, "Your target tracks Vampires. They must be a Vampire Hunter."),
+    VETERAN(Veteran.class, true, TOWN, KILLING, "Your target is a paranoid war hero. They must be a Veteran."),
+    VIGILANTE(Vigilante.class, false, TOWN, KILLING, "Your target will bend the law to enact justice. They must be a Vigilante."),
     WAR(War.class, "010302", true, APOCALYPSE, KILLING, "Your target feeds of feuds. They must be War, Horseman of the Apocalypse."), 
-    WEREWOLF(Werewolf.class, "744A26", true, MYTHICAL, KILLING, Goal.KILL_OPPOSE, TD, null, null);
+    WEREWOLF(Werewolf.class, "744A26", true, MYTHICAL, KILLING, Goal.KILL_OPPOSE, "Your target howls at the moon. They must be a Werewolf.");
 
 
     private Class<?> clazz;
@@ -77,22 +77,6 @@ public enum Role {
     private Ability[] abilities;
 
     Role() {
-    }
-
-    Role(Class<?> clazz, String color, boolean unique, Faction faction, Alignment alignment, Goal goal, String directResult, String[] attributes, Ability[] abilities) {
-        this(clazz, color, unique, faction, alignment, goal, directResult);
-    }
-
-    Role(Class<?> clazz, boolean unique, Faction faction, Alignment alignment, Goal goal, String directResult, String[] attributes, Ability[] abilities) {
-        this(clazz, null, unique, faction, alignment, goal, directResult, attributes, abilities);
-    }
-
-    Role(Class<?> clazz, String color, boolean unique, Faction faction, Alignment alignment, String directResult, String[] attributes, Ability[] abilities) {
-        this(clazz, color, unique, faction, alignment, directResult);
-    }
-
-    Role(Class<?> clazz, boolean unique, Faction faction, Alignment alignment, String directResult, String[] attributes, Ability[] abilities) {
-        this(clazz, null, unique, faction, alignment, directResult, attributes, abilities);
     }
 
     Role(Class<?> clazz, String color, boolean unique, Faction faction, Alignment alignment, Goal goal, String directResult) {
@@ -116,8 +100,6 @@ public enum Role {
         this.faction = faction;
         this.alignment = alignment;
         this.directResult = directResult;
-        this.attributes = attributes;
-        this.abilities = abilities;
         this.goal = switch (faction) {
             case TOWN -> Goal.TOWN;
             case COVEN -> Goal.COVEN;
