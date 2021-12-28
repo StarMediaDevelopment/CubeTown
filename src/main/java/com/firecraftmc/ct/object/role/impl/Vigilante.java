@@ -16,7 +16,7 @@ public class Vigilante extends TownRole implements TargetingRole {
     private Target target;
     
     public Vigilante(Game game) {
-        super(game, Role.VIGILANTE, Attack.BASIC, Defense.NONE, 5, Alignment.KILLING);
+        super(game, Role.VIGILANTE, Attack.BASIC, Defense.BASIC, 5, Alignment.KILLING);
         
         addAbilities("Choose to take justice into your own hands and shoot someone");
         addAttributes("If you shoot another Town member you will commit suicide over the guilt.", "You can only shoot your gun 3 times.");

@@ -15,5 +15,5 @@ public final class InvestigatorResults {
     public static final EnumSet<Role> GROUP_EIGHT = EnumSet.of(ESCORT, TRANSPORTER, CONSORT, HYPNOTIST);
     public static final EnumSet<Role> GROUP_NINE = EnumSet.of(DOCTOR, DISGUISER, SERIAL_KILLER, POTION_MASTER);
     public static final EnumSet<Role> GROUP_TEN = EnumSet.of(INVESTIGATOR, CONSIGLIERE, MAYOR, TRACKER, PLAGUEBEARER);
-    public static final EnumSet<Role> GROUP_ELEVEN = EnumSet.of(BODYGUARD, GODFATHER, ARSONIST, CRUSADER, SOVEREIGN);
+    public static final EnumSet<Role> GROUP_ELEVEN = EnumSet.of(BODYGUARD, GODFATHER, ARSONIST, CRUSADER);
 }
