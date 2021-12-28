@@ -7,10 +7,15 @@ import java.util.*;
 import static com.firecraftmc.ct.CubeTown.formatOut;
 
 public class RoleList {
+    
+    protected static final Set<Role> MAFIA_ROLES = EnumSet.of(Role.AMBUSHER, Role.BLACKMAILER, Role.CONSIGLIERE, Role.CONSORT, Role.DISGUISER, Role.FORGER, Role.FRAMER, Role.GODFATHER, Role.HYPNOTIST, Role.JANITOR, Role.MAFIOSO);
+    protected static final Set<Role> COVEN_ROLES = EnumSet.of(Role.COVEN_LEADER, Role.HEX_MASTER, Role.MEDUSA, Role.NECROMANCER, Role.POISONER, Role.POTION_MASTER);
+    
     protected List<Role> roles = new LinkedList<>();
     
     public RoleList(int totalPlayers) {
         formatOut("Determining the chances for each of the different roles.");
+        final int MAX_FACTION_ROLES = totalPlayers / 4;
         List<Role> roleChances = new ArrayList<>();
         for (Role role : Role.values()) {
             formatOut("    Role %s has a weight of %s", role.name(), role.getWeight());
@@ -18,11 +23,11 @@ public class RoleList {
                 roleChances.add(role);
             }
         }
-    
+        
         Collections.shuffle(roleChances);
         formatOut("Randomized role chances.");
         formatOut("Determining the roles for the simulated game.");
-        List<Role> roles = new LinkedList<>();
+        int totalMafia = 0, totalCoven = 0, totalVampires = 0;
         for (int i = 0; i < totalPlayers; i++) {
             Random random = new Random();
             int index = random.nextInt(roleChances.size());
@@ -34,17 +39,37 @@ public class RoleList {
                     formatOut("        The role %s is unique, removing other chances from list.", role.name());
                     roleChances.removeIf(next -> next == role);
                 }
-            
+                
                 roles.add(role);
                 formatOut("    Added the role %s to the possible roles", role.name());
+                
+                if (MAFIA_ROLES.contains(role)) {
+                    totalMafia++;
+                    if (totalMafia >= MAX_FACTION_ROLES) {
+                        formatOut("        The Mafia Faction has reached the max role count, removing the rest of the roles from the Role Chances.");
+                        roleChances.removeIf(MAFIA_ROLES::contains);
+                    }
+                } else if (COVEN_ROLES.contains(role)) {
+                    totalCoven++;
+                    if (totalCoven >= MAX_FACTION_ROLES) {
+                        formatOut("        The Coven Faction has reached the max role count, removing the rest of the roles from the Role Chances.");
+                        roleChances.removeIf(COVEN_ROLES::contains);
+                    }
+                } else if (role == Role.VAMPIRE) {
+                    totalVampires++;
+                    if (totalVampires >= MAX_FACTION_ROLES) {
+                        formatOut("        The Vampire Faction has reached the max role count, removing the rest of the roles from the Role Chances.");
+                        roleChances.removeIf(next -> next == Role.VAMPIRE);
+                    }
+                }
             } else {
                 formatOut("        The role %s could not be used, removing one from current index for proper role count.", role.name());
                 i--;
             }
         }
-    
+        
         formatOut("Finished determining the roles for the simulated game.");
-    
+        
         formatOut("Determining Vampire Hunters and Vampires");
         if (roles.contains(Role.VAMPIRE_HUNTER)) {
             formatOut("The role list contains Vampire Hunter, checking for Vampire in the role list.");
@@ -56,19 +81,19 @@ public class RoleList {
                         vampireHunterCounter++;
                     }
                 }
-            
+                
                 formatOut("        Determined that there were %s Vampire Hunter(s)", vampireHunterCounter);
-            
+                
                 int counter = 0;
                 for (int i = 0; i < vampireHunterCounter; i++) {
                     roles.add(Role.VIGILANTE);
                     counter++;
                 }
-            
+                
                 formatOut("        Added %s Vigilante's in place of Vampire Hunter", counter);
             }
         }
-    
+        
         formatOut("Determining the existence of Mafia and Mafia Killing");
         List<Role> nonMafiaKillingRoles = List.of(Role.CONSIGLIERE, Role.AMBUSHER, Role.BLACKMAILER, Role.CONSORT, Role.DISGUISER, Role.FORGER, Role.FRAMER, Role.HYPNOTIST);
         if (!(roles.contains(Role.MAFIOSO) || roles.contains(Role.GODFATHER))) {
@@ -82,9 +107,9 @@ public class RoleList {
                     mafiaRoles.add(role);
                 }
             }
-        
+            
             formatOut("    Other mafia roles exist %s", containsMafia);
-        
+            
             if (containsMafia) {
                 formatOut("    Other mafia roles exist, replacing one of them with Mafioso");
                 Random random = new Random();
@@ -95,7 +120,7 @@ public class RoleList {
                 roles.add(Role.MAFIOSO);
             }
         }
-    
+        
         System.out.println("Total roles: " + roles.size());
     }
     

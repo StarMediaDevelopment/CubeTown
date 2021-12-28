@@ -4,8 +4,6 @@ import com.firecraftmc.ct.enums.Role;
 import com.firecraftmc.ct.object.game.Game;
 import com.firecraftmc.ct.object.role.AcolyteRole;
 
-import java.util.List;
-
 public class Mortician extends AcolyteRole {
     
     public Mortician(Game game) {
