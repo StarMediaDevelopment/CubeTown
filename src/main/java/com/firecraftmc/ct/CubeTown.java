@@ -9,7 +9,7 @@ import java.util.concurrent.ArrayBlockingQueue;
 
 public class CubeTown {
     public static void main(String[] args) {
-        formatOut("Starting role determination test with %s simulated players.", 15);
+        formatOut("Starting role determination test with %s simulated players.", 100);
         RoleList roleList = new RoleList(100);
         formatOut("Finished role list generation");
         List<Role> roles = roleList.getRoles();
