@@ -11,6 +11,10 @@ public class Executioner extends NeutralRole {
     
     public Target target;
     
+    public Executioner(Game game) {
+        this(game, new Target("null", false));
+    }
+    
     public Executioner(Game game, Target target) {
         super(game, Role.EXECUTIONER, Attack.NONE, Defense.BASIC, 0, Alignment.EVIL, Goal.EXECUTIONER, "ACACAC");
         this.target = target;

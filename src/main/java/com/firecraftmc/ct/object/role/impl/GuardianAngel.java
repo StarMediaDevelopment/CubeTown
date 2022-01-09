@@ -15,6 +15,10 @@ public class GuardianAngel extends NeutralRole implements TargetingRole {
     
     private Target target;
     
+    public GuardianAngel(Game game) {
+        this(game, new Target("null", false));
+    }
+    
     public GuardianAngel(Game game, Target target) {
         super(game, Role.GUARDIAN_ANGEL, 2, Alignment.BENIGN, Goal.GUARDIAN_ANGEL, "FFFFFF");
         this.target = target;
