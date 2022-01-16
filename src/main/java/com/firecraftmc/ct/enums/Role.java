@@ -59,7 +59,6 @@ public enum Role {
     WAR(War.class, true, 0, "Your target feeds of feuds. They must be War, Horseman of the Apocalypse."),
     WEREWOLF(Werewolf.class, true, 10, "Your target howls at the moon. They must be a Werewolf.");
     
-    
     private final Class<?> clazz;
     private final boolean unique;
     private final int weight;

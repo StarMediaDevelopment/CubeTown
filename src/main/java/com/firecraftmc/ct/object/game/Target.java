@@ -1,4 +1,4 @@
-package com.firecraftmc.ct.object.target;
+package com.firecraftmc.ct.object.game;
 
 public class Target {
     
@@ -8,6 +8,10 @@ public class Target {
     public Target(String name, boolean isSelf) {
         this.name = name;
         this.isSelf = isSelf;
+    }
+    
+    public Target(String name) {
+        this(name, false);
     }
     
     public boolean isSelf() {

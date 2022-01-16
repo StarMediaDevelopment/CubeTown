@@ -3,9 +3,7 @@ package com.firecraftmc.ct.object.role.impl;
 import com.firecraftmc.ct.enums.*;
 import com.firecraftmc.ct.object.game.Game;
 import com.firecraftmc.ct.object.role.NeutralRole;
-import com.firecraftmc.ct.object.target.Target;
-
-import java.util.Arrays;
+import com.firecraftmc.ct.object.game.Target;
 
 public class Executioner extends NeutralRole {
     

@@ -12,4 +12,8 @@ public class Death extends Horseman {
     public String getSummoningMessage() {
         return "An innocent life has been taken, summoning Death, Horseman of the Apocalypse.";
     }
+    
+    protected String getNormalKillMessage() {
+        return "{pronown}'s soul was reaped by Death, Horseman of the Apocalypse";
+    }
 }

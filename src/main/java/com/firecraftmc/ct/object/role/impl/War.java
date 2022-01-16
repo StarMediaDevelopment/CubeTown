@@ -12,4 +12,8 @@ public class War extends Horseman {
     public String getSummoningMessage() {
         return "Feud has broken out among the town, summoning War, Horseman of the Apocalypse.";
     }
+    
+    protected String getNormalKillMessage() {
+        return "{pronown}'s mind was corrupted by feud by War, Horseman of the Apocalypse";
+    }
 }

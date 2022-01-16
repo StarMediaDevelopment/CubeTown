@@ -3,15 +3,27 @@ package com.firecraftmc.ct.object.game;
 import com.firecraftmc.ct.enums.Role;
 
 import java.util.*;
+import java.util.function.Consumer;
 
 import static com.firecraftmc.ct.CubeTown.formatOut;
 
-public class RoleList {
+public class RoleList implements Iterable<Role> {
     
-    protected static final Set<Role> MAFIA_ROLES = EnumSet.of(Role.AMBUSHER, Role.BLACKMAILER, Role.CONSIGLIERE, Role.CONSORT, Role.DISGUISER, Role.FORGER, Role.FRAMER, Role.GODFATHER, Role.HYPNOTIST, Role.JANITOR, Role.MAFIOSO);
-    protected static final Set<Role> COVEN_ROLES = EnumSet.of(Role.COVEN_LEADER, Role.HEX_MASTER, Role.MEDUSA, Role.NECROMANCER, Role.POISONER, Role.POTION_MASTER);
+    public static final Set<Role> MAFIA_ROLES = EnumSet.of(Role.AMBUSHER, Role.BLACKMAILER, Role.CONSIGLIERE, Role.CONSORT, Role.DISGUISER, Role.FORGER, Role.FRAMER, Role.GODFATHER, Role.HYPNOTIST, Role.JANITOR, Role.MAFIOSO);
+    public static final Set<Role> COVEN_ROLES = EnumSet.of(Role.COVEN_LEADER, Role.HEX_MASTER, Role.MEDUSA, Role.NECROMANCER, Role.POISONER, Role.POTION_MASTER);
+    public static final Set<Role> ROLES_WITH_TARGETS = EnumSet.of(Role.EXECUTIONER, Role.GUARDIAN_ANGEL);
+    public static final Set<Role> ACOLYTE_ROLES = EnumSet.of(Role.HUNGER, Role.GENERAL, Role.MORTICIAN, Role.PLAGUEBEARER);
+    public static final Set<Role> HORSEMAN_ROLES = EnumSet.of(Role.FAMINE, Role.WAR, Role.DEATH, Role.PESTILENCE);
+    public static final Set<Role> SELF_TARGETING_ROLES = EnumSet.of(Role.MAYOR, Role.SURVIVOR, Role.VETERAN);
+    public static final Set<Role> HYBRID_TARGETTING_ROLES = EnumSet.of(Role.ARSONIST, Role.BODYGUARD, Role.COVEN_LEADER, Role.DISGUISER, Role.DOCTOR, Role.MEDUSA, Role.NECROMANCER, Role.WEREWOLF);
     
     protected List<Role> roles = new LinkedList<>();
+    
+    public static final RoleList ALL_ROLES_LIST = new RoleList(List.of(Role.values()));
+    
+    private RoleList(Collection<Role> roles) {
+        this.roles.addAll(roles);
+    }
     
     public RoleList(int totalPlayers) {
         formatOut("Determining the chances for each of the different roles.");
@@ -126,5 +138,21 @@ public class RoleList {
     
     public List<Role> getRoles() {
         return new LinkedList<>(roles);
+    }
+    
+    public int size() {
+        return this.roles.size();
+    }
+    
+    public Iterator<Role> iterator() {
+        return this.roles.iterator();
+    }
+    
+    public void forEach(Consumer<? super Role> action) {
+        this.roles.forEach(action);
+    }
+    
+    public Spliterator<Role> spliterator() {
+        return this.roles.spliterator();
     }
 }

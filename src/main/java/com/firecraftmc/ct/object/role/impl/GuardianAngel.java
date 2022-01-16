@@ -7,9 +7,7 @@ import com.firecraftmc.ct.enums.Role;
 import com.firecraftmc.ct.object.game.Game;
 import com.firecraftmc.ct.object.role.NeutralRole;
 import com.firecraftmc.ct.object.role.TargetingRole;
-import com.firecraftmc.ct.object.target.Target;
-
-import java.util.List;
+import com.firecraftmc.ct.object.game.Target;
 
 public class GuardianAngel extends NeutralRole implements TargetingRole {
     
@@ -20,7 +18,7 @@ public class GuardianAngel extends NeutralRole implements TargetingRole {
     }
     
     public GuardianAngel(Game game, Target target) {
-        super(game, Role.GUARDIAN_ANGEL, 2, Alignment.BENIGN, Goal.GUARDIAN_ANGEL, "FFFFFF");
+        super(game, Role.GUARDIAN_ANGEL, 2, Alignment.BENIGN, Goal.GUARDIAN_ANGEL, "c48a63");
         this.target = target;
         
         addImmunities(Immunity.DETECTION, Immunity.ROLEBLOCK);

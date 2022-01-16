@@ -12,4 +12,8 @@ public class Pestilence extends Horseman {
     public String getSummoningMessage() {
         return "A plague has consumed the town, summoning Pestilence, Horseman of the Apocalypse.";
     }
+    
+    protected String getNormalKillMessage() {
+        return "{pronown}'s body was ravaged by Pestilence, Horseman of the Apocalypse";
+    }
 }

@@ -7,9 +7,7 @@ import com.firecraftmc.ct.enums.Role;
 import com.firecraftmc.ct.object.game.Game;
 import com.firecraftmc.ct.object.role.MythicalRole;
 import com.firecraftmc.ct.object.role.TargetingRole;
-import com.firecraftmc.ct.object.target.Target;
-
-import java.util.List;
+import com.firecraftmc.ct.object.game.Target;
 
 public class Vampire extends MythicalRole implements TargetingRole {
     

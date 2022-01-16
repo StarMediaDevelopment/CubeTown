@@ -3,7 +3,7 @@ package com.firecraftmc.ct.object.role;
 import com.firecraftmc.ct.enums.*;
 import com.firecraftmc.ct.object.game.Game;
 
-public class AcolyteRole extends ApocalypseRole {
+public abstract class AcolyteRole extends ApocalypseRole {
     
     protected Role horsemanTransformation;
     

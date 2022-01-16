@@ -2,7 +2,7 @@ package com.firecraftmc.ct.object.role;
 
 import com.firecraftmc.ct.enums.*;
 import com.firecraftmc.ct.object.game.Game;
-import com.firecraftmc.ct.object.target.Target;
+import com.firecraftmc.ct.object.game.Target;
 
 public abstract class MafiaRole extends FactionRole implements TargetingRole {
     
