@@ -10,7 +10,7 @@ public abstract class Horseman extends ApocalypseRole implements KillingRole, Ra
     
     protected static final int FC_UNSTOPPABLE = 1, FC_RAMPAGE = 3, FC_OBLITERATE = 2;
     
-    public Horseman(Game game, Role type, String color) {
+    public Horseman(Game game, RoleType type, String color) {
         super(game, type, Attack.POWERFUL, Defense.INVINCIBLE, 5, Alignment.KILLING, color);
     
         addImmunities(Immunity.DETECTION, Immunity.ROLEBLOCK, Immunity.CONTROL);

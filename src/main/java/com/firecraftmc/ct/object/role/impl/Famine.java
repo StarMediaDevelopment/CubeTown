@@ -1,14 +1,12 @@
 package com.firecraftmc.ct.object.role.impl;
 
-import com.firecraftmc.ct.enums.Role;
+import com.firecraftmc.ct.enums.RoleType;
 import com.firecraftmc.ct.object.game.Game;
 import com.firecraftmc.ct.object.role.Horseman;
 
-import java.util.Arrays;
-
 public class Famine extends Horseman {
     public Famine(Game game) {
-        super(game, Role.FAMINE, "010302");
+        super(game, RoleType.FAMINE, "010302");
     }
     
     public String getSummoningMessage() {

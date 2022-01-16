@@ -7,7 +7,7 @@ import com.firecraftmc.ct.object.role.MafiaRole;
 
 public class Godfather extends MafiaRole implements KillingRole {
     public Godfather(Game game) {
-        super(game, Role.GODFATHER, Attack.BASIC, Defense.BASIC, 5, Alignment.KILLING);
+        super(game, RoleType.GODFATHER, Attack.BASIC, Defense.BASIC, 5, Alignment.KILLING);
         
         addImmunities(Immunity.DETECTION);
         addAbilities("You may choose to attack a player each night.");

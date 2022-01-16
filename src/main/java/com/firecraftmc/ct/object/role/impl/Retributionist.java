@@ -2,7 +2,7 @@ package com.firecraftmc.ct.object.role.impl;
 
 import com.firecraftmc.ct.enums.Alignment;
 import com.firecraftmc.ct.enums.Immunity;
-import com.firecraftmc.ct.enums.Role;
+import com.firecraftmc.ct.enums.RoleType;
 import com.firecraftmc.ct.object.game.Game;
 import com.firecraftmc.ct.object.role.TargetingRole;
 import com.firecraftmc.ct.object.role.TownRole;
@@ -14,7 +14,7 @@ public class Retributionist extends TownRole implements TargetingRole {
     //Retributionists can use dead town members as much as they want
     
     public Retributionist(Game game) {
-        super(game, Role.RETRIBUTIONIST, 1, Alignment.SUPPORT);
+        super(game, RoleType.RETRIBUTIONIST, 1, Alignment.SUPPORT);
         addImmunities(Immunity.ROLEBLOCK, Immunity.CONTROL);
         addAbilities("You may raise a dead Town member and use their ability on a player.");
         addAttributes("Create zombies from dead true-hearted Town players.",

@@ -3,7 +3,7 @@ package com.firecraftmc.ct.object.role.impl;
 import com.firecraftmc.ct.enums.Alignment;
 import com.firecraftmc.ct.enums.Goal;
 import com.firecraftmc.ct.enums.Immunity;
-import com.firecraftmc.ct.enums.Role;
+import com.firecraftmc.ct.enums.RoleType;
 import com.firecraftmc.ct.object.game.Game;
 import com.firecraftmc.ct.object.role.MythicalRole;
 import com.firecraftmc.ct.object.role.TargetingRole;
@@ -15,7 +15,7 @@ public class Vampire extends MythicalRole implements TargetingRole {
     private boolean youngest;
     
     public Vampire(Game game) {
-        super(game, Role.VAMPIRE, 5, Alignment.CHAOS, Goal.CONVERT, "7B8867");
+        super(game, RoleType.VAMPIRE, 5, Alignment.CHAOS, Goal.CONVERT, "7B8867");
         
         addImmunities(Immunity.DETECTION);
         addAbilities("Convert others to Vampires at night.");

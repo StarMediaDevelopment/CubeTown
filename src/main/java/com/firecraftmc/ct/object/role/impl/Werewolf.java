@@ -14,7 +14,7 @@ public class Werewolf extends MythicalRole implements TargetingRole, RampagingRo
     private Target target;
     
     public Werewolf(Game game) {
-        super(game, Role.WEREWOLF, Attack.POWERFUL, Defense.BASIC, 5, Alignment.KILLING, Goal.KILL_OPPOSE, "744A26");
+        super(game, RoleType.WEREWOLF, Attack.POWERFUL, Defense.BASIC, 5, Alignment.KILLING, Goal.KILL_OPPOSE, "744A26");
         
         addAbilities("Transform into a Werewolf during the full moon.");
         addAttributes("You will Rampage at a player's house when you attack.", 

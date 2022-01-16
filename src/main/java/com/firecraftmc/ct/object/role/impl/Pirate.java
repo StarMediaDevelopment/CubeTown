@@ -11,7 +11,7 @@ public class Pirate extends NeutralRole implements TargetingRole {
     private Target target;
     
     public Pirate(Game game) {
-        super(game, Role.PIRATE, Attack.POWERFUL, Defense.NONE, 1, Alignment.KILLING, Goal.PIRATE, "DBAD59");
+        super(game, RoleType.PIRATE, Attack.POWERFUL, Defense.NONE, 1, Alignment.KILLING, Goal.PIRATE, "DBAD59");
         
         addImmunities(Immunity.CONTROL, Immunity.DETECTION, Immunity.ROLEBLOCK);
         

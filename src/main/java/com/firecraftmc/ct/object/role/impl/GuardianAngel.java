@@ -3,7 +3,7 @@ package com.firecraftmc.ct.object.role.impl;
 import com.firecraftmc.ct.enums.Alignment;
 import com.firecraftmc.ct.enums.Goal;
 import com.firecraftmc.ct.enums.Immunity;
-import com.firecraftmc.ct.enums.Role;
+import com.firecraftmc.ct.enums.RoleType;
 import com.firecraftmc.ct.object.game.Game;
 import com.firecraftmc.ct.object.role.NeutralRole;
 import com.firecraftmc.ct.object.role.TargetingRole;
@@ -18,7 +18,7 @@ public class GuardianAngel extends NeutralRole implements TargetingRole {
     }
     
     public GuardianAngel(Game game, Target target) {
-        super(game, Role.GUARDIAN_ANGEL, 2, Alignment.BENIGN, Goal.GUARDIAN_ANGEL, "c48a63");
+        super(game, RoleType.GUARDIAN_ANGEL, 2, Alignment.BENIGN, Goal.GUARDIAN_ANGEL, "c48a63");
         this.target = target;
         
         addImmunities(Immunity.DETECTION, Immunity.ROLEBLOCK);

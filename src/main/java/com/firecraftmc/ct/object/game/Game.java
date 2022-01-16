@@ -1,7 +1,7 @@
 package com.firecraftmc.ct.object.game;
 
-import com.firecraftmc.ct.enums.Faction;
-import com.firecraftmc.ct.enums.Role;
+import com.firecraftmc.ct.enums.FactionType;
+import com.firecraftmc.ct.enums.RoleType;
 import com.firecraftmc.ct.exceptions.GameInitException;
 import com.firecraftmc.ct.object.role.AbstractRole;
 import com.firecraftmc.ct.utils.CTUtils;
@@ -34,12 +34,12 @@ public class Game {
             playerCounter++;
         }
     
-        for (Role role : roleList.getRoles()) {
-            if (role == Role.GODFATHER) {
+        for (RoleType roleType : roleList.getRoles()) {
+            if (roleType == RoleType.GODFATHER) {
                 hasGodfather = true;
             }
         
-            if (RoleList.ACOLYTE_ROLES.contains(role)) {
+            if (RoleList.ACOLYTE_ROLE_TYPES.contains(roleType)) {
                 apocalypseFactionCount++;
             }
         }
@@ -50,9 +50,9 @@ public class Game {
         List<Player> players = new LinkedList<>(this.players.values());
         Collections.shuffle(players);
         playerQueue.addAll(players);
-        for (Role role : this.roleList) {
+        for (RoleType roleType : this.roleList) {
             Player player = playerQueue.poll();
-            player.setRole(role);
+            player.setRole(roleType);
         }
     }
     
@@ -74,13 +74,13 @@ public class Game {
             for (Player player : this.players.values()) {
                 AbstractRole role = player.getRoleInstance();
                 if (role != null) {
-                    if (role.getFaction() == Faction.TOWN) {
-                        if (player.getRole() != Role.MAYOR && player.getRole() != Role.JAILOR) {
+                    if (role.getFaction() == FactionType.TOWN) {
+                        if (player.getRole() != RoleType.MAYOR && player.getRole() != RoleType.JAILOR) {
                             validExeTargets.add(player);
                         }
                     }
     
-                    if (role.getFaction() != Faction.APOCALYPSE && player.getRole() != Role.JESTER) {
+                    if (role.getFaction() != FactionType.APOCALYPSE && player.getRole() != RoleType.JESTER) {
                         validGATargets.add(player);
                     }
                 }
@@ -88,9 +88,9 @@ public class Game {
             
             for (Player player : initLast) {
                 Target target;
-                if (player.getRole() == Role.GUARDIAN_ANGEL) {
+                if (player.getRole() == RoleType.GUARDIAN_ANGEL) {
                     target = new Target(validGATargets.get(new Random().nextInt(validGATargets.size())).getName());
-                } else if (player.getRole() == Role.EXECUTIONER) {
+                } else if (player.getRole() == RoleType.EXECUTIONER) {
                     target = new Target(validExeTargets.get(new Random().nextInt(validExeTargets.size())).getName());
                 } else {
                     throw new GameInitException("Could not determine a target for player " + player.getName());

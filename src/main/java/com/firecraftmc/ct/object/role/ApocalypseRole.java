@@ -8,11 +8,11 @@ public abstract class ApocalypseRole extends FactionRole implements TargetingRol
     
     protected Target target;
     
-    public ApocalypseRole(Game game, Role type, Attack attack, Defense defense, int priority, Alignment alignment, String color) {
-        super(game, type, attack, defense, priority, Faction.APOCALYPSE, alignment, Goal.APOCALYPSE, color, true);
+    public ApocalypseRole(Game game, RoleType type, Attack attack, Defense defense, int priority, Alignment alignment, String color) {
+        super(game, type, attack, defense, priority, FactionType.APOCALYPSE, alignment, Goal.APOCALYPSE, color, true);
     }
     
-    public ApocalypseRole(Game game, Role type, int priority, Alignment alignment, String color) {
+    public ApocalypseRole(Game game, RoleType type, int priority, Alignment alignment, String color) {
         this(game, type, Attack.NONE, Defense.NONE, priority, alignment, color);
     }
 

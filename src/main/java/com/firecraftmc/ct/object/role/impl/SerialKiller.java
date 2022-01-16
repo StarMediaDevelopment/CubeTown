@@ -4,11 +4,9 @@ import com.firecraftmc.ct.enums.*;
 import com.firecraftmc.ct.object.game.Game;
 import com.firecraftmc.ct.object.role.AnarchyRole;
 
-import java.util.List;
-
 public class SerialKiller extends AnarchyRole {
     public SerialKiller(Game game) {
-        super(game, Role.SERIAL_KILLER, Attack.BASIC, Defense.BASIC, 5, Alignment.KILLING, Goal.KILL_OPPOSE, "000080");
+        super(game, RoleType.SERIAL_KILLER, Attack.BASIC, Defense.BASIC, 5, Alignment.KILLING, Goal.KILL_OPPOSE, "000080");
         
         addAbilities("You may choose to attack a player each night.");
         

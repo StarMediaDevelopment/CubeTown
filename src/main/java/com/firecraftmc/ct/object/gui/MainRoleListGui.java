@@ -1,6 +1,6 @@
 package com.firecraftmc.ct.object.gui;
 
-import com.firecraftmc.ct.enums.Role;
+import com.firecraftmc.ct.enums.RoleType;
 import com.firecraftmc.ct.object.game.Game;
 import com.firecraftmc.ct.object.game.RoleList;
 import com.firecraftmc.ct.object.role.AbstractRole;
@@ -24,9 +24,9 @@ public class MainRoleListGui {
         ScrollPane scrollPane = new ScrollPane(root);
     
         Game game = new Game(RoleList.ALL_ROLES_LIST, new ArrayList<>());
-        for (Role role : Role.values()) {
-            Text label = new Text(StringHelper.capitalizeEveryWord(role.name().toLowerCase()));
-            AbstractRole abstractRole = CTUtils.createRoleInstance(role, game, new Target("Player 1", false));
+        for (RoleType roleType : RoleType.values()) {
+            Text label = new Text(StringHelper.capitalizeEveryWord(roleType.name().toLowerCase()));
+            AbstractRole abstractRole = CTUtils.createRoleInstance(roleType, game, new Target("Player 1", false));
             label.setFill(Color.web("#" + abstractRole.getColor()));
             label.setFont(new Font(20));
             label.addEventHandler(MouseEvent.MOUSE_CLICKED, e -> new RoleInfoDialog(abstractRole));

@@ -5,9 +5,9 @@ import com.firecraftmc.ct.object.game.Game;
 
 public abstract class AcolyteRole extends ApocalypseRole {
     
-    protected Role horsemanTransformation;
+    protected RoleType horsemanTransformation;
     
-    public AcolyteRole(Game game, Role type, Role horsemanTransformation, String color) {
+    public AcolyteRole(Game game, RoleType type, RoleType horsemanTransformation, String color) {
         super(game, type, Attack.NONE, Defense.BASIC, 1, Alignment.SUPPORT, color);
         this.horsemanTransformation = horsemanTransformation;
         

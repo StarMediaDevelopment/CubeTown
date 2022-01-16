@@ -1,16 +1,14 @@
 package com.firecraftmc.ct.object.role.impl;
 
 import com.firecraftmc.ct.enums.Immunity;
-import com.firecraftmc.ct.enums.Role;
+import com.firecraftmc.ct.enums.RoleType;
 import com.firecraftmc.ct.object.game.Game;
 import com.firecraftmc.ct.object.role.CovenRole;
-
-import java.util.List;
 
 public class Necromancer extends CovenRole {
     
     public Necromancer(Game game) {
-        super(game, Role.NECROMANCER, 1);
+        super(game, RoleType.NECROMANCER, 1);
         
         addImmunities(Immunity.CONTROL, Immunity.ROLEBLOCK);
         

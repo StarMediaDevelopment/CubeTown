@@ -8,11 +8,11 @@ public abstract class AnarchyRole extends FactionRole implements KillingRole {
     
     protected Target target;
     
-    public AnarchyRole(Game game, Role type, Attack attack, Defense defense, int priority, Alignment alignment, Goal goal, String color) {
-        super(game, type, attack, defense, priority, Faction.ANARCHY, alignment, goal, color, false);
+    public AnarchyRole(Game game, RoleType type, Attack attack, Defense defense, int priority, Alignment alignment, Goal goal, String color) {
+        super(game, type, attack, defense, priority, FactionType.ANARCHY, alignment, goal, color, false);
     }
     
-    public AnarchyRole(Game game, Role type, int priority, Alignment alignment, Goal goal, String color) {
+    public AnarchyRole(Game game, RoleType type, int priority, Alignment alignment, Goal goal, String color) {
         this(game, type, Attack.NONE, Defense.NONE, priority, alignment, goal, color);
     }
     

@@ -2,7 +2,7 @@ package com.firecraftmc.ct.object.role.impl;
 
 import com.firecraftmc.ct.enums.Alignment;
 import com.firecraftmc.ct.enums.Immunity;
-import com.firecraftmc.ct.enums.Role;
+import com.firecraftmc.ct.enums.RoleType;
 import com.firecraftmc.ct.object.game.Game;
 import com.firecraftmc.ct.object.role.TargetingRole;
 import com.firecraftmc.ct.object.role.TownRole;
@@ -13,7 +13,7 @@ public class Transporter extends TownRole implements TargetingRole {
     private Target target;
     
     public Transporter(Game game) {
-        super(game, Role.TRANSPORTER, 1, Alignment.SUPPORT);
+        super(game, RoleType.TRANSPORTER, 1, Alignment.SUPPORT);
         
         addImmunities(Immunity.CONTROL, Immunity.ROLEBLOCK);
         

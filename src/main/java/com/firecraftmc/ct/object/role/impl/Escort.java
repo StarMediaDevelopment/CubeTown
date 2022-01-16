@@ -1,7 +1,7 @@
 package com.firecraftmc.ct.object.role.impl;
 
 import com.firecraftmc.ct.enums.Alignment;
-import com.firecraftmc.ct.enums.Role;
+import com.firecraftmc.ct.enums.RoleType;
 import com.firecraftmc.ct.object.game.Game;
 import com.firecraftmc.ct.object.role.TargetingRole;
 import com.firecraftmc.ct.object.role.TownRole;
@@ -12,7 +12,7 @@ public class Escort extends TownRole implements TargetingRole {
     private Target target;
     
     public Escort(Game game) {
-        super(game, Role.ESCORT, 2, Alignment.SUPPORT);
+        super(game, RoleType.ESCORT, 2, Alignment.SUPPORT);
         addAbilities("Distract someone each night.");
         addAttributes("Distraction blocks your target from using their role's night ability.", "You cannot be role blocked.");
     }

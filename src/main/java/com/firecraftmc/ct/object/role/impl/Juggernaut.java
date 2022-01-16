@@ -14,7 +14,7 @@ public class Juggernaut extends AnarchyRole implements RampagingRole {
     private int kills;
     
     public Juggernaut(Game game) {
-        super(game, Role.JUGGERNAUT, Attack.POWERFUL, Defense.BASIC, 5, Alignment.KILLING, Goal.KILL_OPPOSE, "631A35");
+        super(game, RoleType.JUGGERNAUT, Attack.POWERFUL, Defense.BASIC, 5, Alignment.KILLING, Goal.KILL_OPPOSE, "631A35");
         setPriority(5);
         
         addAbilities("You may choose to attack a player on full moon nights."); //0 kills

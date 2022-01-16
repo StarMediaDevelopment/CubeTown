@@ -5,11 +5,9 @@ import com.firecraftmc.ct.object.game.Game;
 import com.firecraftmc.ct.object.role.KillingRole;
 import com.firecraftmc.ct.object.role.MafiaRole;
 
-import java.util.List;
-
 public class Mafioso extends MafiaRole implements KillingRole {
     public Mafioso(Game game) {
-        super(game, Role.MAFIOSO, Attack.BASIC, Defense.NONE, 5, Alignment.DECEPTION);
+        super(game, RoleType.MAFIOSO, Attack.BASIC, Defense.NONE, 5, Alignment.DECEPTION);
         
         if (game.hasGodfather()) {
             addImmunities(Immunity.CONTROL);

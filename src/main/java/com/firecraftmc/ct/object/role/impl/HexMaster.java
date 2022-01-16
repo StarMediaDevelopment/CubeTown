@@ -1,7 +1,7 @@
 package com.firecraftmc.ct.object.role.impl;
 
 import com.firecraftmc.ct.enums.Attack;
-import com.firecraftmc.ct.enums.Role;
+import com.firecraftmc.ct.enums.RoleType;
 import com.firecraftmc.ct.object.game.Game;
 import com.firecraftmc.ct.object.role.CovenRole;
 import com.firecraftmc.ct.object.role.KillingRole;
@@ -15,7 +15,7 @@ public class HexMaster extends CovenRole implements KillingRole {
     private List<Target> hexedTargets = new ArrayList<>();
     
     public HexMaster(Game game) {
-        super(game, Role.HEX_MASTER, 3);
+        super(game, RoleType.HEX_MASTER, 3);
         
         addAbilities("You may choose to Hex a player each night.");
         addAttributes("With the Necronomicon you gain Astral and Basic attacks.", 

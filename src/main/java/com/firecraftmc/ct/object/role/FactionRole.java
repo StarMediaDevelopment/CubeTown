@@ -7,17 +7,17 @@ public abstract class FactionRole extends AbstractRole {
     
     protected final boolean winsWithEachother;
     
-    public FactionRole(Game game, Role type, Attack attack, Defense defense, int priority, Faction faction, Alignment alignment, Goal goal, String color, boolean winsWithEachother) {
+    public FactionRole(Game game, RoleType type, Attack attack, Defense defense, int priority, FactionType faction, Alignment alignment, Goal goal, String color, boolean winsWithEachother) {
         super(game, type, attack, defense, priority, faction, alignment, goal, color);
         this.winsWithEachother = winsWithEachother;
     }
     
-    public FactionRole(Game game, Role type, Attack attack, Defense defense, int priority, Faction faction, Alignment alignment, Goal goal, boolean winsWithEachother) {
+    public FactionRole(Game game, RoleType type, Attack attack, Defense defense, int priority, FactionType faction, Alignment alignment, Goal goal, boolean winsWithEachother) {
         super(game, type, attack, defense, priority, faction, alignment, goal, faction.getColor());
         this.winsWithEachother = winsWithEachother;
     }
     
-    public FactionRole(Game game, Role type, int priority, Faction faction, Alignment alignment, Goal goal, boolean winsWithEachother) {
-        this(game, type, Attack.NONE, Defense.NONE, priority, faction, alignment, goal, winsWithEachother);
+    public FactionRole(Game game, RoleType type, int priority, FactionType factionType, Alignment alignment, Goal goal, boolean winsWithEachother) {
+        this(game, type, Attack.NONE, Defense.NONE, priority, factionType, alignment, goal, winsWithEachother);
     }
 }

@@ -1,7 +1,7 @@
 package com.firecraftmc.ct.object.role.impl;
 
 import com.firecraftmc.ct.enums.Alignment;
-import com.firecraftmc.ct.enums.Role;
+import com.firecraftmc.ct.enums.RoleType;
 import com.firecraftmc.ct.object.game.Game;
 import com.firecraftmc.ct.object.role.TargetingRole;
 import com.firecraftmc.ct.object.role.TownRole;
@@ -12,7 +12,7 @@ public class Sheriff extends TownRole implements TargetingRole {
     private Target target;
     
     public Sheriff(Game game) {
-        super(game, Role.SHERIFF, 4, Alignment.INVESTIGATIVE);
+        super(game, RoleType.SHERIFF, 4, Alignment.INVESTIGATIVE);
         
         addAbilities("Interrogate one person each night for suspicious activity.");
         addAttributes("You will know if your target is suspicious.");

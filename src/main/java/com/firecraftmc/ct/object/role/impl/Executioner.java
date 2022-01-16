@@ -14,7 +14,7 @@ public class Executioner extends NeutralRole {
     }
     
     public Executioner(Game game, Target target) {
-        super(game, Role.EXECUTIONER, Attack.NONE, Defense.BASIC, 0, Alignment.EVIL, Goal.EXECUTIONER, "ACACAC");
+        super(game, RoleType.EXECUTIONER, Attack.NONE, Defense.BASIC, 0, Alignment.EVIL, Goal.EXECUTIONER, "ACACAC");
         this.target = target;
         
         addImmunities(Immunity.DETECTION);

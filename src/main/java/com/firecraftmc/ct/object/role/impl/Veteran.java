@@ -12,7 +12,7 @@ public class Veteran extends TownRole implements TargetingRole {
     private int alerts = 3;
     
     public Veteran(Game game) {
-        super(game, Role.VETERAN, Attack.POWERFUL, Defense.NONE, 1, Alignment.KILLING);
+        super(game, RoleType.VETERAN, Attack.POWERFUL, Defense.NONE, 1, Alignment.KILLING);
         
         addImmunities(Immunity.CONTROL, Immunity.ROLEBLOCK);
         

@@ -8,11 +8,11 @@ public abstract class MafiaRole extends FactionRole implements TargetingRole {
     
     protected Target target;
     
-    public MafiaRole(Game game, Role type, Attack attack, Defense defense, int priority, Alignment alignment) {
-        super(game, type, attack, defense, priority, Faction.MAFIA, alignment, Goal.MAFIA, true);
+    public MafiaRole(Game game, RoleType type, Attack attack, Defense defense, int priority, Alignment alignment) {
+        super(game, type, attack, defense, priority, FactionType.MAFIA, alignment, Goal.MAFIA, true);
     }
     
-    public MafiaRole(Game game, Role type, int priority, Alignment alignment) {
+    public MafiaRole(Game game, RoleType type, int priority, Alignment alignment) {
         this(game, type, Attack.NONE, Defense.NONE, priority, alignment);
     }
 

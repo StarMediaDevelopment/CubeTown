@@ -1,31 +1,31 @@
 package com.firecraftmc.ct.object.game;
 
-import com.firecraftmc.ct.enums.Role;
+import com.firecraftmc.ct.enums.RoleType;
 import com.firecraftmc.ct.object.role.AbstractRole;
 
 import java.util.Objects;
 
 public class Player {
     private final String name;
-    private Role role;
+    private RoleType roleType;
     private AbstractRole roleInstance;
     
-    public Player(String name, Role role) {
+    public Player(String name, RoleType roleType) {
         this.name = name;
-        this.role = role;
+        this.roleType = roleType;
     }
     
     public Player(String name) {
         this.name = name;
     }
     
-    public Player(String name, Role role, AbstractRole roleInstance) {
-        this(name, role);
+    public Player(String name, RoleType roleType, AbstractRole roleInstance) {
+        this(name, roleType);
         this.roleInstance = roleInstance;
     }
     
-    public void setRole(Role role) {
-        this.role = role;
+    public void setRole(RoleType roleType) {
+        this.roleType = roleType;
     }
     
     public void setRoleInstance(AbstractRole roleInstance) {
@@ -36,8 +36,8 @@ public class Player {
         return name;
     }
     
-    public Role getRole() {
-        return role;
+    public RoleType getRole() {
+        return roleType;
     }
     
     public AbstractRole getRoleInstance() {

@@ -8,11 +8,11 @@ import java.util.*;
 public abstract class AbstractRole {
     
     protected final Game game;
-    protected final Role type;
+    protected final RoleType type;
     protected Attack attack;
     protected Defense defense;
     protected int priority;
-    protected Faction faction;
+    protected FactionType faction;
     protected Alignment alignment;
     protected Goal goal;
     protected String color;
@@ -20,7 +20,7 @@ public abstract class AbstractRole {
     protected List<String> abilities = new LinkedList<>();
     protected List<String> attributes = new LinkedList<>();
     
-    public AbstractRole(Game game, Role type, Attack attack, Defense defense, int priority, Faction faction, Alignment alignment, Goal goal, String color) {
+    public AbstractRole(Game game, RoleType type, Attack attack, Defense defense, int priority, FactionType faction, Alignment alignment, Goal goal, String color) {
         this.game = game;
         this.type = type;
         this.attack = attack;
@@ -32,11 +32,11 @@ public abstract class AbstractRole {
         this.color = color;
     }
     
-    public AbstractRole(Game game, Role type, int priority, Faction faction, Alignment alignment, Goal goal, String color) {
+    public AbstractRole(Game game, RoleType type, int priority, FactionType faction, Alignment alignment, Goal goal, String color) {
         this(game, type, Attack.NONE, Defense.NONE, priority, faction, alignment, goal, color);
     }
     
-    public Role getType() {
+    public RoleType getType() {
         return type;
     }
     
@@ -92,7 +92,7 @@ public abstract class AbstractRole {
         return game;
     }
     
-    public Faction getFaction() {
+    public FactionType getFaction() {
         return faction;
     }
     

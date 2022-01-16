@@ -2,7 +2,7 @@ package com.firecraftmc.ct.object.role.impl;
 
 import com.firecraftmc.ct.enums.Alignment;
 import com.firecraftmc.ct.enums.Immunity;
-import com.firecraftmc.ct.enums.Role;
+import com.firecraftmc.ct.enums.RoleType;
 import com.firecraftmc.ct.object.game.Game;
 import com.firecraftmc.ct.object.role.KillingRole;
 import com.firecraftmc.ct.object.role.TownRole;
@@ -13,7 +13,7 @@ public class VampireHunter extends TownRole implements KillingRole {
     private Target target;
     
     public VampireHunter(Game game) {
-        super(game, Role.VAMPIRE_HUNTER, 5, Alignment.KILLING);
+        super(game, RoleType.VAMPIRE_HUNTER, 5, Alignment.KILLING);
         
         addImmunities(Immunity.BITE);
         

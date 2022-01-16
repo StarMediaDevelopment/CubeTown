@@ -12,7 +12,7 @@ public class Arsonist extends AnarchyRole implements KillingRole {
     //Douses are tracked in the player class
 
     public Arsonist(Game game) {
-        super(game, Role.ARSONIST, Attack.UNSTOPPABLE, Defense.BASIC, -1, Alignment.KILLING, Goal.ARSONIST, "EE7600");
+        super(game, RoleType.ARSONIST, Attack.UNSTOPPABLE, Defense.BASIC, -1, Alignment.KILLING, Goal.ARSONIST, "EE7600");
         addImmunities(Immunity.DETECTION);
         addAbilities("You may Douse someone in gasoline or ignite Doused targets.");
         addAttributes("Select yourself to ignite doused people dealing an Unstoppable attack.", 
