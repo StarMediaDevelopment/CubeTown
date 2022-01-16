@@ -37,7 +37,7 @@ public class Bodyguard extends TownRole implements ProtectiveRole {
     }
     
     public String getKillMessage() {
-        return "{pronown} was killed by a Bodyguard.";
+        return "{pronown} was killed by a {rolename}.";
     }
     
     public Defense getTemporaryDefense() {

@@ -2,11 +2,12 @@ package com.firecraftmc.ct.object.role.impl;
 
 import com.firecraftmc.ct.enums.*;
 import com.firecraftmc.ct.object.game.Game;
+import com.firecraftmc.ct.object.role.KillingRole;
 import com.firecraftmc.ct.object.role.TargetingRole;
 import com.firecraftmc.ct.object.role.TownRole;
 import com.firecraftmc.ct.object.game.Target;
 
-public class Veteran extends TownRole implements TargetingRole {
+public class Veteran extends TownRole implements KillingRole {
     
     private Target target;
     private int alerts = 3;
@@ -31,5 +32,9 @@ public class Veteran extends TownRole implements TargetingRole {
         } else {
             this.target = null;
         }
+    }
+    
+    public String getKillMessage() {
+        return "{pronown} was killed by the {rolename}.";
     }
 }

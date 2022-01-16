@@ -9,7 +9,7 @@ import com.firecraftmc.ct.object.role.RampagingRole;
 import com.firecraftmc.ct.object.role.TargetingRole;
 import com.firecraftmc.ct.object.game.Target;
 
-public class Werewolf extends MythicalRole implements TargetingRole, RampagingRole {
+public class Werewolf extends MythicalRole implements RampagingRole {
     
     private Target target;
     
@@ -31,5 +31,9 @@ public class Werewolf extends MythicalRole implements TargetingRole, RampagingRo
 
     public boolean canTarget(GameState state, NightPhase nightPhase) {
         return state == GameState.NIGHT && nightPhase == NightPhase.FULL_MOON;
+    }
+    
+    public String getKillMessage() {
+        return "{pronown} was mauled by a {rolename}";
     }
 }

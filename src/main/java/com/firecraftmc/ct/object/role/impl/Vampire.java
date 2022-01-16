@@ -5,11 +5,12 @@ import com.firecraftmc.ct.enums.Goal;
 import com.firecraftmc.ct.enums.Immunity;
 import com.firecraftmc.ct.enums.RoleType;
 import com.firecraftmc.ct.object.game.Game;
+import com.firecraftmc.ct.object.role.KillingRole;
 import com.firecraftmc.ct.object.role.MythicalRole;
 import com.firecraftmc.ct.object.role.TargetingRole;
 import com.firecraftmc.ct.object.game.Target;
 
-public class Vampire extends MythicalRole implements TargetingRole {
+public class Vampire extends MythicalRole implements KillingRole {
     
     private Target target;
     private boolean youngest;
@@ -28,5 +29,9 @@ public class Vampire extends MythicalRole implements TargetingRole {
 
     public void setTarget(Target target) {
         this.target = target;
+    }
+    
+    public String getKillMessage() {
+        return "{pronown} was bitten by a {rolename}.";
     }
 }

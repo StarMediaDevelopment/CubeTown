@@ -14,6 +14,6 @@ public class War extends Horseman {
     }
     
     protected String getNormalKillMessage() {
-        return "{pronown}'s mind was corrupted by feud by War, Horseman of the Apocalypse";
+        return "{pronown}'s mind was corrupted with feud by War, Horseman of the Apocalypse";
     }
 }

@@ -2,11 +2,12 @@ package com.firecraftmc.ct.object.role.impl;
 
 import com.firecraftmc.ct.enums.*;
 import com.firecraftmc.ct.object.game.Game;
+import com.firecraftmc.ct.object.role.KillingRole;
 import com.firecraftmc.ct.object.role.NeutralRole;
 import com.firecraftmc.ct.object.role.TargetingRole;
 import com.firecraftmc.ct.object.game.Target;
 
-public class Pirate extends NeutralRole implements TargetingRole {
+public class Pirate extends NeutralRole implements KillingRole {
     
     private Target target;
     
@@ -26,5 +27,9 @@ public class Pirate extends NeutralRole implements TargetingRole {
 
     public void setTarget(Target target) {
         this.target = target;
+    }
+    
+    public String getKillMessage() {
+        return "{pronown} was plundered by the {rolename}.";
     }
 }

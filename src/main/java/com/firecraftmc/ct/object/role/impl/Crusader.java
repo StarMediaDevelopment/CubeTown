@@ -33,7 +33,7 @@ public class Crusader extends TownRole implements ProtectiveRole {
     }
     
     public String getKillMessage() {
-        return "{pronown} was killed by a Crusader";
+        return "{pronown} was killed by a {rolename}.";
     }
     
     public Defense getTemporaryDefense() {

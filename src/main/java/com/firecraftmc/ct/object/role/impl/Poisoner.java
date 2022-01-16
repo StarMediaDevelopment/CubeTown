@@ -16,6 +16,6 @@ public class Poisoner extends CovenRole {
     }
     
     public String getKillMessage() {
-        return "{pronown} was poisoned by the poisoner.";
+        return "{pronown} was poisoned by the {rolename}.";
     }
 }

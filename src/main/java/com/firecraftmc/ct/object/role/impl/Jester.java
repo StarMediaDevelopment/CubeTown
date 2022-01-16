@@ -17,7 +17,7 @@ public class Jester extends NeutralRole implements KillingRole {
     }
     
     public String getKillMessage() {
-        return "{pronown} died from guilt over lynching the Jester.";
+        return "{pronown} died from guilt over lynching the {rolename}.";
     }
     
     public Target getTarget() {

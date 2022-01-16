@@ -39,6 +39,6 @@ public class Jailor extends TownRole implements KillingRole {
     }
     
     public String getKillMessage() {
-        return "{pronown} was executed by the Jailor";
+        return "{pronown} was executed by the {rolename}.";
     }
 }

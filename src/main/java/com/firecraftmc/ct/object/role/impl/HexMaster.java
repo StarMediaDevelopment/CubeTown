@@ -27,6 +27,6 @@ public class HexMaster extends CovenRole implements KillingRole {
     }
     
     public String getKillMessage() {
-        return "{pronown} was hexed by the Hex Master";
+        return "{pronown} was hexed by the {rolename}.";
     }
 }

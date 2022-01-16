@@ -37,6 +37,6 @@ public class Arsonist extends AnarchyRole implements KillingRole {
     }
     
     public String getKillMessage() {
-        return "{pronown} was incinerated by an Arsonist.";
+        return "{pronown} was incinerated by an {rolename}.";
     }
 }

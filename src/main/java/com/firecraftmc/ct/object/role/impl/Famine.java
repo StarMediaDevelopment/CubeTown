@@ -10,10 +10,10 @@ public class Famine extends Horseman {
     }
     
     public String getSummoningMessage() {
-        return "The town has been starved, summoning Famine, Horseman of the Apocalypse.";
+        return "The town has been starved, summoning {rolename}.";
     }
     
     protected String getNormalKillMessage() {
-        return "{pronown} was starved to death by Famine, Horseman of the Apocalypse";
+        return "{pronown} was starved to death by {rolename}.";
     }
 }
