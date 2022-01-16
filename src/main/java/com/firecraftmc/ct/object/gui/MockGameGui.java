@@ -22,36 +22,9 @@ import java.util.List;
 public class MockGameGui {
     public MockGameGui(Stage stage) {
         VBox root = new VBox();
-        int playerCount = 15;
+        int playerCount = 25;
     
-        List<Player> players = new ArrayList<>();
-        for (int i = 0; i < playerCount; i++) {
-            players.add(new Player(NameGenerator.generateRandomName(Gender.UNSPECIFIED)));
-        }
-    
-        RoleList roleList = new RoleList(playerCount);
-        
-        Game game = new Game(roleList, players);
-        game.assignRoles();
-        game.initializeRoles();
-        
-        Font font = new Font("Arial", 20);
-        game.getPlayers().forEach((position, player) -> {
-            TextFlow textFlow = new TextFlow();
-            Text nameAndNumber = new Text(position + ". " + player.getName() + " (");
-            nameAndNumber.setFont(font);
-            nameAndNumber.setFill(Color.BLACK);
-            
-            Text role = new Text(StringHelper.capitalizeEveryWord(player.getRole().name()));
-            role.setFont(font);
-            role.setFill(Color.web("#" + player.getRoleInstance().getColor()));
-            
-            Text closingPar = new Text(")");
-            closingPar.setFont(font);
-            closingPar.setFill(Color.BLACK);
-            textFlow.getChildren().addAll(nameAndNumber, role, closingPar);
-            root.getChildren().add(textFlow);
-        });
+        generate(playerCount, root);
         
         Button regenerateButton = new Button("Regenerate");
         regenerateButton.setOnAction(e -> {
@@ -81,18 +54,15 @@ public class MockGameGui {
         Font font = new Font("Arial", 20);
         game.getPlayers().forEach((position, player) -> {
             TextFlow textFlow = new TextFlow();
-            Text nameAndNumber = new Text(position + ". " + player.getName() + " (");
+            Text nameAndNumber = new Text(position + ". " + player.getName() + " ");
             nameAndNumber.setFont(font);
             nameAndNumber.setFill(Color.BLACK);
         
-            Text role = new Text(StringHelper.capitalizeEveryWord(player.getRole().name()));
+            Text role = new Text("(" + StringHelper.capitalizeEveryWord(player.getRole().name()) + ")");
             role.setFont(font);
             role.setFill(Color.web("#" + player.getRoleInstance().getColor()));
-        
-            Text closingPar = new Text(")");
-            closingPar.setFont(font);
-            closingPar.setFill(Color.BLACK);
-            textFlow.getChildren().addAll(nameAndNumber, role, closingPar);
+            
+            textFlow.getChildren().addAll(nameAndNumber, role);
             textFlow.addEventHandler(MouseEvent.MOUSE_CLICKED, e -> new RoleInfoDialog(player.getRoleInstance()));
             root.getChildren().add(textFlow);
         });
