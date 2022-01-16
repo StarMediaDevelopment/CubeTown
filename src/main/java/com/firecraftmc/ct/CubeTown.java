@@ -15,7 +15,7 @@ public class CubeTown extends Application {
     }
     
     public static void formatOut(String text, Object... args) {
-        System.out.printf((text) + "%n", args);
+        //System.out.printf((text) + "%n", args);
     }
     
     //Process what would be a visit before any actions are taken and then produce messages/preventions based on role priority

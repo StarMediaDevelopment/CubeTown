@@ -73,19 +73,21 @@ public class Game {
     
             for (Player player : this.players.values()) {
                 AbstractRole role = player.getRoleInstance();
-                if (role.getFaction() == Faction.TOWN) {
-                    if (player.getRole() != Role.MAYOR && player.getRole() != Role.JAILOR) {
-                        validExeTargets.add(player);
+                if (role != null) {
+                    if (role.getFaction() == Faction.TOWN) {
+                        if (player.getRole() != Role.MAYOR && player.getRole() != Role.JAILOR) {
+                            validExeTargets.add(player);
+                        }
                     }
-                }
-                
-                if (role.getFaction() != Faction.APOCALYPSE && player.getRole() != Role.JESTER) {
-                    validGATargets.add(player);
+    
+                    if (role.getFaction() != Faction.APOCALYPSE && player.getRole() != Role.JESTER) {
+                        validGATargets.add(player);
+                    }
                 }
             }
             
             for (Player player : initLast) {
-                Target target = null;
+                Target target;
                 if (player.getRole() == Role.GUARDIAN_ANGEL) {
                     target = new Target(validGATargets.get(new Random().nextInt(validGATargets.size())).getName());
                 } else if (player.getRole() == Role.EXECUTIONER) {

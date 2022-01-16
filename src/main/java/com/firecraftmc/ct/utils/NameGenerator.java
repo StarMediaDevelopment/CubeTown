@@ -20,7 +20,11 @@ public class NameGenerator {
         try (InputStream inputStream = NameGenerator.class.getResourceAsStream("/malefirstnames.txt"); BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
             String line;
             while ((line = reader.readLine()) != null) {
-                names.add(line);
+                if (names.contains(line)) {
+                    System.out.println("Male First Names has a duplicate: " + line);
+                } else {
+                    names.add(line);
+                }
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -33,7 +37,11 @@ public class NameGenerator {
         try (InputStream inputStream = NameGenerator.class.getResourceAsStream("/femalefirstnames.txt"); BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
             String line;
             while ((line = reader.readLine()) != null) {
-                names.add(line);
+                if (names.contains(line)) {
+                    System.out.println("Female Firsst Names has a duplicate: " + line);
+                } else {
+                    names.add(line);
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -46,7 +54,11 @@ public class NameGenerator {
         try (InputStream inputStream = NameGenerator.class.getResourceAsStream("/lastnames.txt"); BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
             String line;
             while ((line = reader.readLine()) != null) {
-                names.add(line);
+                if (names.contains(line)) {
+                    System.out.println("Last names has a duplicate: " + line);
+                } else {
+                    names.add(line);
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -72,6 +84,6 @@ public class NameGenerator {
             firstName = FEMALE_FIRST_NAMES[new Random().nextInt(FEMALE_FIRST_NAMES.length)];
         }
         
-        return StringHelper.capitalizeEveryWord(firstName + " " + lastName);
+        return StringHelper.capitalizeEveryWord(firstName + "_" + lastName);
     }
 }
