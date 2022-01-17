@@ -1,6 +1,9 @@
 package com.firecraftmc.ct.object.gui;
 
+import com.firecraftmc.ct.enums.Gender;
 import com.firecraftmc.ct.object.role.AbstractRole;
+import com.firecraftmc.ct.object.role.Horseman;
+import com.firecraftmc.ct.object.role.KillingRole;
 import com.starmediadev.utils.helper.StringHelper;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -13,6 +16,8 @@ import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+
+import java.util.Random;
 
 public class RoleInfoDialog {
     public RoleInfoDialog(AbstractRole abstractRole) {
@@ -76,6 +81,59 @@ public class RoleInfoDialog {
                 attributeLabel.setFont(infoFont);
                 labelRoot.getChildren().add(attributeLabel);
             }
+        }
+        
+        if (abstractRole instanceof KillingRole killingRole) {
+            Label killMessageLabel = new Label("Kill Message");
+            killMessageLabel.setFont(infoFontBold);
+            
+            Color baseColor = Color.BLACK;
+            
+            TextFlow message = new TextFlow();
+            String rawKillMessage = killingRole.getKillMessage();
+            String[] killMsgWords = rawKillMessage.split(" ");
+            
+            Gender gender = Gender.values()[new Random().nextInt(Gender.values().length)];
+            String pronown = switch (gender) {
+                case MALE -> "He";
+                case FEMALE -> "She";
+                case UNSPECIFIED -> "They";
+            };
+            for (String word : killMsgWords) {
+                if (word.contains("{pronown}")) {
+                    Text text = new Text(pronown);
+                    text.setFont(infoFont);
+                    text.setFill(baseColor);
+                    message.getChildren().add(text);
+                } else if (word.contains("{rolename}")) {
+                    Text text;
+                    if (abstractRole instanceof Horseman) {
+                        text = new Text(StringHelper.capitalizeEveryWord(abstractRole.getType().name()) + ", Horseman of the Apocalypse.");
+                    } else {
+                        text = new Text(StringHelper.capitalizeEveryWord(abstractRole.getType().name() + word.replace("{rolename}", "").replace(" ", "_")));
+                    }
+                    text.setFont(infoFont);
+                    text.setFill(Color.web("#" + abstractRole.getColor()));
+                    message.getChildren().add(text);
+                } else if (word.contains("{verb}")) {
+                    String verbWord = switch (gender) {
+                        case MALE, FEMALE -> "was";
+                        case UNSPECIFIED -> "were";
+                    };
+                    Text verb = new Text(verbWord);
+                    verb.setFont(infoFont);
+                    verb.setFill(baseColor);
+                    message.getChildren().add(verb);
+                } else {
+                    Text text = new Text(word);
+                    text.setFill(baseColor);
+                    text.setFont(infoFont);
+                    message.getChildren().add(text);
+                }
+                message.getChildren().add(new Text(" "));
+            }
+    
+            labelRoot.getChildren().addAll(killMessageLabel, message);
         }
         
         Scene scene = new Scene(labelRoot, 700, 500);
