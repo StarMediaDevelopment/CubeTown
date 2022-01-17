@@ -14,6 +14,6 @@ public class Death extends Horseman {
     }
     
     protected String getNormalKillMessage() {
-        return "{pronown}'s soul was reaped by {rolename}.";
+        return "{pronown}'s soul {verb} reaped by {rolename}.";
     }
 }

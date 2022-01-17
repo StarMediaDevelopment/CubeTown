@@ -23,6 +23,6 @@ public class CovenLeader extends CovenRole {
     }
     
     public String getKillMessage() {
-        return "{pronown} was drained by the {rolename}.";
+        return "{pronown} {verb} drained by the {rolename}.";
     }
 }

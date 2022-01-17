@@ -18,6 +18,6 @@ public class Ambusher extends MafiaRole implements KillingRole {
     }
     
     public String getKillMessage() {
-        return "{pronown} was killed by an {rolename}";
+        return "{pronown} {verb} killed by an {rolename}";
     }
 }

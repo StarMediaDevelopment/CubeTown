@@ -19,6 +19,6 @@ public class Necromancer extends CovenRole {
     }
     
     public String getKillMessage() {
-        return "{pronown} was killed by the {rolename}'s Ghoul";
+        return "{pronown} {verb} killed by the {rolename}'s Ghoul";
     }
 }

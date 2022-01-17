@@ -25,6 +25,6 @@ public class Medusa extends CovenRole {
     }
     
     public String getKillMessage() {
-        return "{pronown} was turned to stone by {rolename}";
+        return "{pronown} {verb} turned to stone by {rolename}";
     }
 }

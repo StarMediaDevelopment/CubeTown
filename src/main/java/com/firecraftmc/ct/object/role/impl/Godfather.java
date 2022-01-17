@@ -17,6 +17,6 @@ public class Godfather extends MafiaRole implements KillingRole {
     }
     
     public String getKillMessage() {
-        return "{pronown} was killed by a member of the Mafia.";
+        return "{pronown} {verb} killed by a member of the Mafia.";
     }
 }

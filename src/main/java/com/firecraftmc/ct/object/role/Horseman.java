@@ -44,7 +44,7 @@ public abstract class Horseman extends ApocalypseRole implements KillingRole, Ra
     
     public String getKillMessage() {
         if (factionCount <= FC_OBLITERATE) {
-            return "{pronown} was obliterated by " + StringHelper.capitalizeEveryWord(type.name()) + ", Horseman of the Apocalypse";
+            return "{pronown} {verb} obliterated by " + StringHelper.capitalizeEveryWord(type.name()) + ", Horseman of the Apocalypse";
         }
         return getNormalKillMessage();
     }

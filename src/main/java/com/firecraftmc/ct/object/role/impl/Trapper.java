@@ -29,7 +29,7 @@ public class Trapper extends TownRole implements ProtectiveRole {
     }
     
     public String getKillMessage() {
-        return "{pronown} was killed by a Trapper";
+        return "{pronown} {verb} killed by a Trapper";
     }
     
     public Defense getTemporaryDefense() {

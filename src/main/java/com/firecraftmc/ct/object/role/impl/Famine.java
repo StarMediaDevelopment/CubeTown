@@ -14,6 +14,6 @@ public class Famine extends Horseman {
     }
     
     protected String getNormalKillMessage() {
-        return "{pronown} was starved to death by {rolename}.";
+        return "{pronown} {verb} starved to death by {rolename}.";
     }
 }

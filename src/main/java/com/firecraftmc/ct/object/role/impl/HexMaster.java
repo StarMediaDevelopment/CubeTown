@@ -10,7 +10,7 @@ import com.firecraftmc.ct.object.game.Target;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HexMaster extends CovenRole implements KillingRole {
+public class HexMaster extends CovenRole {
     
     private List<Target> hexedTargets = new ArrayList<>();
     

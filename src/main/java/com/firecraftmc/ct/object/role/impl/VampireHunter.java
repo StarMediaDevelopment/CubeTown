@@ -31,6 +31,6 @@ public class VampireHunter extends TownRole implements KillingRole {
     }
     
     public String getKillMessage() {
-        return "{pronown} was staked by a {rolename}.s";
+        return "{pronown} {verb} staked by a {rolename}.s";
     }
 }

@@ -30,6 +30,6 @@ public class Pirate extends NeutralRole implements KillingRole {
     }
     
     public String getKillMessage() {
-        return "{pronown} was plundered by the {rolename}.";
+        return "{pronown} {verb} plundered by the {rolename}.";
     }
 }

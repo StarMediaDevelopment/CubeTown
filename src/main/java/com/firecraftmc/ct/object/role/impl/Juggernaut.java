@@ -74,6 +74,6 @@ public class Juggernaut extends AnarchyRole implements RampagingRole {
     }
     
     public String getKillMessage() {
-        return "{pronown} was assaulted by the {rolename}.";
+        return "{pronown} {verb} assaulted by the {rolename}.";
     }
 }

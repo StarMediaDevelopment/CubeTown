@@ -34,6 +34,6 @@ public class Werewolf extends MythicalRole implements RampagingRole {
     }
     
     public String getKillMessage() {
-        return "{pronown} was mauled by a {rolename}";
+        return "{pronown} {verb} mauled by a {rolename}";
     }
 }

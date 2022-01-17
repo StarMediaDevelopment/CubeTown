@@ -32,6 +32,6 @@ public class Vampire extends MythicalRole implements KillingRole {
     }
     
     public String getKillMessage() {
-        return "{pronown} was bitten by a {rolename}.";
+        return "{pronown} {verb} bitten by a {rolename}.";
     }
 }

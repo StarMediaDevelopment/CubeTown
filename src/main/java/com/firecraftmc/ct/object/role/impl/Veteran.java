@@ -35,6 +35,6 @@ public class Veteran extends TownRole implements KillingRole {
     }
     
     public String getKillMessage() {
-        return "{pronown} was killed by the {rolename}.";
+        return "{pronown} {verb} killed by the {rolename}.";
     }
 }

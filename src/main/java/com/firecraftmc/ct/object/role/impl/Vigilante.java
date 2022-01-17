@@ -30,6 +30,6 @@ public class Vigilante extends TownRole implements KillingRole {
     }
     
     public String getKillMessage() {
-        return "{pronown} wass shot by a {rolename}";
+        return "{pronown} {verb} shot by a {rolename}";
     }
 }

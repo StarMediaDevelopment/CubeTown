@@ -16,6 +16,6 @@ public class SerialKiller extends AnarchyRole {
     }
     
     public String getKillMessage() {
-        return "{pronown} was stabbed by a {rolename}.";
+        return "{pronown} {verb} stabbed by a {rolename}.";
     }
 }
