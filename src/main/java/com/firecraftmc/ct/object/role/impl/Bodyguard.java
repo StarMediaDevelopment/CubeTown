@@ -5,42 +5,26 @@ import com.firecraftmc.ct.enums.Attack;
 import com.firecraftmc.ct.enums.Defense;
 import com.firecraftmc.ct.enums.RoleType;
 import com.firecraftmc.ct.object.game.Game;
-import com.firecraftmc.ct.object.role.ProtectiveRole;
+import com.firecraftmc.ct.object.game.Player;
 import com.firecraftmc.ct.object.role.TownRole;
-import com.firecraftmc.ct.object.game.Target;
 
-public class Bodyguard extends TownRole implements ProtectiveRole {
+public class Bodyguard extends TownRole {
     
-    private Target target;
     private boolean vestUsed;
     
-    public Bodyguard(Game game) {
-        super(game, RoleType.BODYGUARD, Attack.POWERFUL, Defense.NONE, 3, Alignment.PROTECTIVE);
+    public Bodyguard(Game game, Player player) {
+        super(game, RoleType.BODYGUARD, player, Attack.POWERFUL, Defense.NONE, 3, Alignment.PROTECTIVE);
         addAbilities("Protect a player from direct attacks at night.");
         addAttributes("If your target is directly attacked or is the victim of a harmful visit, you and the visitor will fight.", 
                 "If you successfully protect someone you can still be Healed.");
+        setProtectiveDefense(Defense.INVINCIBLE);
+        setKillMessage("{pronown} {verb} killed by a {rolename}.");
     }
     
-    public Target getTarget() {
-        return target;
-    }
-
-    public void setTarget(Target target) {
-        this.target = target;
-    }
-
     public Defense getDefense() {
         if (target.isSelf() && !vestUsed) {
             return Defense.BASIC;
         }
         return super.getDefense();
-    }
-    
-    public String getKillMessage() {
-        return "{pronown} {verb} killed by a {rolename}.";
-    }
-    
-    public Defense getTemporaryDefense() {
-        return Defense.INVINCIBLE; //TODO Bodyguard only blocks a single attack, which is like invincible defense for that single attack
     }
 }

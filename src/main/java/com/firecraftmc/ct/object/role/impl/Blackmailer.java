@@ -3,11 +3,12 @@ package com.firecraftmc.ct.object.role.impl;
 import com.firecraftmc.ct.enums.Alignment;
 import com.firecraftmc.ct.enums.RoleType;
 import com.firecraftmc.ct.object.game.Game;
+import com.firecraftmc.ct.object.game.Player;
 import com.firecraftmc.ct.object.role.MafiaRole;
 
 public class Blackmailer extends MafiaRole {
-    public Blackmailer(Game game) {
-        super(game, RoleType.BLACKMAILER, 3, Alignment.SUPPORT);
+    public Blackmailer(Game game, Player player) {
+        super(game, RoleType.BLACKMAILER, player, 3, Alignment.SUPPORT);
         addAbilities("Choose one person each night to blackmail.");
         addAttributes("Blackmailed targets cannot talk during the day.", 
                 "You can hear private messages.", 

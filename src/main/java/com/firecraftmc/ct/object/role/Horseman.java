@@ -2,16 +2,16 @@ package com.firecraftmc.ct.object.role;
 
 import com.firecraftmc.ct.enums.*;
 import com.firecraftmc.ct.object.game.Game;
-import com.starmediadev.utils.helper.StringHelper;
+import com.firecraftmc.ct.object.game.Player;
 
-public abstract class Horseman extends ApocalypseRole implements KillingRole, RampagingRole {
-    
-    protected int factionCount;
-    
+public abstract class Horseman extends ApocalypseRole {
     protected static final int FC_UNSTOPPABLE = 1, FC_RAMPAGE = 3, FC_OBLITERATE = 2;
     
-    public Horseman(Game game, RoleType type, String color) {
-        super(game, type, Attack.POWERFUL, Defense.INVINCIBLE, 5, Alignment.KILLING, color);
+    protected final int factionCount;
+    protected String summoningMessage, normalKillMessage;
+    
+    public Horseman(Game game, RoleType type, Player player) {
+        super(game, type, player, Attack.POWERFUL, Defense.INVINCIBLE, 5, Alignment.KILLING, "010302");
     
         addImmunities(Immunity.DETECTION, Immunity.ROLEBLOCK, Immunity.CONTROL);
     
@@ -28,6 +28,7 @@ public abstract class Horseman extends ApocalypseRole implements KillingRole, Ra
         
         if (factionCount == FC_RAMPAGE) {
             addAbilities("You may choose to Rampage at a player's house at night.");
+            setRampages(true);
         }
         
         if (factionCount == FC_UNSTOPPABLE) {
@@ -37,18 +38,19 @@ public abstract class Horseman extends ApocalypseRole implements KillingRole, Ra
        addAttributes("You cannot be roleblocked or controlled", "If you are jailed, you will attack the Jailor");
     }
     
-    public boolean rampages() {
-        return factionCount <= FC_RAMPAGE;
-    }
-    
-    
+    @Override
     public String getKillMessage() {
         if (factionCount <= FC_OBLITERATE) {
-            return "{pronown} {verb} obliterated by " + StringHelper.capitalizeEveryWord(type.name()) + ", Horseman of the Apocalypse";
+            return "{pronown} {verb} obliterated by {rolename}";
         }
-        return getNormalKillMessage();
+        return normalKillMessage;
     }
     
-    public abstract String getSummoningMessage();
-    protected abstract String getNormalKillMessage();
+    protected void setSummoningMessage(String message) {
+        this.summoningMessage = message;
+    }
+    
+    protected void setNormalKillMessage(String normalKillMessage) {
+        this.normalKillMessage = normalKillMessage;
+    }
 }

@@ -1,8 +1,8 @@
 package com.firecraftmc.ct.object.game;
 
 public class Visit {
-    private Player player;
-    private Target target;
+    private final Player player;
+    private final Target target;
     
     public Visit(Player player, Target target) {
         this.player = player;

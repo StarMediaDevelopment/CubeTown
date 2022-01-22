@@ -6,6 +6,8 @@ import javafx.stage.Stage;
 
 public class CubeTown extends Application {
     
+    //TODO Include Horseman of the Apocalypse at the end when processing names for horseman roles
+    
     public void start(Stage stage) {
         new MockGameGui(stage);
     }

@@ -2,7 +2,7 @@ package com.firecraftmc.ct.enums;
 
 import com.firecraftmc.ct.object.role.impl.*;
 
-public enum RoleType {
+public enum RoleType implements WinCondition {
     AMBUSHER(Ambusher.class, true, 10, "Your target lies in wait. They must be an Ambusher."),
     AMNESIAC(Amnesiac.class, false, 10, "Your target does not remember their role. They must be an Amnesiac."),
     ARSONIST(Arsonist.class, false, 10, "Your target likes to watch things burn. They must be an Arsonist."),

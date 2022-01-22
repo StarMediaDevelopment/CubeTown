@@ -2,27 +2,18 @@ package com.firecraftmc.ct.object.role;
 
 import com.firecraftmc.ct.enums.*;
 import com.firecraftmc.ct.object.game.Game;
-import com.firecraftmc.ct.object.game.Target;
+import com.firecraftmc.ct.object.game.Player;
 
-public abstract class CovenRole extends FactionRole implements KillingRole {
+public abstract class CovenRole extends FactionRole {
     
     protected boolean hasNecronomicon;
-    protected Target target;
     
-    public CovenRole(Game game, RoleType type, Attack attack, Defense defense, int priority) {
-        super(game, type, attack, defense, priority, FactionType.COVEN, Alignment.EVIL, Goal.COVEN, true);
+    public CovenRole(Game game, RoleType type, Player player, Attack attack, Defense defense, int priority) {
+        super(game, type, player, attack, defense, priority, FactionType.COVEN, Alignment.EVIL, Goal.COVEN);
     }
     
-    public CovenRole(Game game, RoleType type, int priority) {
-        this(game, type, Attack.NONE, Defense.NONE, priority);
-    }
-
-    public Target getTarget() {
-        return target;
-    }
-
-    public void setTarget(Target target) {
-        this.target = target;
+    public CovenRole(Game game, RoleType type, Player player, int priority) {
+        this(game, type, player, Attack.NONE, Defense.NONE, priority);
     }
     
     protected void neconomiconActions() {

@@ -1,23 +1,19 @@
 package com.firecraftmc.ct.object.role.impl;
 
 import com.firecraftmc.ct.enums.*;
-import com.firecraftmc.ct.object.GameState;
-import com.firecraftmc.ct.object.NightPhase;
 import com.firecraftmc.ct.object.game.Game;
+import com.firecraftmc.ct.object.game.Player;
 import com.firecraftmc.ct.object.role.AnarchyRole;
-import com.firecraftmc.ct.object.role.RampagingRole;
 
-import java.lang.annotation.Target;
-
-//TODO need to test this
-public class Juggernaut extends AnarchyRole implements RampagingRole {
-    private Target target;
-    private int kills;
+public class Juggernaut extends AnarchyRole {
+    private int kills = -1;
     
-    public Juggernaut(Game game) {
-        super(game, RoleType.JUGGERNAUT, Attack.POWERFUL, Defense.BASIC, 5, Alignment.KILLING, Goal.KILL_OPPOSE, "631A35");
+    public Juggernaut(Game game, Player player) {
+        super(game, RoleType.JUGGERNAUT, player, Attack.POWERFUL, Defense.BASIC, 5, Alignment.KILLING, Goal.KILL_OPPOSE, "631A35");
         
         addAbilities("You may choose to attack a player on full moon nights.");
+        setKillMessage("{pronown} {verb} assaulted by the {rolename}.");
+        incrementKills(); //Sets the base abilities
     }
     
     public void incrementKills() {
@@ -46,34 +42,12 @@ public class Juggernaut extends AnarchyRole implements RampagingRole {
         
         if (kills == 2) {
             addAttributes("You now Rampage when you attack");
+            setRampages(true);
         }
         
         if (kills >= 3) {
             addAttributes("You Rampage when you attack", "You ignore all effects that would protect a player");
+            setAttack(Attack.UNSTOPPABLE);
         }
-    }
-    
-    public Attack getAttack() {
-        if (attack != Attack.UNSTOPPABLE) {
-            if (kills >= 3) {
-                attack = Attack.UNSTOPPABLE;
-            }
-        }
-        return attack;
-    }
-
-    public boolean rampages() {
-        return kills >= 2;
-    }
-
-    public boolean canTarget(GameState state, NightPhase nightPhase) {
-        if (kills == 0) {
-            return nightPhase == NightPhase.FULL_MOON;
-        } 
-        return true;
-    }
-    
-    public String getKillMessage() {
-        return "{pronown} {verb} assaulted by the {rolename}.";
     }
 }

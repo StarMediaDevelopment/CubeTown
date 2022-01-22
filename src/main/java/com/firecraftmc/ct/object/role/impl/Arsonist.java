@@ -2,30 +2,19 @@ package com.firecraftmc.ct.object.role.impl;
 
 import com.firecraftmc.ct.enums.*;
 import com.firecraftmc.ct.object.game.Game;
+import com.firecraftmc.ct.object.game.Player;
 import com.firecraftmc.ct.object.role.AnarchyRole;
-import com.firecraftmc.ct.object.role.KillingRole;
-import com.firecraftmc.ct.object.game.Target;
 
-public class Arsonist extends AnarchyRole implements KillingRole {
-    private Target target;
-    
-    //Douses are tracked in the player class
+public class Arsonist extends AnarchyRole {
 
-    public Arsonist(Game game) {
-        super(game, RoleType.ARSONIST, Attack.UNSTOPPABLE, Defense.BASIC, -1, Alignment.KILLING, Goal.ARSONIST, "EE7600");
+    public Arsonist(Game game, Player player) {
+        super(game, RoleType.ARSONIST, player, Attack.UNSTOPPABLE, Defense.BASIC, -1, Alignment.KILLING, Goal.ARSONIST, "EE7600");
         addImmunities(Immunity.DETECTION);
         addAbilities("You may Douse someone in gasoline or ignite Doused targets.");
         addAttributes("Select yourself to ignite doused people dealing an Unstoppable attack.", 
                 "You will douse anybody that visits you.", 
                 "If you take no action, you will attempt to clean gasoline off yourself.");
-    }
-
-    public Target getTarget() {
-        return target;
-    }
-
-    public void setTarget(Target target) {
-        this.target = target;
+        setKillMessage("{pronown} {verb} incinerated by an {rolename}.");
     }
 
     public int getPriority() {
@@ -36,7 +25,8 @@ public class Arsonist extends AnarchyRole implements KillingRole {
         }
     }
     
-    public String getKillMessage() {
-        return "{pronown} {verb} incinerated by an {rolename}.";
+    @Override
+    public void otherVisit(Game game, Player player) {
+        player.setDoused(true);
     }
 }

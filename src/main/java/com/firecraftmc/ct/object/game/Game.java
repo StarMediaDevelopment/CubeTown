@@ -1,9 +1,10 @@
 package com.firecraftmc.ct.object.game;
 
 import com.firecraftmc.ct.enums.FactionType;
+import com.firecraftmc.ct.enums.KillEffect;
 import com.firecraftmc.ct.enums.RoleType;
 import com.firecraftmc.ct.exceptions.GameInitException;
-import com.firecraftmc.ct.object.role.AbstractRole;
+import com.firecraftmc.ct.object.role.Role;
 import com.firecraftmc.ct.utils.CTUtils;
 
 import java.util.*;
@@ -14,7 +15,7 @@ public class Game {
     private final RoleList roleList;
     private final int totalPlayerCount;
     
-    private Map<Integer, Player> players = new TreeMap<>();
+    private final Map<Integer, Player> players = new TreeMap<>();
     
     private int apocalypseFactionCount;
     private boolean hasGodfather;
@@ -72,7 +73,7 @@ public class Game {
             List<Player> validGATargets = new ArrayList<>();
     
             for (Player player : this.players.values()) {
-                AbstractRole role = player.getRoleInstance();
+                Role role = player.getRoleInstance();
                 if (role != null) {
                     if (role.getFaction() == FactionType.TOWN) {
                         if (player.getRole() != RoleType.MAYOR && player.getRole() != RoleType.JAILOR) {
@@ -89,9 +90,9 @@ public class Game {
             for (Player player : initLast) {
                 Target target;
                 if (player.getRole() == RoleType.GUARDIAN_ANGEL) {
-                    target = new Target(validGATargets.get(new Random().nextInt(validGATargets.size())).getName());
+                    target = new Target(this, validGATargets.get(new Random().nextInt(validGATargets.size())).getName());
                 } else if (player.getRole() == RoleType.EXECUTIONER) {
-                    target = new Target(validExeTargets.get(new Random().nextInt(validExeTargets.size())).getName());
+                    target = new Target(this, validExeTargets.get(new Random().nextInt(validExeTargets.size())).getName());
                 } else {
                     throw new GameInitException("Could not determine a target for player " + player.getName());
                 }
@@ -101,12 +102,14 @@ public class Game {
         }
     }
     
-    public void setApocalypseFactionCount(int apocalypseFactionCount) {
-        this.apocalypseFactionCount = apocalypseFactionCount;
-    }
-    
-    public void setHasGodfather(boolean hasGodfather) {
-        this.hasGodfather = hasGodfather;
+    public Player getPlayer(String name) {
+        for (Player player : this.players.values()) {
+            if (player.getName().equals(name)) {
+                return player;
+            }
+        }
+        
+        return null;
     }
     
     public int getApocalypseFactionCount() {
@@ -123,5 +126,13 @@ public class Game {
     
     public Map<Integer, Player> getPlayers() {
         return players;
+    }
+    
+    public boolean isMarkedAsFoe(Target target) {
+        Player player = getPlayer(target.getName());
+        return player.isMarkedFoe();
+    }
+    
+    public void killPlayer(Role killingRole, Player player, KillEffect... effects) {
     }
 }

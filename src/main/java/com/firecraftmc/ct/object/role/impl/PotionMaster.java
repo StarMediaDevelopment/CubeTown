@@ -2,20 +2,22 @@ package com.firecraftmc.ct.object.role.impl;
 
 import com.firecraftmc.ct.enums.*;
 import com.firecraftmc.ct.object.game.Game;
+import com.firecraftmc.ct.object.game.Player;
 import com.firecraftmc.ct.object.role.CovenRole;
-import com.firecraftmc.ct.object.role.ProtectiveRole;
 
-public class PotionMaster extends CovenRole implements ProtectiveRole {
+public class PotionMaster extends CovenRole {
     
     private PotionType potionType;
     
-    public PotionMaster(Game game) {
-        super(game, RoleType.POTION_MASTER, Attack.NONE, Defense.NONE, 5);
+    public PotionMaster(Game game, Player player) {
+        super(game, RoleType.POTION_MASTER, player, Attack.BASIC, Defense.NONE, 5);
         addImmunities(Immunity.CONTROL);
         
         addAbilities("You may choose to use a potion on a player each night.");
         addAttributes("You may choose to use a Heal, reveal, or attack potion on a player.", 
                 "Each potion has a three day cooldown.");
+        setProtectiveDefense(Defense.POWERFUL);
+        setKillMessage("{pronown} {verb} killed by the {rolename}.");
     }
     
     public PotionType getPotionType() {
@@ -27,25 +29,10 @@ public class PotionMaster extends CovenRole implements ProtectiveRole {
     }
     
     public int getPriority() {
-        //3 healing, 4 revealing, 5 attacking
-        return super.getPriority();
-    }
-    
-    public String getKillMessage() {
-        return "{pronown} {verb} killed by the {rolename}.";
-    }
-    
-    public Attack getAttack() {
-        if (potionType == PotionType.KILL) {
-            return Attack.BASIC;
-        }
-        return Attack.NONE;
-    }
-    
-    public Defense getTemporaryDefense() {
-        if (potionType == PotionType.HEAL) {
-            return Defense.POWERFUL;
-        }
-        return Defense.NONE;
+        return switch (potionType) {
+            case HEAL -> 3;
+            case REVEAL -> 4;
+            case KILL -> 5;
+        };
     }
 }

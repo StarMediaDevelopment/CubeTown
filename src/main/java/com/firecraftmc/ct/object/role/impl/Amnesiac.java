@@ -1,32 +1,29 @@
 package com.firecraftmc.ct.object.role.impl;
 
-import com.firecraftmc.ct.enums.Alignment;
-import com.firecraftmc.ct.enums.Goal;
-import com.firecraftmc.ct.enums.Immunity;
-import com.firecraftmc.ct.enums.RoleType;
+import com.firecraftmc.ct.enums.*;
 import com.firecraftmc.ct.object.game.Game;
-import com.firecraftmc.ct.object.role.AbstractRole;
+import com.firecraftmc.ct.object.game.Player;
 import com.firecraftmc.ct.object.role.NeutralRole;
-import com.firecraftmc.ct.object.role.TargetingRole;
-import com.firecraftmc.ct.object.game.Target;
+import com.firecraftmc.ct.object.role.Role;
 
-public class Amnesiac extends NeutralRole implements TargetingRole {
+import java.util.Set;
+
+public class Amnesiac extends NeutralRole {
     
-    private AbstractRole rememberedRole;
-    private Target target;
+    private Role rememberedRole;
     
-    public Amnesiac(Game game) {
-        super(game, RoleType.AMNESIAC, 6, Alignment.BENIGN, Goal.AMNESIAC, "44A6C6");
+    public Amnesiac(Game game, Player player) {
+        super(game, RoleType.AMNESIAC, player, 6, Alignment.BENIGN, Goal.AMNESIAC, "44A6C6");
         addImmunities(Immunity.DETECTION);
         addAbilities("Remember who you were like by selecting a graveyard role.");
         addAttributes("When you choose a role it will be revealed to all the players in the game.");
     }
     
-    public Target getTarget() {
-        return target;
-    }
-    
-    public void setTarget(Target target) {
-        this.target = target;
+    @Override
+    public Set<WinCondition> getWinConditions() {
+        if (rememberedRole != null) {
+            return rememberedRole.getWinConditions();
+        }
+        return super.getWinConditions();
     }
 }

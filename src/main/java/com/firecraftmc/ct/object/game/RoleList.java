@@ -17,7 +17,7 @@ public class RoleList implements Iterable<RoleType> {
     public static final Set<RoleType> SELF_TARGETING_ROLE_TYPES = EnumSet.of(RoleType.MAYOR, RoleType.SURVIVOR, RoleType.VETERAN);
     public static final Set<RoleType> HYBRID_TARGETTING_ROLE_TYPES = EnumSet.of(RoleType.ARSONIST, RoleType.BODYGUARD, RoleType.COVEN_LEADER, RoleType.DISGUISER, RoleType.DOCTOR, RoleType.MEDUSA, RoleType.NECROMANCER, RoleType.WEREWOLF);
     
-    protected List<RoleType> roleTypes = new LinkedList<>();
+    protected final List<RoleType> roleTypes = new LinkedList<>();
     
     public static final RoleList ALL_ROLES_LIST = new RoleList(List.of(RoleType.values()));
     
