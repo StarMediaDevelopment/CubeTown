@@ -1,6 +1,7 @@
 package com.firecraftmc.ct.enums;
 
 import com.firecraftmc.ct.object.role.impl.*;
+import com.firecraftmc.ct.utils.CTUtils;
 
 public enum RoleType implements WinCondition {
     AMBUSHER(Ambusher.class, true, 10, "Your target lies in wait. They must be an Ambusher."),
@@ -85,5 +86,10 @@ public enum RoleType implements WinCondition {
     
     public String getDirectResult() {
         return directResult;
+    }
+    
+    @Override
+    public String getColor() {
+        return CTUtils.getRoleColor(this);
     }
 }

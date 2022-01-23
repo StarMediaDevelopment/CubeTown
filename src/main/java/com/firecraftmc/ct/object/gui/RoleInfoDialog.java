@@ -1,6 +1,11 @@
 package com.firecraftmc.ct.object.gui;
 
+import com.firecraftmc.ct.enums.Gender;
+import com.firecraftmc.ct.enums.WinCondition;
+import com.firecraftmc.ct.object.role.AcolyteRole;
+import com.firecraftmc.ct.object.role.Horseman;
 import com.firecraftmc.ct.object.role.Role;
+import com.firecraftmc.ct.utils.CTUtils;
 import com.starmediadev.utils.helper.StringHelper;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -14,31 +19,57 @@ import javafx.scene.text.TextFlow;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import java.util.Random;
+
 public class RoleInfoDialog {
+    
+    private static int WIDTH = 800, HEIGHT = 500;
+    
+    private Stage stage;
+    
     public RoleInfoDialog(Role role) {
-        Stage labelStage = new Stage();
-        labelStage.initModality(Modality.WINDOW_MODAL);
-        VBox labelRoot = new VBox();
+        stage = new Stage();
+        stage.initModality(Modality.WINDOW_MODAL);
+        VBox root = generateRoot(role);
         
+        Scene scene = new Scene(root, WIDTH, HEIGHT);
+        stage.setScene(scene);
+        stage.show();
+    }
+    
+    private VBox generateRoot(Role role) {
+        VBox root = new VBox();
+    
         Text name = new Text(StringHelper.capitalizeEveryWord(role.getType().name().toLowerCase()));
         name.setFill(Color.web("#" + role.getColor()));
         name.setFont(Font.font("Arial", FontWeight.BOLD, 40));
-        
+    
         VBox nameBox = new VBox();
         nameBox.setAlignment(Pos.CENTER);
         nameBox.getChildren().add(name);
-        labelRoot.getChildren().add(nameBox);
-        
-        Font infoFontBold = Font.font("Arial", FontWeight.BOLD, 20); //TODO
+        root.getChildren().add(nameBox);
+    
+        Font infoFontBold = Font.font("Arial", FontWeight.BOLD, 20);
         Font infoFont = Font.font("Arial", 20);
-        
-        Label attack = new Label("Attack: " + StringHelper.capitalizeEveryWord(role.getAttack().name().toLowerCase())); //TODO Change to Text and TextFlow
-        Label defense = new Label("Defense: " + StringHelper.capitalizeEveryWord(role.getDefense().name().toLowerCase())); //TODO Change to Text and TextFlow
-        attack.setFont(infoFont);
-        defense.setFont(infoFont);
+    
+        TextFlow attackFlow = new TextFlow();
+        Text attackText = new Text("Attack: ");
+        Text attackValue = new Text(CTUtils.formatEnum(role.getAttack()));
+        attackText.setFont(infoFontBold);
+        attackValue.setFont(infoFont);
+        attackFlow.getChildren().addAll(attackText, attackValue);
+    
+        TextFlow defenseFlow = new TextFlow();
+        Text defenseText = new Text("Defense: ");
+        Text defenseValue = new Text(CTUtils.formatEnum(role.getDefense()));
+        defenseText.setFont(infoFontBold);
+        defenseValue.setFont(infoFont);
+        defenseFlow.getChildren().addAll(defenseText, defenseValue);
+    
+        root.getChildren().addAll(attackFlow, defenseFlow);
         TextFlow alignment = new TextFlow();
         Text beginning = new Text("Alignment: ");
-        beginning.setFont(infoFont);
+        beginning.setFont(infoFontBold);
         alignment.getChildren().add(beginning);
         Text faction = new Text(StringHelper.capitalizeEveryWord(role.getFaction().name()) + " (");
         faction.setFont(infoFont);
@@ -51,88 +82,118 @@ public class RoleInfoDialog {
         closing.setFont(infoFont);
         closing.setFill(Color.web("#" + role.getFaction().getColor()));
         alignment.getChildren().addAll(subAlignment, closing);
-        Label goal = new Label("Goal: " + role.getGoal().getText());
-        goal.setFont(infoFont);
         Label abilitiesHeader = new Label("Abilities");
         abilitiesHeader.setFont(infoFontBold);
-        labelRoot.getChildren().addAll(attack, defense, alignment, goal, abilitiesHeader);
+        root.getChildren().addAll(alignment, abilitiesHeader);
         for (String ability : role.getAbilities()) {
             Label abilityLabel = new Label("- " + ability);
             abilityLabel.setFont(infoFont);
-            labelRoot.getChildren().add(abilityLabel);
+            root.getChildren().add(abilityLabel);
         }
-        
+    
         Label attributesHeader = new Label("Attributes");
         attributesHeader.setFont(infoFontBold);
-        labelRoot.getChildren().add(attributesHeader);
-        
+        root.getChildren().add(attributesHeader);
+    
         if (role.getAttributes().isEmpty()) {
             Label noneLabel = new Label("- None.");
             noneLabel.setFont(infoFont);
-            labelRoot.getChildren().add(noneLabel);
+            root.getChildren().add(noneLabel);
         } else {
             for (String attribute : role.getAttributes()) {
                 Label attributeLabel = new Label("- " + attribute);
                 attributeLabel.setFont(infoFont);
-                labelRoot.getChildren().add(attributeLabel);
+                root.getChildren().add(attributeLabel);
             }
         }
+    
+        Label goalLabel = new Label("Goal");
+        goalLabel.setFont(infoFontBold);
+    
+        Label goalText = new Label(role.getGoal().getText());
+        goalText.setFont(infoFont);
+    
+        root.getChildren().addAll(goalLabel, goalText);
+    
+        if (role.getKillMessage() != null && !role.getKillMessage().equals("")) {
+            Label killMessageLabel = new Label("Kill Message");
+            killMessageLabel.setFont(infoFontBold);
         
-//        if (role instanceof KillingRole killingRole) {
-//            Label killMessageLabel = new Label("Kill Message");
-//            killMessageLabel.setFont(infoFontBold);
-//            
-//            Color baseColor = Color.BLACK;
-//            
-//            TextFlow message = new TextFlow();
-//            String rawKillMessage = killingRole.getKillMessage();
-//            String[] killMsgWords = rawKillMessage.split(" ");
-//            
-//            Gender gender = Gender.values()[new Random().nextInt(Gender.values().length)];
-//            String pronown = switch (gender) {
-//                case MALE -> "He";
-//                case FEMALE -> "She";
-//                case UNSPECIFIED -> "They";
-//            };
-//            for (String word : killMsgWords) {
-//                if (word.contains("{pronown}")) {
-//                    Text text = new Text(pronown);
-//                    text.setFont(infoFont);
-//                    text.setFill(baseColor);
-//                    message.getChildren().add(text);
-//                } else if (word.contains("{rolename}")) {
-//                    Text text;
-//                    if (role instanceof Horseman) {
-//                        text = new Text(StringHelper.capitalizeEveryWord(role.getType().name()) + ", Horseman of the Apocalypse.");
-//                    } else {
-//                        text = new Text(StringHelper.capitalizeEveryWord(role.getType().name() + word.replace("{rolename}", "").replace(" ", "_")));
-//                    }
-//                    text.setFont(infoFont);
-//                    text.setFill(Color.web("#" + role.getColor()));
-//                    message.getChildren().add(text);
-//                } else if (word.contains("{verb}")) {
-//                    String verbWord = switch (gender) {
-//                        case MALE, FEMALE -> "was";
-//                        case UNSPECIFIED -> "were";
-//                    };
-//                    Text verb = new Text(verbWord);
-//                    verb.setFont(infoFont);
-//                    verb.setFill(baseColor);
-//                    message.getChildren().add(verb);
-//                } else {
-//                    Text text = new Text(word);
-//                    text.setFill(baseColor);
-//                    text.setFont(infoFont);
-//                    message.getChildren().add(text);
-//                }
-//                message.getChildren().add(new Text(" "));
-//            }
-//    
-//            labelRoot.getChildren().addAll(killMessageLabel, message);
-//        }
+            Color baseColor = Color.BLACK;
         
-        Scene scene = new Scene(labelRoot, 700, 500);
-        labelStage.setScene(scene);
-        labelStage.show();
+            TextFlow message = new TextFlow();
+            String rawKillMessage = role.getKillMessage();
+            String[] killMsgWords = rawKillMessage.split(" ");
+        
+            Gender gender = Gender.values()[new Random().nextInt(Gender.values().length)];
+            String pronown = switch (gender) {
+                case MALE -> "He";
+                case FEMALE -> "She";
+                case UNSPECIFIED -> "They";
+            };
+            for (String word : killMsgWords) {
+                if (word.contains("{pronown}")) {
+                    Text text = new Text(pronown);
+                    text.setFont(infoFont);
+                    text.setFill(baseColor);
+                    message.getChildren().add(text);
+                } else if (word.contains("{rolename}")) {
+                    Text text;
+                    if (role instanceof Horseman) {
+                        text = new Text(StringHelper.capitalizeEveryWord(role.getType().name()) + ", Horseman of the Apocalypse.");
+                    } else {
+                        text = new Text(StringHelper.capitalizeEveryWord(role.getType().name() + word.replace("{rolename}", "").replace(" ", "_")));
+                    }
+                    text.setFont(infoFont);
+                    text.setFill(Color.web("#" + role.getColor()));
+                    message.getChildren().add(text);
+                } else if (word.contains("{verb}")) {
+                    String verbWord = switch (gender) {
+                        case MALE, FEMALE -> "was";
+                        case UNSPECIFIED -> "were";
+                    };
+                    Text verb = new Text(verbWord);
+                    verb.setFont(infoFont);
+                    verb.setFill(baseColor);
+                    message.getChildren().add(verb);
+                } else {
+                    Text text = new Text(word);
+                    text.setFill(baseColor);
+                    text.setFont(infoFont);
+                    message.getChildren().add(text);
+                }
+                message.getChildren().add(new Text(" "));
+            }
+        
+            root.getChildren().addAll(killMessageLabel, message);
+        }
+    
+        Label winConditionsLabel = new Label("Win Conditions");
+        winConditionsLabel.setFont(infoFontBold);
+        root.getChildren().add(winConditionsLabel);
+        for (WinCondition winCondition : role.getWinConditions()) {
+            TextFlow conditionLabel = new TextFlow();
+            Text base = new Text("Wins with ");
+            base.setFont(infoFont);
+            Text conditionText = new Text(StringHelper.capitalizeEveryWord(winCondition.name()));
+            conditionText.setFont(infoFont);
+            conditionText.setFill(Color.web("#" + winCondition.getColor()));
+            conditionLabel.getChildren().addAll(base, conditionText);
+            root.getChildren().add(conditionLabel);
+        }
+    
+        if (role instanceof AcolyteRole acolyteRole) {
+            Horseman horseman = (Horseman) CTUtils.createRoleInstance(acolyteRole.getHorsemanTransformation(), role.getGame(), role.getPlayer());
+        
+            Label acolyteInfo = new Label("Horseman Tranformation");
+            acolyteInfo.setFont(infoFontBold);
+        
+            Label horsemanTransformation = new Label(StringHelper.capitalizeEveryWord(horseman.getType().name()) + ", Horseman of the Apocalypse");
+            horsemanTransformation.setFont(infoFont);
+            horsemanTransformation.setTextFill(Color.web("#" + horseman.getColor()));
+        
+            root.getChildren().addAll(acolyteInfo, horsemanTransformation);
+        }
+        return root;
     }
 }

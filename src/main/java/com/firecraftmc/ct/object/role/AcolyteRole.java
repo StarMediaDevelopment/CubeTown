@@ -16,4 +16,8 @@ public abstract class AcolyteRole extends ApocalypseRole {
             addImmunities(Immunity.DETECTION);
         }
     }
+    
+    public RoleType getHorsemanTransformation() {
+        return horsemanTransformation;
+    }
 }

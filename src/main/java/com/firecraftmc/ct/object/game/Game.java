@@ -64,7 +64,7 @@ public class Game {
             if (RoleList.ROLES_WITH_TARGETS.contains(player.getRole())) {
                 initLast.add(player);
             } else {
-                player.setRoleInstance(CTUtils.createRoleInstance(player.getRole(), this, null));
+                player.setRoleInstance(CTUtils.createRoleInstance(player.getRole(), this, player));
             }
         }
         
@@ -97,7 +97,7 @@ public class Game {
                     throw new GameInitException("Could not determine a target for player " + player.getName());
                 }
                 
-                player.setRoleInstance(CTUtils.createRoleInstance(player.getRole(), this, target));
+                player.setRoleInstance(CTUtils.createRoleInstance(player.getRole(), this, player, target));
             }
         }
     }

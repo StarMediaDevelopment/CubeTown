@@ -10,6 +10,7 @@ public abstract class CovenRole extends FactionRole {
     
     public CovenRole(Game game, RoleType type, Player player, Attack attack, Defense defense, int priority) {
         super(game, type, player, attack, defense, priority, FactionType.COVEN, Alignment.EVIL, Goal.COVEN);
+        addWinConditions(FactionType.COVEN);
     }
     
     public CovenRole(Game game, RoleType type, Player player, int priority) {

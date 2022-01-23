@@ -8,6 +8,7 @@ public abstract class ApocalypseRole extends FactionRole {
     
     public ApocalypseRole(Game game, RoleType type, Player player, Attack attack, Defense defense, int priority, Alignment alignment, String color) {
         super(game, type, player, attack, defense, priority, FactionType.APOCALYPSE, alignment, Goal.APOCALYPSE, color);
+        addWinConditions(FactionType.APOCALYPSE);
     }
     
     public ApocalypseRole(Game game, RoleType type, Player player, int priority, Alignment alignment, String color) {

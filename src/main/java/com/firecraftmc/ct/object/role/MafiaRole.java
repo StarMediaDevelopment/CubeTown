@@ -8,6 +8,7 @@ public abstract class MafiaRole extends FactionRole {
     
     public MafiaRole(Game game, RoleType type, Player player, Attack attack, Defense defense, int priority, Alignment alignment) {
         super(game, type, player, attack, defense, priority, FactionType.MAFIA, alignment, Goal.MAFIA);
+        addWinConditions(FactionType.MAFIA);
     }
     
     public MafiaRole(Game game, RoleType type, Player player, int priority, Alignment alignment) {

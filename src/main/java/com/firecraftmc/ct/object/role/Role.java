@@ -30,6 +30,7 @@ public abstract class Role {
     protected String killMessage = ""; //The message for this role when it kills
     protected boolean blocksGame = true; //If this role blocks a game end. This is also based on faction
     protected final Set<WinCondition> winConditions = new HashSet<>(); //Win conditions for this role. This can be based on a faction
+    protected RoleType transformRole = null; //The role that this role turns into on special conditions
     
     public Role(Game game, RoleType type, Player player, Attack attack, Defense defense, int priority, FactionType faction, Alignment alignment, Goal goal, String color) {
         this(game, type, player, priority, faction, alignment, goal, color);
@@ -204,5 +205,13 @@ public abstract class Role {
     
     public Set<WinCondition> getWinConditions() {
         return winConditions;
+    }
+    
+    public RoleType getTransformRole() {
+        return transformRole;
+    }
+    
+    public Player getPlayer() {
+        return player;
     }
 }
