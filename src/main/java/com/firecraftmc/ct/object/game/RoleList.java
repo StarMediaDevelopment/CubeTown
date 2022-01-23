@@ -20,6 +20,13 @@ public class RoleList implements Iterable<RoleType> {
     protected final List<RoleType> roleTypes = new LinkedList<>();
     
     public static final RoleList ALL_ROLES_LIST = new RoleList(List.of(RoleType.values()));
+    public static final RoleList ALL_ROLES_LIST_NON_HORSEMAN;
+    
+    static {
+        ArrayList<RoleType> roles = new ArrayList<>(List.of(RoleType.values()));
+        roles.removeIf(role -> role == RoleType.DEATH || role == RoleType.FAMINE || role == RoleType.WAR || role == RoleType.PESTILENCE);
+        ALL_ROLES_LIST_NON_HORSEMAN = new RoleList(roles);
+    }
     
     private RoleList(Collection<RoleType> roleTypes) {
         this.roleTypes.addAll(roleTypes);

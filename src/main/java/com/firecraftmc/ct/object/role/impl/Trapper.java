@@ -17,6 +17,6 @@ public class Trapper extends TownRole {
         addAttributes("Traps take one day to build.", "Traps can be torn down by selecting yourself at night.", 
                 "You may only have one Trap out at a time.");
         setProtectiveDefense(Defense.POWERFUL);
-        setKillMessage("{pronown} {verb} killed by a Trapper");
+        setKillMessage("{pronown} {verb} killed by a {rolename}");
     }
 }

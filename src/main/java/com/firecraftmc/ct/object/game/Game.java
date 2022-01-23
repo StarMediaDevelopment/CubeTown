@@ -133,12 +133,39 @@ public class Game {
         return player.isMarkedFoe();
     }
     
+    public void handleEndOfNight() {
+        Map<Integer, List<Player>> rolePriority = new TreeMap<>();
+    
+        for (Player player : this.players.values()) {
+            if (!player.isAlive()) continue;
+            
+            Role role = player.getRoleInstance();
+            if (rolePriority.containsKey(role.getPriority())) {
+                rolePriority.get(role.getPriority()).add(player);
+            } else {
+                rolePriority.put(role.getPriority(), new ArrayList<>(Collections.singletonList(player)));
+            }
+        }
+    
+        System.out.println(rolePriority);
+        
+        for (int i = 1; i <= 6; i++) {
+            List<Player> players = rolePriority.get(i);
+            for (Player player : players) {
+                Target selectedTarget = player.getTarget();
+                if (selectedTarget != null) {
+                    Player target = getPlayer(selectedTarget.getName());
+                    player.getRoleInstance().visit(this, target);
+                    target.getRoleInstance().otherVisit(this, player);
+                }
+            }
+        }
+    }
+    
     /**
      * This method handles infections and douses which are before any other visits are actually processed
      */
     public void handleVisitProperties() {
-        //TODO handle roleblocks
-    
         for (Player player : this.players.values()) {
             if (player.isRoleblocked()) continue;
             if (player.getTarget() != null) {

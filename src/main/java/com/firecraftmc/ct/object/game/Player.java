@@ -203,4 +203,9 @@ public class Player {
     public void setRoleblocked(boolean roleblocked) {
         this.roleblocked = roleblocked;
     }
+    
+    @Override
+    public String toString() {
+        return name + ": " + roleType.name();
+    }
 }

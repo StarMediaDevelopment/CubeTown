@@ -14,7 +14,7 @@ public class PotionMaster extends CovenRole {
         addImmunities(Immunity.CONTROL);
         
         addAbilities("You may choose to use a potion on a player each night.");
-        addAttributes("You may choose to use a Heal, reveal, or attack potion on a player.", 
+        addAttributes("You may choose to use a Heal, reveal, or attack potion on a player.",
                 "Each potion has a three day cooldown.");
         setProtectiveDefense(Defense.POWERFUL);
         setKillMessage("{pronown} {verb} killed by the {rolename}.");

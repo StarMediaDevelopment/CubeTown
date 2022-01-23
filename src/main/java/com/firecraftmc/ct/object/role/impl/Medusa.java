@@ -15,7 +15,7 @@ public class Medusa extends CovenRole {
     public Medusa(Game game, Player player) {
         super(game, RoleType.MEDUSA, player, Attack.POWERFUL, Defense.NONE, 5);
         addAbilities("You may choose to Stone Gaze all visitors at night.");
-        addAttributes("You may choose to stone gaze thrice.", 
+        addAttributes("You may choose to stone gaze thrice.",
                 "With the Necronomicon, you may visit players and turn them to stone.");
         setKillMessage("{pronown} {verb} turned to stone by {rolename}");
     }

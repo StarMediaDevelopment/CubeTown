@@ -146,7 +146,7 @@ public abstract class Role {
     }
     
     public boolean canTarget(GameState state, DayPhase dayPhase, NightPhase nightPhase) {
-        return state == GameState.NIGHT;
+        return state == GameState.NIGHT && priority > 0;
     }
     
     public boolean doesRampage() {
