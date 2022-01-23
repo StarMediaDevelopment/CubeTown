@@ -9,6 +9,7 @@ public class Player {
     protected final String name;
     protected RoleType roleType;
     protected Role roleInstance;
+    protected Target target;
     protected boolean alive = true;
     protected boolean doused = false;
     protected boolean framed = false;
@@ -184,5 +185,13 @@ public class Player {
     
     public void sendMessage(String message) {
         
+    }
+    
+    public Target getTarget() {
+        return target;
+    }
+    
+    public void setTarget(Target target) {
+        this.target = target;
     }
 }
