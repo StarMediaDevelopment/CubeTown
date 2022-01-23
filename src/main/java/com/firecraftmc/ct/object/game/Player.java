@@ -23,6 +23,7 @@ public class Player {
     protected boolean poisoned = false;
     protected boolean obliterated = false;
     protected boolean blackmailed = false;
+    protected boolean roleblocked = false;
     
     public Player(String name, RoleType roleType) {
         this.name = name;
@@ -193,5 +194,13 @@ public class Player {
     
     public void setTarget(Target target) {
         this.target = target;
+    }
+    
+    public boolean isRoleblocked() {
+        return roleblocked;
+    }
+    
+    public void setRoleblocked(boolean roleblocked) {
+        this.roleblocked = roleblocked;
     }
 }

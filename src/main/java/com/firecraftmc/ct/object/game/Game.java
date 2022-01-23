@@ -133,6 +133,32 @@ public class Game {
         return player.isMarkedFoe();
     }
     
+    /**
+     * This method handles infections and douses which are before any other visits are actually processed
+     */
+    public void handleVisitProperties() {
+        //TODO handle roleblocks
+    
+        for (Player player : this.players.values()) {
+            if (player.isRoleblocked()) continue;
+            if (player.getTarget() != null) {
+                Player target = getPlayer(player.getTarget().getName());
+                
+                if (player.isInfected() && !target.isInfected()) {
+                    target.setInfected(true);
+                }
+                
+                if (target.isInfected() && !player.isInfected()) {
+                    player.setInfected(true);
+                }
+                
+                if (target.getRole() == RoleType.ARSONIST && !player.isDoused()) {
+                    player.setDoused(true);
+                }
+            }
+        }
+    }
+    
     public void killPlayer(Role killingRole, Player player, KillEffect... effects) {
     }
 }
