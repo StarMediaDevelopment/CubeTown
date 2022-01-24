@@ -18,11 +18,6 @@ public class Arsonist extends AnarchyRole {
         setKillMessage("{pronown} {verb} incinerated by an {rolename}.");
     }
     
-    @Override
-    public boolean isValidTarget(GameState state, DayPhase dayPhase, NightPhase nightPhase, Target target) {
-        return state == GameState.NIGHT && target != null && target.isAlive();
-    }
-    
     public int getPriority() {
         if (target.isSelf()) {
             return 5;

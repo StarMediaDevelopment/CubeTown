@@ -1,8 +1,6 @@
 package com.firecraftmc.ct.object.role;
 
 import com.firecraftmc.ct.enums.*;
-import com.firecraftmc.ct.enums.GameState;
-import com.firecraftmc.ct.enums.NightPhase;
 import com.firecraftmc.ct.object.game.Game;
 import com.firecraftmc.ct.object.game.Player;
 import com.firecraftmc.ct.object.game.Target;
@@ -137,16 +135,16 @@ public abstract class Role {
         this.target = target;
     }
     
-    public boolean isValidTarget(GameState state, DayPhase dayPhase, NightPhase nightPhase, Target target) {
-        return state == GameState.NIGHT && target != null && !target.isSelf() && target.isAlive();
+    public boolean isValidTarget(Game game, Target target) {
+        return game.getTimePhase() == TimePhase.NIGHT && target != null && !target.isSelf() && target.isAlive();
     }
     
     public boolean isAstral() {
         return false;
     }
     
-    public boolean canTarget(GameState state, DayPhase dayPhase, NightPhase nightPhase) {
-        return state == GameState.NIGHT && priority > 0;
+    public boolean canTarget(Game game) {
+        return game.getTimePhase() == TimePhase.NIGHT && priority > 0;
     }
     
     public boolean doesRampage() {

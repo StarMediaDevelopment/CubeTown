@@ -14,11 +14,4 @@ public class Disguiser extends MafiaRole {
                 "Your disguised Mafia member will appear to be the other person to a Lookout.", 
                 "When disguised as a Town member, Mafia visits are disregarded by Spy.");
     }
-    
-    @Override
-    public boolean isValidTarget(GameState state, DayPhase dayPhase, NightPhase nightPhase, Target target) {
-       boolean valid = state == GameState.NIGHT && target != null; 
-        
-        return valid;
-    }
 }

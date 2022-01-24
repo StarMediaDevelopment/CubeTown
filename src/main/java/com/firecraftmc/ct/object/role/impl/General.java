@@ -19,9 +19,4 @@ public class General extends AcolyteRole {
                 "Being marked as a foe will last for 2 nights.", 
                 "When 3 marked foes die, you will become War.");
     }
-    
-    @Override
-    public boolean isValidTarget(GameState state, DayPhase dayPhase, NightPhase nightPhase, Target target) {
-        return state == GameState.NIGHT && target != null && !game.isMarkedAsFoe(target);
-    }
 }

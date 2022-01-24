@@ -19,17 +19,6 @@ public class CovenLeader extends CovenRole {
                 "You will know the role of the player you control.");
     }
     
-    @Override
-    public boolean isValidTarget(GameState state, DayPhase dayPhase, NightPhase nightPhase, Target target) {
-        boolean validBase = state == GameState.NIGHT && target != null, isValidFirstTarget = true, isValidSecondTarget = true;
-        Player firstTargetPlayer = game.getPlayer(target.getName());
-        if (target.isSelf() || firstTargetPlayer.getRoleInstance() instanceof CovenRole) {
-            isValidFirstTarget = false;
-        }
-        
-        return validBase && isValidFirstTarget && isValidSecondTarget;
-    }
-    
     protected void neconomiconActions() {
         this.attack = Attack.BASIC;
         this.defense = Defense.BASIC;

@@ -19,17 +19,6 @@ public class Bodyguard extends TownRole {
         setKillMessage("{pronown} {verb} killed by a {rolename}.");
     }
     
-    @Override
-    public boolean isValidTarget(GameState state, DayPhase dayPhase, NightPhase nightPhase, Target target) {
-        boolean validSelfTarget = true;
-        if (target.isSelf()) {
-            if (vestUsed) {
-                validSelfTarget = false;
-            }
-        }
-        return state == GameState.NIGHT && target != null && target.isAlive() && validSelfTarget;
-    }
-    
     public Defense getDefense() {
         if (target.isSelf() && !vestUsed) {
             return Defense.BASIC;

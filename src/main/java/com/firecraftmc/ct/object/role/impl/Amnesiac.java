@@ -21,13 +21,6 @@ public class Amnesiac extends NeutralRole {
     }
     
     @Override
-    public boolean isValidTarget(GameState state, DayPhase dayPhase, NightPhase nightPhase, Target target) {
-        boolean valid = state == GameState.NIGHT && target != null && !target.isAlive() && !target.isSelf();
-        Player targetPlayer = game.getPlayer(target.getName());
-        return valid && !targetPlayer.isCleaned() && !targetPlayer.isStoned();
-    }
-    
-    @Override
     public Set<WinCondition> getWinConditions() {
         if (rememberedRole != null) {
             return rememberedRole.getWinConditions();

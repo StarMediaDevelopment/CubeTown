@@ -40,11 +40,6 @@ public abstract class Horseman extends ApocalypseRole {
     }
     
     @Override
-    public boolean isValidTarget(GameState state, DayPhase dayPhase, NightPhase nightPhase, Target target) {
-        return state == GameState.NIGHT && target != null && target.isAlive();
-    }
-    
-    @Override
     public String getKillMessage() {
         if (factionCount <= FC_OBLITERATE) {
             return "{pronown} {verb} obliterated by {rolename}";

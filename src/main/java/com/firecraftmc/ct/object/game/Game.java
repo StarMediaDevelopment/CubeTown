@@ -1,8 +1,6 @@
 package com.firecraftmc.ct.object.game;
 
-import com.firecraftmc.ct.enums.FactionType;
-import com.firecraftmc.ct.enums.KillEffect;
-import com.firecraftmc.ct.enums.RoleType;
+import com.firecraftmc.ct.enums.*;
 import com.firecraftmc.ct.exceptions.GameInitException;
 import com.firecraftmc.ct.object.role.Role;
 import com.firecraftmc.ct.utils.CTUtils;
@@ -19,6 +17,11 @@ public class Game {
     
     private int apocalypseFactionCount;
     private boolean hasGodfather;
+    
+    private GameState state;
+    private TimePhase timePhase;
+    private DayPhase dayPhase;
+    private NightPhase nightPhase;
     
     public Game(RoleList roleList, List<Player> players) {
         this.roleList = roleList;
@@ -187,5 +190,21 @@ public class Game {
     }
     
     public void killPlayer(Role killingRole, Player player, KillEffect... effects) {
+    }
+    
+    public GameState getState() {
+        return state;
+    }
+    
+    public TimePhase getTimePhase() {
+        return timePhase;
+    }
+    
+    public DayPhase getDayPhase() {
+        return dayPhase;
+    }
+    
+    public NightPhase getNightPhase() {
+        return nightPhase;
     }
 }
