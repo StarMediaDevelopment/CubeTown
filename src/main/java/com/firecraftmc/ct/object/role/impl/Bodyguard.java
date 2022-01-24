@@ -1,11 +1,9 @@
 package com.firecraftmc.ct.object.role.impl;
 
-import com.firecraftmc.ct.enums.Alignment;
-import com.firecraftmc.ct.enums.Attack;
-import com.firecraftmc.ct.enums.Defense;
-import com.firecraftmc.ct.enums.RoleType;
+import com.firecraftmc.ct.enums.*;
 import com.firecraftmc.ct.object.game.Game;
 import com.firecraftmc.ct.object.game.Player;
+import com.firecraftmc.ct.object.game.Target;
 import com.firecraftmc.ct.object.role.TownRole;
 
 public class Bodyguard extends TownRole {
@@ -19,6 +17,17 @@ public class Bodyguard extends TownRole {
                 "If you successfully protect someone you can still be Healed.");
         setProtectiveDefense(Defense.INVINCIBLE);
         setKillMessage("{pronown} {verb} killed by a {rolename}.");
+    }
+    
+    @Override
+    public boolean isValidTarget(GameState state, DayPhase dayPhase, NightPhase nightPhase, Target target) {
+        boolean validSelfTarget = true;
+        if (target.isSelf()) {
+            if (vestUsed) {
+                validSelfTarget = false;
+            }
+        }
+        return state == GameState.NIGHT && target != null && target.isAlive() && validSelfTarget;
     }
     
     public Defense getDefense() {

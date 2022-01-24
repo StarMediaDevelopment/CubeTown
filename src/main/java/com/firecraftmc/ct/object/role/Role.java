@@ -138,7 +138,7 @@ public abstract class Role {
     }
     
     public boolean isValidTarget(GameState state, DayPhase dayPhase, NightPhase nightPhase, Target target) {
-        return state == GameState.NIGHT && target != null && !target.isSelf();
+        return state == GameState.NIGHT && target != null && !target.isSelf() && target.isAlive();
     }
     
     public boolean isAstral() {

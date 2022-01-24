@@ -1,10 +1,10 @@
 package com.firecraftmc.ct.object.role.impl;
 
-import com.firecraftmc.ct.enums.Attack;
-import com.firecraftmc.ct.enums.Defense;
-import com.firecraftmc.ct.enums.RoleType;
+import com.firecraftmc.ct.enums.*;
 import com.firecraftmc.ct.object.game.Game;
+import com.firecraftmc.ct.object.game.MultiTarget;
 import com.firecraftmc.ct.object.game.Player;
+import com.firecraftmc.ct.object.game.Target;
 import com.firecraftmc.ct.object.role.CovenRole;
 
 import static com.firecraftmc.ct.enums.Immunity.DETECTION;
@@ -17,6 +17,17 @@ public class CovenLeader extends CovenRole {
         addAbilities("You may choose to Control someone each night.");
         addAttributes("Your victim will know they are being controlled.", 
                 "You will know the role of the player you control.");
+    }
+    
+    @Override
+    public boolean isValidTarget(GameState state, DayPhase dayPhase, NightPhase nightPhase, Target target) {
+        boolean validBase = state == GameState.NIGHT && target != null, isValidFirstTarget = true, isValidSecondTarget = true;
+        Player firstTargetPlayer = game.getPlayer(target.getName());
+        if (target.isSelf() || firstTargetPlayer.getRoleInstance() instanceof CovenRole) {
+            isValidFirstTarget = false;
+        }
+        
+        return validBase && isValidFirstTarget && isValidSecondTarget;
     }
     
     protected void neconomiconActions() {

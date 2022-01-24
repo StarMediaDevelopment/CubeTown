@@ -3,6 +3,7 @@ package com.firecraftmc.ct.object.role.impl;
 import com.firecraftmc.ct.enums.*;
 import com.firecraftmc.ct.object.game.Game;
 import com.firecraftmc.ct.object.game.Player;
+import com.firecraftmc.ct.object.game.Target;
 import com.firecraftmc.ct.object.role.AnarchyRole;
 
 public class Arsonist extends AnarchyRole {
@@ -16,7 +17,12 @@ public class Arsonist extends AnarchyRole {
                 "If you take no action, you will attempt to clean gasoline off yourself.");
         setKillMessage("{pronown} {verb} incinerated by an {rolename}.");
     }
-
+    
+    @Override
+    public boolean isValidTarget(GameState state, DayPhase dayPhase, NightPhase nightPhase, Target target) {
+        return state == GameState.NIGHT && target != null && target.isAlive();
+    }
+    
     public int getPriority() {
         if (target.isSelf()) {
             return 5;
