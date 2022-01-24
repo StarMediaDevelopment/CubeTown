@@ -1,6 +1,7 @@
 package com.firecraftmc.ct.utils;
 
 import com.firecraftmc.ct.enums.RoleType;
+import com.firecraftmc.ct.enums.TimePhase;
 import com.firecraftmc.ct.object.game.Game;
 import com.firecraftmc.ct.object.game.Player;
 import com.firecraftmc.ct.object.game.RoleList;
@@ -51,5 +52,25 @@ public final class CTUtils {
     
     public static String formatEnum(Enum<?> value) {
         return StringHelper.capitalizeEveryWord(value.name());
+    }
+    
+    public static boolean isNight(Game game) {
+        return game.getTimePhase() == TimePhase.NIGHT;
+    }
+    
+    public static boolean targetNotNull(Target target) {
+        return target != null;
+    }
+    
+    public static boolean targetIsSelf(Target target) {
+        return targetNotNull(target) && target.isSelf();
+    }
+    
+    public static boolean targetAlive(Target target) {
+        return targetNotNull(target) && target.isAlive();
+    }
+    
+    public static boolean defaultTargetValid(Target target) {
+        return targetNotNull(target) && !targetIsSelf(target) && targetAlive(target);
     }
 }

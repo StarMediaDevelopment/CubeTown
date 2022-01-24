@@ -11,6 +11,8 @@ import com.firecraftmc.ct.object.role.NeutralRole;
 
 public class GuardianAngel extends NeutralRole {
     
+    private Target target;
+    
     private int protections = 3;
     
     public GuardianAngel(Game game, Player player, Target target) {
@@ -23,5 +25,9 @@ public class GuardianAngel extends NeutralRole {
                 "If your target is killed you will become a Survivor without any bulletproof vests.", 
                 "Three times a game you may Heal and Purge your target.", 
                 "This may be done from the grave. Watching over a player ignores Jail.");
+    }
+    
+    public Target getTarget() {
+        return target;
     }
 }

@@ -8,6 +8,8 @@ import com.firecraftmc.ct.object.game.Target;
 
 public class Executioner extends NeutralRole {
     
+    private Target target;
+    
     public Executioner(Game game, Player player, Target target) {
         super(game, RoleType.EXECUTIONER, player, Attack.NONE, Defense.BASIC, 0, Alignment.EVIL, Goal.EXECUTIONER, "ACACAC");
         this.target = target;
@@ -15,5 +17,9 @@ public class Executioner extends NeutralRole {
         addImmunities(Immunity.DETECTION);
         addAbilities("Trick the Town into lynching your target.");
         addAttributes("Your target is " + target.getName(), "If you target is killed at night you will become a Jester");
+    }
+    
+    public Target getTarget() {
+        return target;
     }
 }

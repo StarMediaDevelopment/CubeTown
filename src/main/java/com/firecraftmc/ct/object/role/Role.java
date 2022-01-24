@@ -4,6 +4,7 @@ import com.firecraftmc.ct.enums.*;
 import com.firecraftmc.ct.object.game.Game;
 import com.firecraftmc.ct.object.game.Player;
 import com.firecraftmc.ct.object.game.Target;
+import com.firecraftmc.ct.utils.CTUtils;
 
 import java.util.*;
 
@@ -22,7 +23,6 @@ public abstract class Role {
     protected final Set<Immunity> immunities = new HashSet<>(); //All immunities for this role
     protected final List<String> abilities = new LinkedList<>(); //The abilities of this role
     protected final List<String> attributes = new LinkedList<>(); //The attributes of this role
-    protected Target target = null; //Target of the role, this is related to the game itself
     protected boolean rampages = false, isProtective = false; //Some booleans about the metadata of the role
     protected Defense protectiveDefense = Defense.NONE; //This is the protective defense that this role provides, the isProtective boolean should be true
     protected String killMessage = ""; //The message for this role when it kills
@@ -127,16 +127,8 @@ public abstract class Role {
         return color;
     }
     
-    public Target getTarget() {
-        return target;
-    }
-    
-    public void setTarget(Target target) {
-        this.target = target;
-    }
-    
     public boolean isValidTarget(Game game, Target target) {
-        return game.getTimePhase() == TimePhase.NIGHT && target != null && !target.isSelf() && target.isAlive();
+        return CTUtils.isNight(game) && CTUtils.defaultTargetValid(target);
     }
     
     public boolean isAstral() {
@@ -144,7 +136,7 @@ public abstract class Role {
     }
     
     public boolean canTarget(Game game) {
-        return game.getTimePhase() == TimePhase.NIGHT && priority > 0;
+        return CTUtils.isNight(game) && priority > 0;
     }
     
     public boolean doesRampage() {

@@ -6,24 +6,24 @@ import com.firecraftmc.ct.object.role.Role;
 import java.util.Objects;
 
 public class Player {
-    protected final String name;
-    protected RoleType roleType;
-    protected Role roleInstance;
-    protected Target target;
-    protected boolean alive = true;
-    protected boolean doused = false;
-    protected boolean framed = false;
-    protected boolean markedFoe = false;
-    protected boolean hexed = false;
-    protected boolean cleaned = false;
-    protected boolean stoned = false;
-    protected boolean markedBurial = false;
-    protected boolean necromancerUsed = false;
-    protected boolean infected = false;
-    protected boolean poisoned = false;
-    protected boolean obliterated = false;
-    protected boolean blackmailed = false;
-    protected boolean roleblocked = false;
+    protected final String name; //The name of the player
+    protected RoleType roleType; //The role type of the player
+    protected Role roleInstance; //The role instance of the player
+    protected Target target, secondTarget; //The selected target(s) of the player
+    protected boolean alive = true; //If the player is alive
+    protected boolean doused = false; //If the player is doused
+    protected boolean framed = false; //If the player is framed
+    protected boolean markedFoe = false; //If the player is marked as a foe
+    protected boolean hexed = false; //If the player is hexed
+    protected boolean cleaned = false; //If the player was cleaned
+    protected boolean stoned = false; //If the player was stoned
+    protected boolean markedBurial = false; //If the player is marked for burial
+    protected boolean necromancerUsed = false; //If the player's grave was used by a necromancer
+    protected boolean infected = false; //If the player is infected
+    protected boolean poisoned = false; //If the player is poisoned
+    protected boolean obliterated = false; //If the player was obliterated
+    protected boolean blackmailed = false; //If the player is blackmailed
+    protected boolean roleblocked = false; //If the player is roleblocked
     
     public Player(String name, RoleType roleType) {
         this.name = name;
