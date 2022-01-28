@@ -20,7 +20,6 @@ public class SerialKiller extends AnarchyRole {
                 FactionType.COVEN, TypeRelation.KILL,
                 FactionType.APOCALYPSE, TypeRelation.KILL,
                 RoleType.JUGGERNAUT, TypeRelation.KILL,
-                RoleType.SERIAL_KILLER, TypeRelation.KILL,
                 RoleType.VAMPIRE, TypeRelation.KILL,
                 RoleType.WEREWOLF, TypeRelation.KILL);
     }

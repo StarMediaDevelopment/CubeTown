@@ -7,13 +7,14 @@ import com.firecraftmc.ct.object.game.*;
 import com.firecraftmc.ct.object.gui.MainRoleListGui;
 import com.firecraftmc.ct.object.role.Role;
 import com.firecraftmc.ct.utils.CTUtils;
+import javafx.application.Application;
 import javafx.stage.Stage;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.*;
 
-public class CubeTown /*extends Application*/ {
+public class CubeTown extends Application {
     
     //TODO Include Horseman of the Apocalypse at the end when processing names for horseman roles
     
@@ -22,8 +23,8 @@ public class CubeTown /*extends Application*/ {
     }
     
     public static void main(String[] args) {
-        //launch();
-        checkRoleWinConditions();
+        launch();
+        //checkRoleWinConditions();
     }
     
     public static void checkRoleWinConditions() {
