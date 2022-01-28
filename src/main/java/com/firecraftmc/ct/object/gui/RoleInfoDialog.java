@@ -1,7 +1,7 @@
 package com.firecraftmc.ct.object.gui;
 
-import com.firecraftmc.ct.enums.Gender;
-import com.firecraftmc.ct.enums.WinCondition;
+import com.firecraftmc.ct.enums.*;
+import com.firecraftmc.ct.object.game.WinCondition;
 import com.firecraftmc.ct.object.role.AcolyteRole;
 import com.firecraftmc.ct.object.role.Horseman;
 import com.firecraftmc.ct.object.role.Role;
@@ -23,7 +23,7 @@ import java.util.Random;
 
 public class RoleInfoDialog {
     
-    private static int WIDTH = 800, HEIGHT = 500;
+    private static int WIDTH = 800, HEIGHT = 600;
     
     private Stage stage;
     
@@ -171,14 +171,61 @@ public class RoleInfoDialog {
         Label winConditionsLabel = new Label("Win Conditions");
         winConditionsLabel.setFont(infoFontBold);
         root.getChildren().add(winConditionsLabel);
+//        for (BaseType baseType : role.getWinConditions()) {
+//            TextFlow conditionLabel = new TextFlow();
+//            Text base = new Text("Wins with ");
+//            base.setFont(infoFont);
+//            Text conditionText = new Text(StringHelper.capitalizeEveryWord(baseType.name()));
+//            conditionText.setFont(infoFont);
+//            conditionText.setFill(Color.web("#" + baseType.getColor()));
+//            conditionLabel.getChildren().addAll(base, conditionText);
+//            root.getChildren().add(conditionLabel);
+//        }
+    
         for (WinCondition winCondition : role.getWinConditions()) {
             TextFlow conditionLabel = new TextFlow();
-            Text base = new Text("Wins with ");
+            BaseType baseType = winCondition.getBaseType();
+            TypeRelation relation = winCondition.getTypeRelation();
+            Text base = null;
+            if (relation == TypeRelation.WIN) {
+                if (baseType instanceof FactionType) {
+                    base = new Text("Wins with the ");
+                } else if (baseType instanceof RoleType roleType) {
+                    if (roleType.isUnique()) {
+                        base = new Text("Wins with the ");
+                    } else {
+                        base = new Text("Wins with ");
+                    }
+                }
+            } else if (relation == TypeRelation.KILL) {
+                if (baseType instanceof FactionType) {
+                    base = new Text("Must kill the ");
+                } else if (baseType instanceof RoleType roleType) {
+                    if (roleType.isUnique()) {
+                        base = new Text("Must kill the ");
+                    } else {
+                        base = new Text("Must kill ");
+                    }
+                }
+            }
+            
+            if (base == null) {
+                continue;
+            }
+            
             base.setFont(infoFont);
-            Text conditionText = new Text(StringHelper.capitalizeEveryWord(winCondition.name()));
-            conditionText.setFont(infoFont);
-            conditionText.setFill(Color.web("#" + winCondition.getColor()));
-            conditionLabel.getChildren().addAll(base, conditionText);
+            
+            Text typeText = new Text(StringHelper.capitalizeEveryWord(baseType.name()));
+            if (baseType instanceof RoleType roleType) {
+                if (!roleType.isUnique()) {
+                    typeText.setText(typeText.getText() + "s");
+                }
+            }
+            
+            typeText.setFont(infoFont);
+            typeText.setFill(Color.web("#" + baseType.getColor()));
+            
+            conditionLabel.getChildren().addAll(base, typeText);
             root.getChildren().add(conditionLabel);
         }
     

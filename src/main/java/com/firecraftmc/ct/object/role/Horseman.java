@@ -4,6 +4,7 @@ import com.firecraftmc.ct.enums.*;
 import com.firecraftmc.ct.object.game.Game;
 import com.firecraftmc.ct.object.game.Player;
 import com.firecraftmc.ct.object.game.Target;
+import com.firecraftmc.ct.utils.CTUtils;
 
 public abstract class Horseman extends ApocalypseRole {
     protected static final int FC_UNSTOPPABLE = 1, FC_RAMPAGE = 3, FC_OBLITERATE = 2;
@@ -37,6 +38,11 @@ public abstract class Horseman extends ApocalypseRole {
         }
         
        addAttributes("You cannot be roleblocked or controlled", "If you are jailed, you will attack the Jailor");
+    }
+    
+    @Override
+    public boolean isValidTarget(Game game, Target target) {
+        return CTUtils.defaultTargetValid(target) && !(CTUtils.getTargetPlayerRoleInstance(game, target) instanceof ApocalypseRole);
     }
     
     @Override

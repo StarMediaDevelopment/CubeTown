@@ -4,6 +4,7 @@ import com.firecraftmc.ct.enums.*;
 import com.firecraftmc.ct.object.game.Game;
 import com.firecraftmc.ct.object.game.Player;
 import com.firecraftmc.ct.object.game.Target;
+import com.firecraftmc.ct.object.game.WinCondition;
 import com.firecraftmc.ct.utils.CTUtils;
 
 import java.util.*;
@@ -27,8 +28,8 @@ public abstract class Role {
     protected Defense protectiveDefense = Defense.NONE; //This is the protective defense that this role provides, the isProtective boolean should be true
     protected String killMessage = ""; //The message for this role when it kills
     protected boolean blocksGame = true; //If this role blocks a game end. This is also based on faction
-    protected final Set<WinCondition> winConditions = new HashSet<>(); //Win conditions for this role. This can be based on a faction
     protected RoleType transformRole = null; //The role that this role turns into on special conditions
+    protected final Set<WinCondition> winConditions = new HashSet<>();
     
     public Role(Game game, RoleType type, Player player, Attack attack, Defense defense, int priority, FactionType faction, Alignment alignment, Goal goal, String color) {
         this(game, type, player, priority, faction, alignment, goal, color);
@@ -45,9 +46,9 @@ public abstract class Role {
         this.goal = goal;
         this.color = color;
         this.priority = priority;
-        addWinConditions(RoleType.SURVIVOR); //Survivor wins with everyone
+        addWinConditions(RoleType.SURVIVOR, TypeRelation.WIN); //Survivor wins with everyone
         if (faction == FactionType.NEUTRAL || faction == FactionType.ANARCHY || faction == FactionType.MYTHICAL) {
-            addWinConditions(type); //Adds this role as a win condition if it is not Coven, Mafia, Town or Apocalypse
+            addWinConditions(type, TypeRelation.WIN); //Adds this role as a win condition if it is not Coven, Mafia, Town or Apocalypse
         }
     }
     
@@ -58,35 +59,35 @@ public abstract class Role {
     public Attack getAttack() {
         return attack;
     }
-
+    
     public Defense getDefense() {
         return defense;
     }
-
+    
     public void setAttack(Attack attack) {
         this.attack = attack;
     }
-
+    
     public void setDefense(Defense defense) {
         this.defense = defense;
     }
-
+    
     public void setPriority(int priority) {
         this.priority = priority;
     }
-
+    
     public int getPriority() {
-        return priority;
+        return getPriority(null);
     }
-
+    
     public Set<Immunity> getImmunities() {
         return immunities;
     }
-
+    
     public List<String> getAbilities() {
         return abilities;
     }
-
+    
     public List<String> getAttributes() {
         return attributes;
     }
@@ -103,8 +104,43 @@ public abstract class Role {
         this.immunities.addAll(Arrays.asList(immunities));
     }
     
-    protected void addWinConditions(WinCondition... conditions) {
-        this.winConditions.addAll(Arrays.asList(conditions));
+    protected void addWinCondition(BaseType baseType, TypeRelation typeRelation) {
+        this.winConditions.add(new WinCondition(baseType, typeRelation));
+    }
+    
+    public int getPriority(Target target) {
+        return priority;
+    }
+    
+    protected void addWinConditions(Object... objects) {
+        if (objects == null) {
+            throw new IllegalArgumentException("Win Conditions varargs is null for type " + getClass().getName());
+        }
+        
+        if (objects.length % 2 != 0) {
+            throw new IllegalArgumentException("Win Conditions varargs is not divisible by 2 for type " + getClass().getName());
+        }
+        
+        for (int i = 0; i < objects.length; i += 2) {
+            Object typeRaw = objects[i];
+            Object relationRaw = objects[i+1];
+            BaseType baseType;
+            TypeRelation typeRelation;
+            
+            if (typeRaw instanceof BaseType type) {
+                baseType = type;
+            } else {
+                throw new IllegalArgumentException("BaseType argument is not a valid BaseType");
+            }
+            
+            if (relationRaw instanceof TypeRelation relation) {
+                typeRelation = relation;
+            } else {
+                throw new IllegalArgumentException("TypeRelation argument is not a valid TypeRelation");
+            }
+            
+            addWinCondition(baseType, typeRelation);
+        }
     }
     
     public Game getGame() {
@@ -170,7 +206,8 @@ public abstract class Role {
     
     /**
      * Actions that occur when a player visits this role
-     * @param game The current game
+     *
+     * @param game   The current game
      * @param player The player that is visiting
      */
     public void otherVisit(Game game, Player player) {
@@ -180,7 +217,8 @@ public abstract class Role {
     /**
      * What happens when a player visits this player
      * The default implementation checks for an attack and then kills the target player using the Game.killPlayer() method
-     * @param game The current game
+     *
+     * @param game   The current game
      * @param player The player that is the target
      */
     public void visit(Game game, Player player) {

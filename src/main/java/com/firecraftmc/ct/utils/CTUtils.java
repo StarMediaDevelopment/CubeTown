@@ -1,5 +1,6 @@
 package com.firecraftmc.ct.utils;
 
+import com.firecraftmc.ct.enums.FactionType;
 import com.firecraftmc.ct.enums.RoleType;
 import com.firecraftmc.ct.enums.TimePhase;
 import com.firecraftmc.ct.object.game.Game;
@@ -15,7 +16,8 @@ import java.util.Map;
 
 public final class CTUtils {
     
-    private static Map<RoleType, String> roleColors = new HashMap<>();
+    //These are for utility checks
+    private static Map<RoleType, Role> defaultInstances = new HashMap<>();
     
     static {
         Game game = new Game(new RoleList(0), new ArrayList<>());
@@ -23,7 +25,7 @@ public final class CTUtils {
         Target target = new Target(game, "Test");
         for (RoleType roleType : RoleType.values()) {
             Role role = createRoleInstance(roleType, game, player, target);
-            roleColors.put(roleType, role.getColor());
+            defaultInstances.put(roleType, role);
         }
     }
     
@@ -47,7 +49,7 @@ public final class CTUtils {
     }
     
     public static String getRoleColor(RoleType roleType) {
-        return roleColors.get(roleType);
+        return defaultInstances.get(roleType).getColor();
     }
     
     public static String formatEnum(Enum<?> value) {
@@ -72,5 +74,22 @@ public final class CTUtils {
     
     public static boolean defaultTargetValid(Target target) {
         return targetNotNull(target) && !targetIsSelf(target) && targetAlive(target);
+    }
+    
+    public static Player getTargetPlayer(Game game, Target target) {
+        return game.getPlayer(target.getName());
+    }
+    
+    public static Role getTargetPlayerRoleInstance(Game game, Target target) {
+        Player player = getTargetPlayer(game, target);
+        if (player != null) {
+            return player.getRoleInstance();
+        }
+        
+        return null;
+    }
+    
+    public static FactionType getRoleFaction(RoleType roleType) {
+        return defaultInstances.get(roleType).getFaction();
     }
 }

@@ -1,9 +1,25 @@
 package com.firecraftmc.ct.enums;
 
-import com.firecraftmc.ct.object.role.impl.*;
+import com.firecraftmc.ct.object.role.impl.anarchy.Arsonist;
+import com.firecraftmc.ct.object.role.impl.anarchy.Juggernaut;
+import com.firecraftmc.ct.object.role.impl.anarchy.SerialKiller;
+import com.firecraftmc.ct.object.role.impl.apocalypse.acolyte.General;
+import com.firecraftmc.ct.object.role.impl.apocalypse.acolyte.Hunger;
+import com.firecraftmc.ct.object.role.impl.apocalypse.acolyte.Mortician;
+import com.firecraftmc.ct.object.role.impl.apocalypse.acolyte.Plaguebearer;
+import com.firecraftmc.ct.object.role.impl.apocalypse.horseman.Death;
+import com.firecraftmc.ct.object.role.impl.apocalypse.horseman.Famine;
+import com.firecraftmc.ct.object.role.impl.apocalypse.horseman.Pestilence;
+import com.firecraftmc.ct.object.role.impl.apocalypse.horseman.War;
+import com.firecraftmc.ct.object.role.impl.coven.*;
+import com.firecraftmc.ct.object.role.impl.mafia.*;
+import com.firecraftmc.ct.object.role.impl.mythical.Vampire;
+import com.firecraftmc.ct.object.role.impl.mythical.Werewolf;
+import com.firecraftmc.ct.object.role.impl.neutral.*;
+import com.firecraftmc.ct.object.role.impl.town.*;
 import com.firecraftmc.ct.utils.CTUtils;
 
-public enum RoleType implements WinCondition {
+public enum RoleType implements BaseType {
     AMBUSHER(Ambusher.class, true, 10, "Your target lies in wait. They must be an Ambusher."),
     AMNESIAC(Amnesiac.class, false, 10, "Your target does not remember their role. They must be an Amnesiac."),
     ARSONIST(Arsonist.class, false, 10, "Your target likes to watch things burn. They must be an Arsonist."),

@@ -27,8 +27,10 @@ public class Game {
         this.roleList = roleList;
         this.totalPlayerCount = roleList.size();
         
-        if (players.size() != totalPlayerCount) {
-            throw new GameInitException("Provided player count " + players.size() + " does not match total generated roles " + totalPlayerCount);
+        if (!players.isEmpty()) {
+            if (players.size() != totalPlayerCount) {
+                throw new GameInitException("Provided player count " + players.size() + " does not match total generated roles " + totalPlayerCount);
+            }
         }
         
         int playerCounter = 1;
