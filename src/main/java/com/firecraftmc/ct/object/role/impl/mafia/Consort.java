@@ -14,5 +14,6 @@ public class Consort extends MafiaRole {
                 "If there are no kill capable Mafia roles left you will become a Mafioso.",
                 "You can talk with the other Mafia at night.");
         addImmunities(Immunity.ROLEBLOCK);
+        setRoleblocksOthers(true);
     }
 }

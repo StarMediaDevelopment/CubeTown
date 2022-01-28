@@ -3,6 +3,8 @@ package com.firecraftmc.ct.object.game;
 import com.firecraftmc.ct.enums.*;
 import com.firecraftmc.ct.exceptions.GameInitException;
 import com.firecraftmc.ct.object.role.Role;
+import com.firecraftmc.ct.object.role.impl.apocalypse.ApocalypseRole;
+import com.firecraftmc.ct.object.role.impl.apocalypse.horseman.Horseman;
 import com.firecraftmc.ct.utils.CTUtils;
 
 import java.util.*;
@@ -152,7 +154,24 @@ public class Game {
             }
         }
     
-        System.out.println(rolePriority);
+        Map<Integer, List<Visit>> priorityVisits = new TreeMap<>();
+        for (int i = 1; i <= 6; i++) {
+            List<Player> players = rolePriority.get(i);
+            for (Player player : players) {
+                Target selectedTarget = player.getTarget();
+                if (selectedTarget != null) {
+                    Player target = getPlayer(selectedTarget.getName());
+                    if (priorityVisits.containsKey(i)) {
+                        priorityVisits.get(i).add(new Visit(player, target));
+                    } else {
+                        priorityVisits.put(i, new ArrayList<>(Collections.singletonList(new Visit(player, target))));
+                    }
+                }
+            }
+        }
+        
+        
+        
         
         for (int i = 1; i <= 6; i++) {
             List<Player> players = rolePriority.get(i);
@@ -163,8 +182,71 @@ public class Game {
                     player.getRoleInstance().visit(this, target);
                     target.getRoleInstance().otherVisit(this, player);
                 }
+                
+                //Handle night time horseman transformations
+                if (i == 2) {
+                    boolean allTownInfected = true;
+                    int starvedPlayers = 0;
+                    Player plaguebearer = null, hunger = null;
+                    for (Player p : this.players.values()) {
+                        if (!p.isInfected() && !(p.getRoleInstance() instanceof ApocalypseRole)) {
+                            allTownInfected = false;
+                        }
+                        
+                        if (p.isStarved() && !(p.getRoleInstance() instanceof ApocalypseRole)) {
+                            starvedPlayers++;
+                        }
+                        
+                        if (p.getRole() == RoleType.PLAGUEBEARER) {
+                            plaguebearer = p;
+                        }
+                        
+                        if (p.getRole() == RoleType.HUNGER) {
+                            hunger = p;
+                        }
+                    }
+                    
+                    if (allTownInfected && plaguebearer != null) {
+                        Horseman pestilenceRole = (Horseman) CTUtils.createRoleInstance(RoleType.PESTILENCE, this, plaguebearer);
+                        plaguebearer.setRole(RoleType.PESTILENCE);
+                        plaguebearer.setRoleInstance(pestilenceRole);
+                        this.sendSystemMessage(MessageType.SUMMON, pestilenceRole.getSummoningMessage().replace("{rolename}", "Pestilence, Horseman of the Apocalypse"));
+                    }
+                    
+                    if (starvedPlayers >= 4 && hunger != null) {
+                        Horseman famineRole = (Horseman) CTUtils.createRoleInstance(RoleType.FAMINE, this, hunger);
+                        plaguebearer.setRole(RoleType.FAMINE);
+                        plaguebearer.setRoleInstance(famineRole);
+                        this.sendSystemMessage(MessageType.SUMMON, famineRole.getSummoningMessage().replace("{rolename}", "Famine, Horseman of the Apocalypse"));
+                    }
+                }
+                
+                if (i == 6) {
+                    //TODO war summoning as it has to happen after all killers
+                    int totalMarkedFoes = 0;
+                    Player general = null;
+                    for (Player p : this.players.values()) {
+                        if (!p.isAlive() && p.isMarkedFoe()) {
+                            totalMarkedFoes++;
+                        }
+                        if (p.getRole() == RoleType.GENERAL) {
+                            general = p;
+                        }
+                    }
+    
+                    if (totalMarkedFoes >= 3 && general != null) {
+                        Horseman warRole = (Horseman) CTUtils.createRoleInstance(RoleType.WAR, this, general);
+                        general.setRole(RoleType.WAR);
+                        general.setRoleInstance(warRole);
+                        this.sendSystemMessage(MessageType.SUMMON, warRole.getSummoningMessage().replace("{rolename}", "War, Horseman of the Apocalypse"));
+                    }
+                }
             }
         }
+    }
+    
+    public void sendSystemMessage(MessageType messageType, String message) {
+        //TODO
     }
     
     /**

@@ -30,6 +30,7 @@ public abstract class Role {
     protected boolean blocksGame = true; //If this role blocks a game end. This is also based on faction
     protected RoleType transformRole = null; //The role that this role turns into on special conditions
     protected final Set<WinCondition> winConditions = new HashSet<>();
+     protected boolean roleblocksOthers = false; //If this role roleblocks others
     
     public Role(Game game, RoleType type, Player player, Attack attack, Defense defense, int priority, FactionType faction, Alignment alignment, Goal goal, String color) {
         this(game, type, player, priority, faction, alignment, goal, color);
@@ -241,5 +242,13 @@ public abstract class Role {
     
     public Player getPlayer() {
         return player;
+    }
+    
+    public void setRoleblocksOthers(boolean roleblocksOthers) {
+        this.roleblocksOthers = roleblocksOthers;
+    }
+    
+    public boolean doesRoleblockOthers() {
+        return roleblocksOthers;
     }
 }

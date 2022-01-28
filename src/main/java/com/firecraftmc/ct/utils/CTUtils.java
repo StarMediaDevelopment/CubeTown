@@ -92,4 +92,8 @@ public final class CTUtils {
     public static FactionType getRoleFaction(RoleType roleType) {
         return defaultInstances.get(roleType).getFaction();
     }
+    
+    public static int getRolePriority(RoleType roleType) {
+        return defaultInstances.get(roleType).getPriority();
+    }
 }

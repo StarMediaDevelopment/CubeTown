@@ -24,6 +24,7 @@ public class Player {
     protected boolean obliterated = false; //If the player was obliterated
     protected boolean blackmailed = false; //If the player is blackmailed
     protected boolean roleblocked = false; //If the player is roleblocked
+    protected boolean starved = false; //If the player has been starved
     
     public Player(String name, RoleType roleType) {
         this.name = name;
@@ -207,5 +208,9 @@ public class Player {
     @Override
     public String toString() {
         return name + ": " + roleType.name();
+    }
+    
+    public boolean isStarved() {
+        return starved;
     }
 }

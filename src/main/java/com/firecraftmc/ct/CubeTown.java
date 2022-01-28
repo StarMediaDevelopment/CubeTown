@@ -7,14 +7,14 @@ import com.firecraftmc.ct.object.game.*;
 import com.firecraftmc.ct.object.gui.MainRoleListGui;
 import com.firecraftmc.ct.object.role.Role;
 import com.firecraftmc.ct.utils.CTUtils;
-import javafx.application.Application;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.*;
 
-public class CubeTown extends Application {
+public class CubeTown /*extends Application*/ {
     
     //TODO Include Horseman of the Apocalypse at the end when processing names for horseman roles
     
@@ -23,8 +23,28 @@ public class CubeTown extends Application {
     }
     
     public static void main(String[] args) {
-        launch();
+        ///launch();
         //checkRoleWinConditions();
+        printRolePriority();
+    }
+    
+    public static void printRolePriority() {
+        Map<Integer, Set<RoleType>> rolePriorities = new TreeMap<>();
+        for (RoleType roleType : RoleType.values()) {
+            try {
+                int priority = CTUtils.getRolePriority(roleType);
+                if (rolePriorities.containsKey(priority)) {
+                    rolePriorities.get(priority).add(roleType);
+                } else {
+                    rolePriorities.put(priority, new HashSet<>(Collections.singleton(roleType)));
+                }
+            } catch (Exception e) {
+                System.out.println("Problem getting priority for role " + roleType.name());
+                e.printStackTrace();
+            }
+        }
+    
+        System.out.println(rolePriorities);
     }
     
     public static void checkRoleWinConditions() {

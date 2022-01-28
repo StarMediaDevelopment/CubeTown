@@ -41,6 +41,10 @@ public abstract class Horseman extends ApocalypseRole {
        addAttributes("You cannot be roleblocked or controlled", "If you are jailed, you will attack the Jailor");
     }
     
+    public String getSummoningMessage() {
+        return summoningMessage;
+    }
+    
     @Override
     public boolean isValidTarget(Game game, Target target) {
         return CTUtils.defaultTargetValid(target) && !(CTUtils.getTargetPlayerRoleInstance(game, target) instanceof ApocalypseRole);

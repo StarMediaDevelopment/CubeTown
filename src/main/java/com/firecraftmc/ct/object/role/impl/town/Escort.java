@@ -11,5 +11,6 @@ public class Escort extends TownRole {
         super(game, RoleType.ESCORT, player, 2, Alignment.SUPPORT);
         addAbilities("Distract someone each night.");
         addAttributes("Distraction blocks your target from using their role's night ability.", "You cannot be role blocked.");
+        setRoleblocksOthers(true);
     }
 }
