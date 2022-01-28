@@ -3,7 +3,6 @@ package com.firecraftmc.ct.object.role.impl.mafia;
 import com.firecraftmc.ct.enums.*;
 import com.firecraftmc.ct.object.game.Game;
 import com.firecraftmc.ct.object.game.Player;
-import com.firecraftmc.ct.object.role.MafiaRole;
 
 public class Godfather extends MafiaRole {
     public Godfather(Game game, Player player) {

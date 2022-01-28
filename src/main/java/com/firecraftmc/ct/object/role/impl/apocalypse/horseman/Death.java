@@ -3,7 +3,6 @@ package com.firecraftmc.ct.object.role.impl.apocalypse.horseman;
 import com.firecraftmc.ct.enums.RoleType;
 import com.firecraftmc.ct.object.game.Game;
 import com.firecraftmc.ct.object.game.Player;
-import com.firecraftmc.ct.object.role.Horseman;
 
 public class Death extends Horseman {
     public Death(Game game, Player player) {

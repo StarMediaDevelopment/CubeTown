@@ -1,9 +1,10 @@
-package com.firecraftmc.ct.object.role;
+package com.firecraftmc.ct.object.role.impl.mafia;
 
 import com.firecraftmc.ct.enums.*;
 import com.firecraftmc.ct.object.game.Game;
 import com.firecraftmc.ct.object.game.Player;
 import com.firecraftmc.ct.object.game.Target;
+import com.firecraftmc.ct.object.role.FactionRole;
 import com.firecraftmc.ct.utils.CTUtils;
 
 public abstract class MafiaRole extends FactionRole {

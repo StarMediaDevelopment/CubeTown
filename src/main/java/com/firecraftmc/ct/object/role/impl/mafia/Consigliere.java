@@ -4,7 +4,6 @@ import com.firecraftmc.ct.enums.Alignment;
 import com.firecraftmc.ct.enums.RoleType;
 import com.firecraftmc.ct.object.game.Game;
 import com.firecraftmc.ct.object.game.Player;
-import com.firecraftmc.ct.object.role.MafiaRole;
 
 public class Consigliere extends MafiaRole {
     public Consigliere(Game game, Player player) {

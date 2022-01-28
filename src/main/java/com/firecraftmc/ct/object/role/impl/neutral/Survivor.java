@@ -3,7 +3,6 @@ package com.firecraftmc.ct.object.role.impl.neutral;
 import com.firecraftmc.ct.enums.*;
 import com.firecraftmc.ct.object.game.Game;
 import com.firecraftmc.ct.object.game.Player;
-import com.firecraftmc.ct.object.role.NeutralRole;
 
 public class Survivor extends NeutralRole {
     

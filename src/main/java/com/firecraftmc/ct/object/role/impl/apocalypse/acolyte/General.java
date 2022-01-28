@@ -1,13 +1,8 @@
 package com.firecraftmc.ct.object.role.impl.apocalypse.acolyte;
 
-import com.firecraftmc.ct.enums.DayPhase;
 import com.firecraftmc.ct.enums.RoleType;
-import com.firecraftmc.ct.enums.GameState;
-import com.firecraftmc.ct.enums.NightPhase;
 import com.firecraftmc.ct.object.game.Game;
 import com.firecraftmc.ct.object.game.Player;
-import com.firecraftmc.ct.object.game.Target;
-import com.firecraftmc.ct.object.role.AcolyteRole;
 
 public class General extends AcolyteRole {
     

@@ -3,7 +3,6 @@ package com.firecraftmc.ct.object.role.impl.apocalypse.acolyte;
 import com.firecraftmc.ct.enums.RoleType;
 import com.firecraftmc.ct.object.game.Game;
 import com.firecraftmc.ct.object.game.Player;
-import com.firecraftmc.ct.object.role.AcolyteRole;
 
 public class Plaguebearer extends AcolyteRole {
     

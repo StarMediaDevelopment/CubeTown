@@ -4,7 +4,6 @@ import com.firecraftmc.ct.enums.*;
 import com.firecraftmc.ct.object.game.Game;
 import com.firecraftmc.ct.object.game.Player;
 import com.firecraftmc.ct.object.game.WinCondition;
-import com.firecraftmc.ct.object.role.NeutralRole;
 import com.firecraftmc.ct.object.role.Role;
 
 import java.util.Set;

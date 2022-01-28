@@ -2,8 +2,8 @@ package com.firecraftmc.ct.object.gui;
 
 import com.firecraftmc.ct.enums.*;
 import com.firecraftmc.ct.object.game.WinCondition;
-import com.firecraftmc.ct.object.role.AcolyteRole;
-import com.firecraftmc.ct.object.role.Horseman;
+import com.firecraftmc.ct.object.role.impl.apocalypse.acolyte.AcolyteRole;
+import com.firecraftmc.ct.object.role.impl.apocalypse.horseman.Horseman;
 import com.firecraftmc.ct.object.role.Role;
 import com.firecraftmc.ct.utils.CTUtils;
 import com.starmediadev.utils.helper.StringHelper;

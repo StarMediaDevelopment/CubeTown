@@ -6,7 +6,6 @@ import com.firecraftmc.ct.enums.Defense;
 import com.firecraftmc.ct.enums.RoleType;
 import com.firecraftmc.ct.object.game.Game;
 import com.firecraftmc.ct.object.game.Player;
-import com.firecraftmc.ct.object.role.TownRole;
 
 public class Vigilante extends TownRole {
     

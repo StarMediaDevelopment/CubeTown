@@ -1,8 +1,9 @@
-package com.firecraftmc.ct.object.role;
+package com.firecraftmc.ct.object.role.impl.anarchy;
 
 import com.firecraftmc.ct.enums.*;
 import com.firecraftmc.ct.object.game.Game;
 import com.firecraftmc.ct.object.game.Player;
+import com.firecraftmc.ct.object.role.FactionRole;
 
 public abstract class AnarchyRole extends FactionRole {
     

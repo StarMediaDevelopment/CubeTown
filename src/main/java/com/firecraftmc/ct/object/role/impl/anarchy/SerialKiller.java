@@ -3,7 +3,6 @@ package com.firecraftmc.ct.object.role.impl.anarchy;
 import com.firecraftmc.ct.enums.*;
 import com.firecraftmc.ct.object.game.Game;
 import com.firecraftmc.ct.object.game.Player;
-import com.firecraftmc.ct.object.role.AnarchyRole;
 
 public class SerialKiller extends AnarchyRole {
     public SerialKiller(Game game, Player player) {

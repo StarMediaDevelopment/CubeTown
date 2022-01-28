@@ -3,7 +3,6 @@ package com.firecraftmc.ct.object.role.impl.coven;
 import com.firecraftmc.ct.enums.*;
 import com.firecraftmc.ct.object.game.Game;
 import com.firecraftmc.ct.object.game.Player;
-import com.firecraftmc.ct.object.role.CovenRole;
 
 import static com.firecraftmc.ct.enums.Immunity.DETECTION;
 import static com.firecraftmc.ct.enums.Immunity.ROLEBLOCK;
