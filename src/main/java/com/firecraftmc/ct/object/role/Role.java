@@ -197,7 +197,7 @@ public abstract class Role {
     
     protected final void setProtectiveDefense(Defense protectiveDefense) {
         this.protectiveDefense = protectiveDefense;
-        this.isProtective = true;
+        this.isProtective = protectiveDefense != Defense.NONE;
     }
     
     protected final void setKillMessage(String killMessage) {
